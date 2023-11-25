@@ -11,15 +11,19 @@ export const LoginPage = () => {
     setInput("");
   };
 
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
+
   // Affichage
   return (
     <>
       <h1>Bienvenue chez nous !</h1>
       <br />
-      <h3>Connectez-vous</h3>
-      <form action="" onSubmit={handleSubmit}>
+      <h2>Connectez-vous</h2>
+      <form action="submit" onSubmit={handleSubmit}>
         <input
-          onChange={(e) => setInput(e.target.value)}
+          onChange={handleChange}
           value={input}
           type="text"
           placeholder="Entrez votre prénom..."
