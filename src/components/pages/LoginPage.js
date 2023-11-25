@@ -1,14 +1,17 @@
 import { useState } from "react";
 
 export const LoginPage = () => {
+  // states
   const [input, setInput] = useState("");
 
+  // comportements
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Bonjour " + input);
     setInput("");
   };
 
+  // Affichage
   return (
     <>
       <h1>Bienvenue chez nous !</h1>
