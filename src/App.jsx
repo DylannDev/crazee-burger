@@ -1,11 +1,8 @@
 import "./App.css";
+import { LoginPage } from "./components/pages/login/LoginPage";
 
 function App() {
-  return (
-    <>
-      <p>Hello world !</p>
-    </>
-  );
+  return <LoginPage />;
 }
 
 export default App;
