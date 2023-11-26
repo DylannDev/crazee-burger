@@ -12,7 +12,7 @@ function App() {
       errorElement: <ErrorPage />,
     },
     {
-      path: "/order",
+      path: "/order/:username",
       element: <OrderPage />,
     },
   ]);

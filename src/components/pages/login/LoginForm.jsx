@@ -10,7 +10,7 @@ export default function LoginForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setInput("");
-    navigate("/order");
+    navigate(`/order/${input}`);
   };
 
   const handleChange = (e) => {
