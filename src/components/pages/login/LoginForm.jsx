@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
+import { IoChevronForward } from "react-icons/io5";
 
 export default function LoginForm() {
   // states
@@ -37,14 +38,16 @@ export default function LoginForm() {
             required
           />
         </div>
-        <button>Accéder à mon espace</button>
+        <button>
+          <span>Accéder à mon espace</span>
+          <IoChevronForward className="icon" />
+        </button>
       </div>
     </LoginFormStyled>
   );
 }
 
 const LoginFormStyled = styled.form`
-  background: green;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,6 +81,7 @@ const LoginFormStyled = styled.form`
       }
 
       input {
+        color: #17161a;
         border: none;
         width: 100%;
         &::placeholder {
@@ -87,6 +91,36 @@ const LoginFormStyled = styled.form`
           line-height: 17px;
         }
       }
+    }
+
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px 24px;
+      color: #ffffff;
+      border-radius: 5px;
+      border: 1px solid #ff9f1b;
+      background: #ff9f1b;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 700;
+      cursor: pointer;
+
+      .icon {
+        font-size: large;
+      }
+    }
+
+    button:hover {
+      background: #ffffff;
+      color: #ff9f1b;
+    }
+
+    button:active {
+      background: #ff9f1b;
+      color: #ffffff;
     }
   }
 
