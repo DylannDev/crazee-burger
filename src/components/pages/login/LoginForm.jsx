@@ -21,7 +21,7 @@ export default function LoginForm() {
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
       <h1>Bienvenue chez nous !</h1>
-      <br />
+      <hr />
       <h2>Connectez-vous</h2>
       <input
         onChange={handleChange}
@@ -40,4 +40,23 @@ const LoginFormStyled = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 400px;
+  max-width: 500px;
+  font-family: "Amatic SC", cursive;
+  color: white;
+  padding: 2.5rem 2rem;
+  margin: 0 auto;
+
+  hr {
+    border: 1px solid #f56a2c;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
 `;
