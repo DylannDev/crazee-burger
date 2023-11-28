@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
+import Input from "../../reusable-ui/Input";
 
 export default function LoginForm() {
   // states
@@ -28,16 +29,13 @@ export default function LoginForm() {
         <h2>Connectez-vous</h2>
       </div>
       <div className="input-button-container">
-        <div className="input-with-icon">
-          <BsPersonCircle className="icon" />
-          <input
-            onChange={handleChange}
-            value={input}
-            type="text"
-            placeholder="Entrez votre prénom"
-            required
-          />
-        </div>
+        <Input
+          onChange={handleChange}
+          value={input}
+          Icon={<BsPersonCircle className="icon" />}
+          placeholder={"Entrez votre prénom"}
+        />
+
         <button>
           <span>Accéder à mon espace</span>
           <IoChevronForward className="icon" />
@@ -65,33 +63,6 @@ const LoginFormStyled = styled.form`
     display: flex;
     flex-direction: column;
     width: 100%;
-
-    .input-with-icon {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      border-radius: 5px;
-      background: #fff;
-      padding: 18px 24px;
-      margin: 18px 0;
-
-      .icon {
-        color: #747b91;
-        width: 15px;
-      }
-
-      input {
-        color: #17161a;
-        border: none;
-        width: 100%;
-        &::placeholder {
-          color: #d3d3d3;
-          font-size: 15px;
-          font-weight: 400;
-          line-height: 17px;
-        }
-      }
-    }
 
     button {
       display: inline-flex;
