@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
+import { theme } from "../../theme";
 
 export default function PrimaryButton({ label, Icon }) {
   return (
@@ -16,22 +17,22 @@ const PrimaryButtonStyled = styled.button`
   justify-content: center;
   gap: 10px;
   padding: 18px 24px;
-  color: #ffffff;
-  border-radius: 5px;
-  border: 1px solid #ff9f1b;
-  background: #ff9f1b;
-  font-size: 15px;
+  color: ${theme.colors.white};
+  border-radius: ${theme.borderRadius.round};
+  border: 1px solid ${theme.colors.primary};
+  background: ${theme.colors.primary};
+  font-size: ${theme.fonts.size.P0};
   font-style: normal;
-  font-weight: 700;
+  font-weight: ${theme.fonts.weights.bold};
   cursor: pointer;
 
   &:hover {
-    background: #ffffff;
-    color: #ff9f1b;
+    background: ${theme.colors.white};
+    color: ${theme.colors.primary};
   }
 
   &:active {
-    background: #ff9f1b;
-    color: #ffffff;
+    background: ${theme.colors.primary};
+    color: ${theme.colors.white};
   }
 `;

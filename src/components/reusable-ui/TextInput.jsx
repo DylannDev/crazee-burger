@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
+import { theme } from "../../theme";
 
 export default function TextInput({ onChange, value, Icon, ...extraProps }) {
   return (
@@ -13,25 +14,25 @@ export default function TextInput({ onChange, value, Icon, ...extraProps }) {
 const InputStyled = styled.div`
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  border-radius: 5px;
-  background: #fff;
+  gap: ${theme.spacing.sm};
+  border-radius: ${theme.borderRadius.round};
+  background: ${theme.colors.white};
   padding: 18px 24px;
   margin: 18px 0;
 
   .icon {
-    color: #747b91;
+    color: ${theme.colors.greyBlue};
     width: 15px;
   }
 
   input {
-    color: #17161a;
+    color: ${theme.colors.dark};
     border: none;
     width: 100%;
     &::placeholder {
-      color: #d3d3d3;
-      font-size: 15px;
-      font-weight: 400;
+      color: ${theme.colors.greyMedium};
+      font-size: ${theme.fonts.size.P0};
+      font-weight: ${theme.fonts.weights.regular};
       line-height: 17px;
     }
   }
