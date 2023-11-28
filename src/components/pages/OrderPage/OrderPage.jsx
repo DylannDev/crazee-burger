@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { theme } from "../../../theme";
-import Navbar from "./Navbar";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import Navbar from "./Navbar";
+import Main from "./Main";
 
 export default function OrderPage() {
   const { username } = useParams();
@@ -9,7 +9,7 @@ export default function OrderPage() {
     <OrderPageStyled>
       <div className="container">
         <Navbar username={username} />
-        <main></main>
+        <Main />
       </div>
     </OrderPageStyled>
   );
@@ -29,13 +29,5 @@ const OrderPageStyled = styled.div`
     width: 1400px;
     display: flex;
     flex-direction: column;
-
-    main {
-      flex: 1;
-      background: ${theme.colors.background_white};
-      border-radius: 0px 0px ${theme.borderRadius.extraRound}
-        ${theme.borderRadius.extraRound};
-      box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-    }
   }
 `;

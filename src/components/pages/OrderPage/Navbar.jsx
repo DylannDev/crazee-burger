@@ -8,10 +8,10 @@ import { theme } from "../../../theme";
 export default function Navbar({ username }) {
   return (
     <NavbarStyled>
-      <div className="logo">
+      <div className="left-side">
         <Logo />
       </div>
-      <div className="user-infos-icon">
+      <div className="right-side">
         <div className="user-infos">
           <h1>
             Hey, <span>{username}</span>
@@ -35,11 +35,11 @@ const NavbarStyled = styled.nav`
   background: ${theme.colors.background_white};
   padding: 0px 70px 0px 20px;
 
-  .logo {
+  .left-side {
     cursor: pointer;
   }
 
-  .user-infos-icon {
+  .right-side {
     display: flex;
     align-items: center;
     gap: 10px;
