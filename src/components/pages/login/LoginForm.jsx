@@ -35,6 +35,7 @@ export default function LoginForm() {
           value={input}
           Icon={<BsPersonCircle className="icon" />}
           placeholder={"Entrez votre prénom"}
+          required
         />
 
         <PrimaryButton
