@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-export default function Input({ onChange, value, Icon, ...extraProps }) {
+export default function TextInput({ onChange, value, Icon, ...extraProps }) {
   return (
     <InputStyled>
       {Icon && Icon}
