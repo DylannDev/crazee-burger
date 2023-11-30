@@ -18,6 +18,5 @@ const MainStyled = styled.main`
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-
   overflow-y: scroll;
 `;

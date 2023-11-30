@@ -24,7 +24,10 @@ const NavbarStyled = styled.nav`
   justify-content: space-between;
   background: ${theme.colors.secondary};
   padding: 0px 70px 0px 20px;
-  border-bottom: 1px solid ${theme.colors.greyLight};
+  border-bottom: 1px solid ${theme.colors.quaternary};
+  box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
 
   .logo-order-page {
     width: 300px;
