@@ -31,7 +31,6 @@ const ProfileStyled = styled.div`
     flex-direction: column;
     align-items: flex-end;
     gap: ${theme.gridUnit / 2}px;
-    font-family: Open Sans;
 
     h1 {
       font-size: 16px;
@@ -39,7 +38,7 @@ const ProfileStyled = styled.div`
       margin: 0;
 
       span {
-        color: ${theme.colors.primary};
+        color: ${theme.colors.tertiary};
         font-weight: 700;
       }
     }

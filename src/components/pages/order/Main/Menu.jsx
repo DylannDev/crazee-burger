@@ -38,16 +38,12 @@ export default function Menu() {
 }
 
 const MenuStyled = styled.div`
-  /* max-width: 1132px; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 16px;
   grid-row-gap: 16px;
-
   padding: 50px 50px 150px;
-  justify-items: center;
-  background: url("/images/background-marbre.jpg");
-  background-size: contain;
+  width: 1350px;
 
   .product {
     display: flex;
@@ -55,6 +51,7 @@ const MenuStyled = styled.div`
     border-radius: ${theme.borderRadius.round};
     width: auto;
     min-width: 240px;
+    max-width: 300px;
     height: 430px;
     background-color: ${theme.colors.white};
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
@@ -71,7 +68,6 @@ const MenuStyled = styled.div`
       flex-direction: column;
       height: 100%;
       padding: ${theme.spacing.sm};
-      font-family: "Manrope";
 
       .product-title {
         display: flex;

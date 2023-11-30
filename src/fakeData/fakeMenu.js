@@ -132,7 +132,7 @@ export const fakeMenu2 = [
     title: "Supreme",
     price: 15.678,
     description:
-      "Sauce tomate à l'origan, mozzarella, emietté au boeuf, saucisse pepperoni, champignons frais, oignons rouges frais et poivrons verts frais",
+      "Sauce tomate à l'origan, mozzarella, emietté au boeuf, saucisse pepperoni, champignons frais, oignons rouges frais et poivrons.",
     vegetarien: false,
     quantity: 0,
     isAvailable: true,

@@ -2,12 +2,10 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function Logo({ className, onClick }) {
+export default function Logo({ className, src, onClick }) {
   return (
-    <LogoStyled className={className} onClick={onClick}>
-      <h1>crazee</h1>
-      <img src="/images/logo-crazee-burger.png" alt="logo crazee burger" />
-      <h1>burger</h1>
+    <LogoStyled onClick={onClick}>
+      <img src={src} className={className} alt="logo crusty pizza" />
     </LogoStyled>
   );
 }
@@ -16,23 +14,9 @@ const LogoStyled = styled.div`
   display: flex;
   align-items: center;
 
-  h1 {
-    display: inline;
-    text-align: center;
-    color: ${theme.colors.primary};
-    font-size: ${theme.fonts.size.P4};
-    line-height: 1em;
-    font-weight: ${theme.fonts.weights.bold};
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-family: "Amatic SC", cursive;
-  }
-
   img {
     object-fit: contain;
     object-position: center;
-    height: 60px;
-    width: 80px;
     margin: 0 ${theme.gridUnit / 2}px;
   }
 `;

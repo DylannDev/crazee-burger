@@ -16,17 +16,13 @@ export default function OrderPage() {
 }
 
 const OrderPageStyled = styled.div`
-  background: orange;
-  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   padding: 0;
   margin: 0;
+  width: 100%;
 
   .container {
-    height: 95vh;
-    width: 1400px;
     display: flex;
     flex-direction: column;
   }
