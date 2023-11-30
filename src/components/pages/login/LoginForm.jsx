@@ -40,6 +40,7 @@ export default function LoginForm() {
         />
 
         <PrimaryButton
+          className="button-login-page"
           label={"Accéder à mon espace"}
           Icon={<IoChevronForward className="icon" />}
         />
@@ -87,5 +88,24 @@ const LoginFormStyled = styled.form`
 
   .icon {
     font-size: ${theme.fonts.size.P1};
+  }
+
+  .button-login-page {
+    background: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary};
+    color: ${theme.colors.secondary};
+    padding: 18px 24px;
+
+    &:hover {
+      background: ${theme.colors.quaternary};
+      border: 1px solid ${theme.colors.quaternary};
+      color: ${theme.colors.secondary};
+    }
+
+    &:active {
+      background: ${theme.colors.quaternary};
+      border: 1px solid ${theme.colors.secondary};
+      color: ${theme.colors.secondary};
+    }
   }
 `;
