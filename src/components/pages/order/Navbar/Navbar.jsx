@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import Logo from "../../reusable-ui/Logo";
+import Logo from "../../../reusable-ui/Logo";
 import styled from "styled-components";
-import { theme } from "../../../theme";
+import { theme } from "../../../../theme";
 import NavbarRightSide from "./NavbarRightSide";
-import { refreshPage } from "../../../utils/windows";
+import { refreshPage } from "../../../../utils/windows";
 
 export default function Navbar({ username }) {
   return (
