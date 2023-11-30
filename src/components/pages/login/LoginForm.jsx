@@ -56,7 +56,7 @@ const LoginFormStyled = styled.form`
   min-width: 400px;
   max-width: 500px;
   width: 464px;
-  font-family: "Amatic SC", cursive;
+  font-family: "Amatic SC";
   color: ${theme.colors.white};
   padding: 40px ${theme.spacing.lg};
   margin: 0 auto;
@@ -66,7 +66,7 @@ const LoginFormStyled = styled.form`
     width: 100%;
 
     hr {
-      border: 1.5px solid ${theme.colors.divideLine};
+      border: 1.5px solid ${theme.colors.primary};
       margin-bottom: ${theme.gridUnit * 5}px;
     }
 

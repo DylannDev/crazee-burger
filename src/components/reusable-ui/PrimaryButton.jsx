@@ -21,9 +21,9 @@ const PrimaryButtonStyled = styled.button`
   border: 1px solid ${theme.colors.quaternary};
   color: ${theme.colors.secondary}; */
   border-radius: ${theme.borderRadius.round};
-  font-size: ${theme.fonts.size.XS};
-  font-style: normal;
+  font-size: ${theme.fonts.size.S};
   font-weight: ${theme.fonts.weights.bold};
+  font-family: "Manrope";
   cursor: pointer;
   text-transform: uppercase;
 
