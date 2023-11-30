@@ -15,5 +15,5 @@ const NavbarRightSideStyled = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  color: ${theme.colors.greyBlue};
+  color: ${theme.colors.quaternary};
 `;

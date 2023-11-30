@@ -20,7 +20,7 @@ const NavbarStyled = styled.nav`
   justify-content: space-between;
   border-radius: ${theme.borderRadius.extraRound}
     ${theme.borderRadius.extraRound} 0px 0px;
-  background: ${theme.colors.background_white};
+  background: ${theme.colors.secondary};
   padding: 0px 70px 0px 20px;
   border-bottom: 1px solid ${theme.colors.greyLight};
 

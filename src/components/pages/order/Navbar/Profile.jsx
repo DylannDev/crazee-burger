@@ -49,7 +49,7 @@ const ProfileStyled = styled.div`
       font-weight: 400;
       text-decoration: none;
       background-color: transparent;
-      color: ${theme.colors.greyBlue};
+      color: ${theme.colors.quaternary};
       padding: 0 0 ${theme.spacing.xxs} 0;
       text-align: right;
       border: none;
