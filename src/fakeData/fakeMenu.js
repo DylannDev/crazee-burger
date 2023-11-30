@@ -157,7 +157,7 @@ export const fakeMenu2 = [
     price: 13.678,
     description:
       "Sauce tomate à l'origan, mozzarella, champignons frais, oignons rouges frais, poivrons verts frais, tomates fraîches et Olives noires",
-    vegetarien: false,
+    vegetarien: true,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
