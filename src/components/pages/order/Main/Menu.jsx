@@ -8,7 +8,16 @@ export default function Menu() {
     <MenuStyled>
       {menu.map((product) => (
         <div key={product.id} className="product">
-          {product.title}
+          <div>
+            <div className="image">
+              <img src={product.imageSource} alt={product.title} />
+            </div>
+            <div>{product.title}</div>
+            <div>
+              <div>{product.price}</div>
+              <button>Ajouter</button>
+            </div>
+          </div>
         </div>
       ))}
     </MenuStyled>
@@ -26,5 +35,9 @@ const MenuStyled = styled.div`
     background: blue;
     width: 240px;
     height: 330px;
+
+    img {
+      width: 100px;
+    }
   }
 `;
