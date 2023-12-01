@@ -1,6 +1,6 @@
-import React from "react"
-import styled from "styled-components/macro"
-import { theme } from "../../theme"
+/* eslint-disable react/prop-types */
+import styled from "styled-components";
+import { theme } from "../../theme";
 
 export default function ToggleButton({
   isChecked,
@@ -24,7 +24,7 @@ export default function ToggleButton({
         data-unchecked={labelIfUnchecked}
       ></label>
     </ToggleButtonStyled>
-  )
+  );
 }
 
 const ToggleButtonStyled = styled.div`
@@ -45,7 +45,7 @@ const ToggleButtonStyled = styled.div`
       position: relative;
       font-size: ${theme.fonts.size.XXS};
       letter-spacing: 0.5px;
-      border: 2px solid ${theme.colors.background_dark};
+      border: 2px solid ${theme.colors.quaternary};
       padding: 0;
       margin: 0;
       cursor: pointer;
@@ -89,7 +89,7 @@ const ToggleButtonStyled = styled.div`
     }
 
     &.toggle:not(:checked) + label {
-      background-color: ${theme.colors.background_dark};
+      background-color: ${theme.colors.secondary};
       /* text-align: right; */
     }
 
@@ -99,20 +99,20 @@ const ToggleButtonStyled = styled.div`
       right: 8px;
       left: auto;
       opacity: 1;
-      color: ${theme.colors.primary};
+      color: ${theme.colors.quaternary};
       font-weight: ${theme.fonts.weights.bold};
     }
 
     // small circle when not checked
     &.toggle:not(:checked) + label:before {
       left: 3px;
-      background-color: ${theme.colors.primary};
+      background-color: ${theme.colors.quaternary};
     }
 
     // box container when checked
     &.toggle:checked + label {
       text-align: left;
-      border-color: ${theme.colors.primary};
+      border-color: ${theme.colors.tertiary};
     }
 
     // label text when checked
@@ -121,14 +121,15 @@ const ToggleButtonStyled = styled.div`
       left: 9px;
       right: auto;
       opacity: 1;
-      color: ${theme.colors.dark};
+      color: ${theme.colors.tertiary};
+      font-weight: ${theme.fonts.weights.bold};
       letter-spacing: 0px;
     }
 
     // small circle when checked
     &.toggle:checked + label:before {
       left: 162px;
-      background-color: ${theme.colors.primary};
+      background-color: ${theme.colors.tertiary};
     }
   }
-`
+`;
