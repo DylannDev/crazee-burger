@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { PiCarrot } from "react-icons/pi";
 import PrimaryButton from "../../../reusable-ui/PrimaryButton";
 import { theme } from "../../../../theme";
+import { formatPrice } from "../../../../utils/maths";
 
 export default function Product({
   title,
@@ -28,7 +29,7 @@ export default function Product({
         <div className="description-cta">
           <div className="description">{description}</div>
           <div className="price-button">
-            <div className="price">{price} €</div>
+            <div className="price">{formatPrice(price)}</div>
             <PrimaryButton className="button-menu-page" label={"Ajouter"} />
           </div>
         </div>

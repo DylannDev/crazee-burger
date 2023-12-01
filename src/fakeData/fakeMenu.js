@@ -24,7 +24,7 @@ export const fakeMenu2 = [
     id: 1,
     imageSource: "/images/4-fromage.jpg",
     title: "4 Fromages",
-    price: 14.598,
+    price: 14.898,
     description:
       "Sauce tomate à l'origan ou crème fraîche légère, mozzarella, fromage de chèvre, emmental et Fourme d'Ambert AOP",
     vegetarien: true,
@@ -36,7 +36,7 @@ export const fakeMenu2 = [
     id: 2,
     imageSource: "/images/chevre-miel.jpg",
     title: "Chèvre Miel",
-    price: 12.4985,
+    price: 12.8985,
     description: "Crème fraîche légère, mozzarella, fromage de chèvre, miel",
     vegetarien: true,
     quantity: 0,
@@ -46,8 +46,8 @@ export const fakeMenu2 = [
   {
     id: 3,
     imageSource: "/images/la-parmigiano.jpg",
-    title: "Parmiggiano",
-    price: 11.367,
+    title: "Parmigiano",
+    price: 11.897,
     description:
       "Sauce tomate à l'origan, mozzarella, tomates fraîches, parmigiano reggiano AOP",
     vegetarien: true,
@@ -58,8 +58,8 @@ export const fakeMenu2 = [
   {
     id: 4,
     imageSource: "/images/merguez-poulet.jpg",
-    title: "Chicken Merguez",
-    price: 15.568,
+    title: "Carnivore",
+    price: 15.898,
     description:
       "Sauce barbecue, mozzarella, emietté au boeuf, Poulet rôti et merguez",
     vegetarien: false,
@@ -71,7 +71,7 @@ export const fakeMenu2 = [
     id: 5,
     imageSource: "/images/montagnarde.jpg",
     title: "Montagnarde",
-    price: 14.487,
+    price: 14.897,
     description:
       "Crème fraîche légère, mozzarella, jambon cru, fromage à raclette et champignons frais",
     vegetarien: false,
@@ -83,7 +83,7 @@ export const fakeMenu2 = [
     id: 6,
     imageSource: "/images/orientale.jpg",
     title: "Orientale",
-    price: 13.356,
+    price: 13.896,
     description:
       "Sauce tomate à l'origan, mozzarella, merguez et champignons frais",
     vegetarien: false,
@@ -95,7 +95,7 @@ export const fakeMenu2 = [
     id: 7,
     imageSource: "/images/pepperoni.jpeg",
     title: "Pepperoni Lovers",
-    price: 13.567,
+    price: 13.897,
     description: "Sauce tomate à l'origan, mozzarella et saucisse pepperoni",
     vegetarien: false,
     quantity: 0,
@@ -106,7 +106,7 @@ export const fakeMenu2 = [
     id: 8,
     imageSource: "/images/queen.jpg",
     title: "Queen",
-    price: 14.1678,
+    price: 14.8978,
     description:
       "Sauce tomate à l'origan, mozzarella, jambon et champignons frais",
     vegetarien: false,
@@ -118,7 +118,7 @@ export const fakeMenu2 = [
     id: 9,
     imageSource: "/images/raclette.jpg",
     title: "Raclette",
-    price: 16.7,
+    price: 16.899,
     description:
       "Crème fraîche légère, mozzarella, pommes de terre, lardons et fromage à raclette",
     vegetarien: false,
@@ -130,7 +130,7 @@ export const fakeMenu2 = [
     id: 10,
     imageSource: "/images/supreme.jpg",
     title: "Supreme",
-    price: 15.678,
+    price: 15.898,
     description:
       "Sauce tomate à l'origan, mozzarella, emietté au boeuf, saucisse pepperoni, champignons frais, oignons rouges frais et poivrons.",
     vegetarien: false,
@@ -142,7 +142,7 @@ export const fakeMenu2 = [
     id: 10,
     imageSource: "/images/texane-barbecue.jpg",
     title: "Texane",
-    price: 12.678,
+    price: 12.898,
     description:
       "Sauce barbecue, mozzarella, jambon, emietté au boeuf, lardons, champignons frais et oignons rouges frais.",
     vegetarien: false,
@@ -154,7 +154,7 @@ export const fakeMenu2 = [
     id: 10,
     imageSource: "/images/vegetarienne.jpg",
     title: "Veggie",
-    price: 13.678,
+    price: 13.898,
     description:
       "Sauce tomate à l'origan, mozzarella, champignons frais, oignons rouges frais, poivrons verts frais, tomates fraîches et Olives noires",
     vegetarien: true,
