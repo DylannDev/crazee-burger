@@ -57,7 +57,7 @@ const LoginFormStyled = styled.form`
   max-width: 500px;
   width: 464px;
   font-family: "Amatic SC";
-  color: ${theme.colors.white};
+  color: ${theme.colors.quaternary};
   padding: 40px ${theme.spacing.lg};
   margin: 0 auto;
   text-align: center;
