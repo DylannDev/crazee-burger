@@ -2,9 +2,9 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function PrimaryButton({ label, Icon }) {
+export default function PrimaryButton({ className, label, Icon }) {
   return (
-    <PrimaryButtonStyled>
+    <PrimaryButtonStyled className={className}>
       <span>{label}</span>
       {Icon && Icon}
     </PrimaryButtonStyled>
@@ -16,23 +16,26 @@ const PrimaryButtonStyled = styled.button`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 18px 24px;
-  color: ${theme.colors.white};
+  /* padding: 18px 24px; */
+  /* background: ${theme.colors.quaternary};
+  border: 1px solid ${theme.colors.quaternary};
+  color: ${theme.colors.secondary}; */
   border-radius: ${theme.borderRadius.round};
-  border: 1px solid ${theme.colors.primary};
-  background: ${theme.colors.primary};
-  font-size: ${theme.fonts.size.P0};
-  font-style: normal;
+  font-size: ${theme.fonts.size.S};
   font-weight: ${theme.fonts.weights.bold};
+  font-family: "Manrope";
   cursor: pointer;
+  text-transform: uppercase;
 
-  &:hover {
-    background: ${theme.colors.white};
-    color: ${theme.colors.primary};
+  /* &:hover {
+    background: ${theme.colors.tertiary};
+    border: 1px solid ${theme.colors.tertiary};
+    color: ${theme.colors.secondary};
   }
 
   &:active {
-    background: ${theme.colors.primary};
-    color: ${theme.colors.white};
-  }
+    background: ${theme.colors.tertiary};
+    border: 1px solid ${theme.colors.secondary};
+    color: ${theme.colors.secondary};
+  } */
 `;

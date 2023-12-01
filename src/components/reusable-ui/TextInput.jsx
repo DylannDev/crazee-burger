@@ -27,10 +27,12 @@ const InputStyled = styled.div`
 
   input {
     color: ${theme.colors.dark};
+    font-family: "Manrope";
     border: none;
     width: 100%;
     &::placeholder {
       color: ${theme.colors.greyMedium};
+      font-family: "Manrope";
       font-size: ${theme.fonts.size.P0};
       font-weight: ${theme.fonts.weights.regular};
       line-height: 17px;

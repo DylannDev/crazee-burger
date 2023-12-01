@@ -5,7 +5,10 @@ import Logo from "../../reusable-ui/Logo";
 export const LoginPage = () => {
   return (
     <LoginPageStyled>
-      <Logo className="logo-login-page" />
+      <Logo
+        className="logo-login-page"
+        src={"/images/logo-crusty-pizza-jaune.png"}
+      />
       <LoginForm />
     </LoginPageStyled>
   );
@@ -17,7 +20,7 @@ const LoginPageStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url("/images/burger-background.jpg") rgba(0, 0, 0, 0.6);
+  background: url("/images/background-login-page.jpeg") rgba(0, 0, 0, 0.6);
   background-size: cover;
   background-position: center;
   background-blend-mode: darken;
@@ -29,6 +32,6 @@ const LoginPageStyled = styled.div`
   z-index: -1;
 
   .logo-login-page {
-    transform: scale(2.5);
+    width: 600px;
   }
 `;
