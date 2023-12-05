@@ -42,10 +42,10 @@ const ProductStyled = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: ${theme.borderRadius.round};
-  width: auto;
-  min-width: 240px;
-  max-width: 300px;
-  height: 430px;
+  /* width: auto; */
+  /* min-width: 240px; */
+  /* max-width: 300px; */
+  /* height: 430px; */
   background-color: ${theme.colors.white};
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
@@ -90,6 +90,7 @@ const ProductStyled = styled.div`
 
       .description {
         color: ${theme.colors.greyBlue};
+        margin-bottom: 15px;
       }
 
       .price-button {

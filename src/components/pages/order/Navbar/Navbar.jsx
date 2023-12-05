@@ -19,6 +19,7 @@ export default function Navbar({ username }) {
 }
 
 const NavbarStyled = styled.nav`
+  height: 10vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,6 +29,7 @@ const NavbarStyled = styled.nav`
   box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.3);
   position: sticky;
   top: 0;
+  z-index: 10;
 
   .logo-order-page {
     width: 300px;
