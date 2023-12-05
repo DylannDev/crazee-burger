@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { useState } from "react";
 import { theme } from "../../../../theme";
 import Profile from "./Profile";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
@@ -8,9 +7,12 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { PiLockOpenFill } from "react-icons/pi";
 import ToastAdmin from "./ToastAdmin";
+import { AdminContext } from "../../../../context/AdminContext";
+import { useContext } from "react";
 
-export default function NavbarRightSide({ username }) {
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+export default function NavbarRightSide() {
+  const { isModeAdmin, setIsModeAdmin } = useContext(AdminContext);
+
   const showNotification = () => {
     if (!isModeAdmin) {
       toast("Mode admin activé", {
@@ -33,10 +35,11 @@ export default function NavbarRightSide({ username }) {
       <ToastAdmin />
       <ToggleButton
         onToggle={showNotification}
+        isChecked={isModeAdmin}
         labelIfUnchecked={"Activer le mode admin"}
         labelIfChecked={"Désactiver le mode admin"}
       />
-      <Profile username={username} />
+      <Profile />
     </NavbarRightSideStyled>
   );
 }
