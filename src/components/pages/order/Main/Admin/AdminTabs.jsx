@@ -14,14 +14,16 @@ export default function AdminTabs({
   isEditSelected,
   setIsEditSelected,
 }) {
-  const selectAddTab = () => {
-    setIsAddSelected(true);
-    setIsEditSelected(false);
-  };
+  const selectTab = (tabSelected) => {
+    if (tabSelected === "add") {
+      setIsAddSelected(true);
+      setIsEditSelected(false);
+    }
 
-  const selectEditTab = () => {
-    setIsAddSelected(false);
-    setIsEditSelected(true);
+    if (tabSelected === "edit") {
+      setIsAddSelected(false);
+      setIsEditSelected(true);
+    }
   };
 
   return (
@@ -37,13 +39,13 @@ export default function AdminTabs({
           <Tab
             label={"Ajouter un produit"}
             Icon={<FiPlus />}
-            onClick={selectAddTab}
+            onClick={() => selectTab("add")}
             className={isAddSelected ? "is-active" : ""}
           />
           <Tab
             label={"Modifier un produit"}
             Icon={<ImPencil />}
-            onClick={selectEditTab}
+            onClick={() => selectTab("edit")}
             className={isEditSelected ? "is-active" : ""}
           />
         </>
