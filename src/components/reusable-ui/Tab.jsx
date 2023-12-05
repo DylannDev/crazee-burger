@@ -2,15 +2,18 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function Tab({ className, onClick, Icon }) {
+export default function Tab({ label, className, onClick, Icon }) {
   return (
     <TabStyled onClick={onClick} className={className}>
       <div className="icon">{Icon}</div>
+      {label && label}
     </TabStyled>
   );
 }
 
 const TabStyled = styled.button`
+  display: flex;
+  gap: 5px;
   height: 40px;
   padding: 0 22px;
 
@@ -20,13 +23,14 @@ const TabStyled = styled.button`
   cursor: pointer;
 
   // fonts
-  font-size: ${theme.fonts.size.P0};
-  background: ${theme.colors.secondary};
   color: ${theme.colors.white};
+  text-transform: uppercase;
+  font-family: "Manrope";
+  font-size: ${theme.fonts.size.S};
+  font-weight: ${theme.fonts.weights.bold};
+  background: ${theme.colors.secondary};
+
   // borders
-  /* border-width: 1px 1px 0px 1px;
-  border-style: solid;
-  border-color: ${theme.colors.secondary}; */
   border: none;
   border-radius: ${theme.borderRadius.round};
   border-bottom-left-radius: 0;
@@ -39,5 +43,6 @@ const TabStyled = styled.button`
 
   .icon {
     display: flex;
+    font-size: ${theme.fonts.size.P0};
   }
 `;
