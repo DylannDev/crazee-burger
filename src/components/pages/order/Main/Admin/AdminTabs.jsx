@@ -3,26 +3,51 @@ import styled from "styled-components";
 import Tab from "../../../../reusable-ui/Tab";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
+import { ImPencil } from "react-icons/im";
 import { theme } from "../../../../../theme";
 
-export default function AdminTabs({ isCollapsed, setIsCollapsed }) {
-  const handleClick = () => {
-    setIsCollapsed(!isCollapsed);
+export default function AdminTabs({
+  isCollapsed,
+  setIsCollapsed,
+  isAddSelected,
+  setIsAddSelected,
+  isEditSelected,
+  setIsEditSelected,
+}) {
+  const selectAddTab = () => {
+    setIsAddSelected(true);
+    setIsEditSelected(false);
   };
+
+  const selectEditTab = () => {
+    setIsAddSelected(false);
+    setIsEditSelected(true);
+  };
+
   return (
     <AdminTabsStyled>
       <Tab
         label=""
         Icon={isCollapsed ? <IoChevronDown /> : <IoChevronUp />}
-        onClick={handleClick}
+        onClick={() => setIsCollapsed(!isCollapsed)}
         className={isCollapsed ? "is-active" : ""}
       />
-      <Tab
-        label={"Ajouter un produit"}
-        Icon={<FiPlus />}
-        onClick={handleClick}
-        className={isCollapsed ? "is-active" : ""}
-      />
+      {isCollapsed && (
+        <>
+          <Tab
+            label={"Ajouter un produit"}
+            Icon={<FiPlus />}
+            onClick={selectAddTab}
+            className={isAddSelected ? "is-active" : ""}
+          />
+          <Tab
+            label={"Modifier un produit"}
+            Icon={<ImPencil />}
+            onClick={selectEditTab}
+            className={isEditSelected ? "is-active" : ""}
+          />
+        </>
+      )}
     </AdminTabsStyled>
   );
 }
