@@ -1,9 +1,17 @@
 import styled from "styled-components";
+import Tab from "../../../../reusable-ui/Tab";
+import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 
 export default function AdminTabs() {
-  return <AdminTabsStyled>AdminTabs</AdminTabsStyled>;
+  return (
+    <AdminTabsStyled>
+      <Tab Icon={<IoChevronDown />} />
+    </AdminTabsStyled>
+  );
 }
 
 const AdminTabsStyled = styled.div`
-  border: 1px solid red;
+  display: flex;
+  gap: 10px;
+  padding-left: 5%;
 `;
