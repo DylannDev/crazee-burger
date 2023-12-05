@@ -5,7 +5,7 @@ import { theme } from "../../../../theme";
 import NavbarRightSide from "./NavbarRightSide";
 import { refreshPage } from "../../../../utils/windows";
 
-export default function Navbar({ username }) {
+export default function Navbar() {
   return (
     <NavbarStyled>
       <Logo
@@ -13,7 +13,7 @@ export default function Navbar({ username }) {
         className="logo-order-page"
         onClick={() => refreshPage()}
       />
-      <NavbarRightSide username={username} />
+      <NavbarRightSide />
     </NavbarStyled>
   );
 }

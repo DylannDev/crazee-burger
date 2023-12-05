@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 
-export default function Profile({ username }) {
+export default function Profile() {
+  const { username } = useParams();
+
   return (
     <ProfileStyled>
       {/* <div>Admin Button</div> */}
