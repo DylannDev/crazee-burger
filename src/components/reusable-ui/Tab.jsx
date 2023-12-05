@@ -2,9 +2,9 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function Tab({ Icon }) {
+export default function Tab({ className, onClick, Icon }) {
   return (
-    <TabStyled>
+    <TabStyled onClick={onClick} className={className}>
       <div className="icon">{Icon}</div>
     </TabStyled>
   );
@@ -21,8 +21,8 @@ const TabStyled = styled.button`
 
   // fonts
   font-size: ${theme.fonts.size.P0};
-  background: ${theme.colors.quaternary};
-
+  background: ${theme.colors.secondary};
+  color: ${theme.colors.white};
   // borders
   /* border-width: 1px 1px 0px 1px;
   border-style: solid;
