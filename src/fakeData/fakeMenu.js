@@ -139,7 +139,7 @@ export const fakeMenu2 = [
     isAdvertised: false,
   },
   {
-    id: 10,
+    id: 11,
     imageSource: "/images/texane-barbecue.jpg",
     title: "Texane",
     price: 12.898,
@@ -151,7 +151,7 @@ export const fakeMenu2 = [
     isAdvertised: false,
   },
   {
-    id: 10,
+    id: 12,
     imageSource: "/images/vegetarienne.jpg",
     title: "Veggie",
     price: 13.898,
