@@ -8,10 +8,8 @@ export default function Admin() {
   const {
     isCollapsed,
     setIsCollapsed,
-    isAddSelected,
-    setIsAddSelected,
-    isEditSelected,
-    setIsEditSelected,
+    currentTabSelected,
+    setCurrentTabSelected,
   } = useContext(AdminContext);
 
   return (
@@ -19,17 +17,10 @@ export default function Admin() {
       <AdminTabs
         isCollapsed={isCollapsed}
         setIsCollapsed={setIsCollapsed}
-        isAddSelected={isAddSelected}
-        setIsAddSelected={setIsAddSelected}
-        isEditSelected={isEditSelected}
-        setIsEditSelected={setIsEditSelected}
+        currentTabSelected={currentTabSelected}
+        setCurrentTabSelected={setCurrentTabSelected}
       />
-      {isCollapsed && (
-        <AdminPanel
-          isAddSelected={isAddSelected}
-          isEditSelected={isEditSelected}
-        />
-      )}
+      {isCollapsed && <AdminPanel currentTabSelected={currentTabSelected} />}
     </AdminStyled>
   );
 }

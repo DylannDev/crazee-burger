@@ -2,11 +2,11 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
-export default function AdminPanel({ isAddSelected, isEditSelected }) {
+export default function AdminPanel({ currentTabSelected }) {
   return (
     <AdminPanelStyled>
-      {isAddSelected && "Ajouter un produit"}
-      {isEditSelected && "Modifier un produit"}
+      {currentTabSelected === "add" && "Ajouter un produit"}
+      {currentTabSelected === "edit" && "Modifier un produit"}
     </AdminPanelStyled>
   );
 }

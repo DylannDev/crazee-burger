@@ -6,8 +6,7 @@ export const AdminContext = createContext();
 export const AdminContextProvider = ({ children }) => {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const [isAddSelected, setIsAddSelected] = useState(true);
-  const [isEditSelected, setIsEditSelected] = useState(false);
+  const [currentTabSelected, setCurrentTabSelected] = useState("add");
 
   return (
     <AdminContext.Provider
@@ -16,10 +15,8 @@ export const AdminContextProvider = ({ children }) => {
         setIsModeAdmin,
         isCollapsed,
         setIsCollapsed,
-        isAddSelected,
-        setIsAddSelected,
-        isEditSelected,
-        setIsEditSelected,
+        currentTabSelected,
+        setCurrentTabSelected,
       }}
     >
       {children}

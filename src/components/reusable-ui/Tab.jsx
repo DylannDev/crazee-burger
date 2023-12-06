@@ -36,11 +36,6 @@ const TabStyled = styled.button`
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 
-  // shadow
-  box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.2);
-
   .icon {
     display: flex;
     font-size: ${theme.fonts.size.P0};

@@ -1,56 +1,25 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import Tab from "../../../../reusable-ui/Tab";
-import { IoChevronDown, IoChevronUp } from "react-icons/io5";
-import { FiPlus } from "react-icons/fi";
-import { ImPencil } from "react-icons/im";
 import { theme } from "../../../../../theme";
 import { nanoid } from "nanoid";
+import { getTabsConfig } from "./getTabsConfig";
 
 export default function AdminTabs({
   isCollapsed,
   setIsCollapsed,
-  isAddSelected,
-  setIsAddSelected,
-  isEditSelected,
-  setIsEditSelected,
+  currentTabSelected,
+  setCurrentTabSelected,
 }) {
   const selectTab = (tabSelected) => {
-    if (tabSelected === "add") {
-      setIsAddSelected(true);
-      setIsEditSelected(false);
-    }
-
-    if (tabSelected === "edit") {
-      setIsAddSelected(false);
-      setIsEditSelected(true);
-    }
+    setCurrentTabSelected(tabSelected);
   };
 
-  const tabsConfig = [
-    {
-      label: "",
-      Icon: isCollapsed ? <IoChevronDown /> : <IoChevronUp />,
-      onClick: () => setIsCollapsed(!isCollapsed),
-      className: isCollapsed ? "is-active" : "",
-    },
-    {
-      label: "Ajouter un produit",
-      Icon: <FiPlus />,
-      onClick: () => selectTab("add"),
-      className: isAddSelected ? "is-active" : "",
-    },
-    {
-      label: "Modifier un produit",
-      Icon: <ImPencil />,
-      onClick: () => selectTab("edit"),
-      className: isEditSelected ? "is-active" : "",
-    },
-  ];
+  const tabs = getTabsConfig(currentTabSelected, isCollapsed, setIsCollapsed);
 
   return (
     <AdminTabsStyled>
-      {tabsConfig.map((tab, index) =>
+      {tabs.map((tab, index) =>
         index < 1 ? (
           <Tab
             key={nanoid(8)}
@@ -65,7 +34,7 @@ export default function AdminTabs({
               key={nanoid(8)}
               label={tab.label}
               Icon={tab.Icon}
-              onClick={tab.onClick}
+              onClick={() => selectTab(tab.tabId)}
               className={tab.className}
             />
           )
@@ -83,5 +52,8 @@ const AdminTabsStyled = styled.div`
   .is-active {
     background: ${theme.colors.quaternary};
     color: ${theme.colors.secondary};
+    box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px -3px 5px 0px rgba(0, 0, 0, 0.2);
   }
 `;
