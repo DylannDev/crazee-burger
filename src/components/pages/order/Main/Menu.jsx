@@ -23,9 +23,11 @@ export default function Menu() {
 
 const MenuStyled = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 280px));
   grid-column-gap: 16px;
   grid-row-gap: 16px;
   padding: 50px 50px 150px;
+  justify-content: center;
+  overflow-y: scroll;
   /* width: 1350px; */
 `;

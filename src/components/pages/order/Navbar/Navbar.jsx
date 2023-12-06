@@ -5,7 +5,7 @@ import { theme } from "../../../../theme";
 import NavbarRightSide from "./NavbarRightSide";
 import { refreshPage } from "../../../../utils/windows";
 
-export default function Navbar({ username }) {
+export default function Navbar() {
   return (
     <NavbarStyled>
       <Logo
@@ -13,12 +13,13 @@ export default function Navbar({ username }) {
         className="logo-order-page"
         onClick={() => refreshPage()}
       />
-      <NavbarRightSide username={username} />
+      <NavbarRightSide />
     </NavbarStyled>
   );
 }
 
 const NavbarStyled = styled.nav`
+  height: 10vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,6 +29,7 @@ const NavbarStyled = styled.nav`
   box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.3);
   position: sticky;
   top: 0;
+  z-index: 10;
 
   .logo-order-page {
     width: 300px;

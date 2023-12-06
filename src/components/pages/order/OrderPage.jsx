@@ -1,17 +1,18 @@
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
+import { AdminContextProvider } from "../../../context/AdminContext";
 
 export default function OrderPage() {
-  const { username } = useParams();
   return (
-    <OrderPageStyled>
-      <div className="container">
-        <Navbar username={username} />
-        <Main />
-      </div>
-    </OrderPageStyled>
+    <AdminContextProvider>
+      <OrderPageStyled>
+        <div className="container">
+          <Navbar />
+          <Main />
+        </div>
+      </OrderPageStyled>
+    </AdminContextProvider>
   );
 }
 
