@@ -3,7 +3,8 @@ import styled from "styled-components";
 import Tab from "../../../../reusable-ui/Tab";
 import { theme } from "../../../../../theme";
 import { nanoid } from "nanoid";
-import { getTabsConfig } from "./getTabsConfig";
+import { tabsConfig } from "./tabsConfig";
+import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 
 export default function AdminTabs({
   isCollapsed,
@@ -15,20 +16,16 @@ export default function AdminTabs({
     setCurrentTabSelected(tabSelected);
   };
 
-  const tabs = getTabsConfig(currentTabSelected, isCollapsed, setIsCollapsed);
-
   return (
     <AdminTabsStyled>
-      {tabs.map((tab, index) =>
-        index < 1 ? (
-          <Tab
-            key={nanoid(8)}
-            label={tab.label}
-            Icon={tab.Icon}
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            className={isCollapsed ? "is-active" : ""}
-          />
-        ) : (
+      <Tab
+        key={nanoid(8)}
+        Icon={isCollapsed ? <IoChevronDown /> : <IoChevronUp />}
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        className={isCollapsed ? "is-active" : ""}
+      />
+      {tabsConfig.map(
+        (tab) =>
           isCollapsed && (
             <Tab
               key={nanoid(8)}
@@ -38,7 +35,6 @@ export default function AdminTabs({
               className={currentTabSelected === tab.tabId ? "is-active" : ""}
             />
           )
-        )
       )}
     </AdminTabsStyled>
   );

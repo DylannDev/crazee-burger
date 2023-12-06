@@ -1,13 +1,7 @@
-import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
 import { ImPencil } from "react-icons/im";
 
-export const getTabsConfig = (currentTabSelected, isCollapsed) => [
-  {
-    tabId: "chevron",
-    label: "",
-    Icon: isCollapsed ? <IoChevronDown /> : <IoChevronUp />,
-  },
+export const tabsConfig = [
   {
     tabId: "add",
     label: "Ajouter un produit",

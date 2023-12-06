@@ -1,14 +1,12 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
-import { getTabsConfig } from "./getTabsConfig";
+import { tabsConfig } from "./tabsConfig";
 
 export default function AdminPanel({ currentTabSelected }) {
-  const tabs = getTabsConfig(currentTabSelected);
-
   return (
     <AdminPanelStyled>
-      {tabs.map((tab) => currentTabSelected === tab.tabId && tab.label)}
+      {tabsConfig.map((tab) => currentTabSelected === tab.tabId && tab.label)}
     </AdminPanelStyled>
   );
 }
