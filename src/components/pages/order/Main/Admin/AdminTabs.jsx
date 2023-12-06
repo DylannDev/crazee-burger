@@ -25,8 +25,8 @@ export default function AdminTabs({
             key={nanoid(8)}
             label={tab.label}
             Icon={tab.Icon}
-            onClick={tab.onClick}
-            className={tab.className}
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className={isCollapsed ? "is-active" : ""}
           />
         ) : (
           isCollapsed && (
@@ -35,7 +35,7 @@ export default function AdminTabs({
               label={tab.label}
               Icon={tab.Icon}
               onClick={() => selectTab(tab.tabId)}
-              className={tab.className}
+              className={currentTabSelected === tab.tabId ? "is-active" : ""}
             />
           )
         )
