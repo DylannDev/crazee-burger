@@ -5,6 +5,7 @@ import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
 import { ImPencil } from "react-icons/im";
 import { theme } from "../../../../../theme";
+import { nanoid } from "nanoid";
 
 export default function AdminTabs({
   isCollapsed,
@@ -26,29 +27,49 @@ export default function AdminTabs({
     }
   };
 
+  const tabsConfig = [
+    {
+      label: "",
+      Icon: isCollapsed ? <IoChevronDown /> : <IoChevronUp />,
+      onClick: () => setIsCollapsed(!isCollapsed),
+      className: isCollapsed ? "is-active" : "",
+    },
+    {
+      label: "Ajouter un produit",
+      Icon: <FiPlus />,
+      onClick: () => selectTab("add"),
+      className: isAddSelected ? "is-active" : "",
+    },
+    {
+      label: "Modifier un produit",
+      Icon: <ImPencil />,
+      onClick: () => selectTab("edit"),
+      className: isEditSelected ? "is-active" : "",
+    },
+  ];
+
   return (
     <AdminTabsStyled>
-      <Tab
-        label=""
-        Icon={isCollapsed ? <IoChevronDown /> : <IoChevronUp />}
-        onClick={() => setIsCollapsed(!isCollapsed)}
-        className={isCollapsed ? "is-active" : ""}
-      />
-      {isCollapsed && (
-        <>
+      {tabsConfig.map((tab, index) =>
+        index < 1 ? (
           <Tab
-            label={"Ajouter un produit"}
-            Icon={<FiPlus />}
-            onClick={() => selectTab("add")}
-            className={isAddSelected ? "is-active" : ""}
+            key={nanoid(8)}
+            label={tab.label}
+            Icon={tab.Icon}
+            onClick={tab.onClick}
+            className={tab.className}
           />
-          <Tab
-            label={"Modifier un produit"}
-            Icon={<ImPencil />}
-            onClick={() => selectTab("edit")}
-            className={isEditSelected ? "is-active" : ""}
-          />
-        </>
+        ) : (
+          isCollapsed && (
+            <Tab
+              key={nanoid(8)}
+              label={tab.label}
+              Icon={tab.Icon}
+              onClick={tab.onClick}
+              className={tab.className}
+            />
+          )
+        )
       )}
     </AdminTabsStyled>
   );
