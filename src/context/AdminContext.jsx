@@ -10,16 +10,7 @@ export const AdminContextProvider = ({ children }) => {
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [menu, setMenu] = useState(MenuData);
 
-  const newProduct = {
-    id: new Date().getTime(),
-    imageSource: "/images/texane-barbecue.jpg",
-    title: "Jambon Champignons",
-    price: 14.898,
-    description: "Sauce tomate, Jambon, Champignons, Oignons rouges",
-    vegetarien: false,
-  };
-
-  const handleAddProduct = () => {
+  const handleAddProduct = (newProduct) => {
     // 1 - copie du state
     const menuCopy = [...menu];
 
@@ -40,7 +31,6 @@ export const AdminContextProvider = ({ children }) => {
         currentTabSelected,
         setCurrentTabSelected,
         menu,
-        setMenu,
         handleAddProduct,
       }}
     >

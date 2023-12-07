@@ -1,8 +1,26 @@
 import styled from "styled-components";
+import { useContext } from "react";
+import { AdminContext } from "../../../../../../context/AdminContext";
 
 export default function AddForm() {
+  const { handleAddProduct } = useContext(AdminContext);
+
+  const newProduct = {
+    id: new Date().getTime(),
+    imageSource: "/images/texane-barbecue.jpg",
+    title: "Jambon Champignons",
+    price: 14.898,
+    description: "Sauce tomate, Jambon, Champignons, Oignons rouges",
+    vegetarien: false,
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleAddProduct(newProduct);
+  };
+
   return (
-    <AddFormStyled>
+    <AddFormStyled onSubmit={handleSubmit}>
       <div className="image-preview">Image preview</div>
       <div className="input-fields">
         <input type="text" placeholder="Nom" />
