@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Product from "./Product";
 import { useContext } from "react";
 import { AdminContext } from "../../../../context/AdminContext";
+const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
   const { menu } = useContext(AdminContext);
@@ -12,7 +13,7 @@ export default function Menu() {
           <Product
             key={id}
             title={title}
-            imageSource={imageSource === "" ? "Coming Soon" : imageSource}
+            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
             vegetarien={vegetarien}
             description={description}
             price={price}

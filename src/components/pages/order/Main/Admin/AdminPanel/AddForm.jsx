@@ -7,7 +7,7 @@ export default function AddForm() {
   const { handleAddProduct } = useContext(AdminContext);
 
   const [newProduct, setNewProduct] = useState({
-    imageSource: "/images/",
+    imageSource: "",
     title: "",
     price: 0,
   });
