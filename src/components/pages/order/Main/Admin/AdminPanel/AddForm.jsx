@@ -2,15 +2,16 @@ import styled from "styled-components";
 import { useContext, useState } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext";
 import { nanoid } from "nanoid";
+const EMPTY_PRODUCT = {
+  imageSource: "",
+  title: "",
+  price: 0,
+};
 
 export default function AddForm() {
   const { handleAddProduct } = useContext(AdminContext);
 
-  const [newProduct, setNewProduct] = useState({
-    imageSource: "",
-    title: "",
-    price: 0,
-  });
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   // const [description, setDescription] = useState("");
   // const [vegetarien, setVegetarien] = useState(false);
@@ -24,6 +25,7 @@ export default function AddForm() {
     };
 
     handleAddProduct(newProductToAdd);
+    setNewProduct(EMPTY_PRODUCT);
   };
 
   const handleChange = (e) => {
@@ -34,7 +36,13 @@ export default function AddForm() {
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">Image preview</div>
+      <div className="image-preview">
+        {newProduct.imageSource ? (
+          <img src={newProduct.imageSource} alt="image d'une pizza" />
+        ) : (
+          "Aucune Image"
+        )}
+      </div>
       <div className="input-fields">
         <input
           name="imageSource"
@@ -72,8 +80,17 @@ const AddFormStyled = styled.form`
   grid-template-rows: repeat(4, 1fr);
 
   .image-preview {
-    background: red;
     grid-area: 1 / 1 / 4 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
   }
   .input-fields {
     background: blue;
