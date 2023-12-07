@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
-import { tabsConfig } from "./tabsConfig";
+import { theme } from "../../../../../../theme";
+import { tabsConfig } from "../tabsConfig";
 
 export default function AdminPanel({ currentTabSelected }) {
   return (
