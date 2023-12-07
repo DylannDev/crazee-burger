@@ -7,16 +7,18 @@ export default function Menu() {
   const { menu } = useContext(AdminContext);
   return (
     <MenuStyled>
-      {menu.map((product) => (
-        <Product
-          key={product.id}
-          title={product.title}
-          imageSource={product.imageSource}
-          vegetarien={product.vegetarien}
-          description={product.description}
-          price={product.price}
-        />
-      ))}
+      {menu.map(
+        ({ id, title, imageSource, vegetarien, description, price }) => (
+          <Product
+            key={id}
+            title={title}
+            imageSource={imageSource === "" ? "Coming Soon" : imageSource}
+            vegetarien={vegetarien}
+            description={description}
+            price={price}
+          />
+        )
+      )}
     </MenuStyled>
   );
 }
