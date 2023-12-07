@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
-import { useState } from "react";
 import Product from "./Product";
+import { useContext } from "react";
+import { AdminContext } from "../../../../context/AdminContext";
 
 export default function Menu() {
-  const [menu, setMenu] = useState(fakeMenu2);
+  const { menu } = useContext(AdminContext);
   return (
     <MenuStyled>
       {menu.map((product) => (
