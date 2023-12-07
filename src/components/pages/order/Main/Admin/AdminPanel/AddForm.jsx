@@ -1,31 +1,62 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext";
+import { nanoid } from "nanoid";
 
 export default function AddForm() {
   const { handleAddProduct } = useContext(AdminContext);
 
-  const newProduct = {
-    id: new Date().getTime(),
-    imageSource: "/images/texane-barbecue.jpg",
-    title: "Jambon Champignons",
-    price: 14.898,
-    description: "Sauce tomate, Jambon, Champignons, Oignons rouges",
-    vegetarien: false,
-  };
+  const [newProduct, setNewProduct] = useState({
+    imageSource: "/images/",
+    title: "",
+    price: 0,
+  });
+
+  // const [description, setDescription] = useState("");
+  // const [vegetarien, setVegetarien] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddProduct(newProduct);
+
+    const newProductToAdd = {
+      ...newProduct,
+      id: nanoid(8),
+    };
+
+    handleAddProduct(newProductToAdd);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setNewProduct({ ...newProduct, [name]: value });
   };
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
       <div className="image-preview">Image preview</div>
       <div className="input-fields">
-        <input type="text" placeholder="Nom" />
-        <input type="text" placeholder="Image URL" />
-        <input type="text" placeholder="Prix" />
+        <input
+          name="imageSource"
+          value={newProduct.imageSource}
+          type="text"
+          placeholder="Image URL"
+          onChange={handleChange}
+        />
+        <input
+          name="title"
+          value={newProduct.title}
+          type="text"
+          placeholder="Nom"
+          onChange={handleChange}
+        />
+        <input
+          name="price"
+          value={newProduct.price}
+          type="text"
+          placeholder="Prix"
+          onChange={handleChange}
+        />
       </div>
       <button className="submit-btn">Submit button</button>
     </AddFormStyled>
