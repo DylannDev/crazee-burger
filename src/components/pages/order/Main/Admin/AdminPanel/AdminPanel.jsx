@@ -6,7 +6,7 @@ import { tabsConfig } from "../tabsConfig";
 export default function AdminPanel({ currentTabSelected }) {
   return (
     <AdminPanelStyled>
-      {tabsConfig.map((tab) => currentTabSelected === tab.tabId && tab.label)}
+      {tabsConfig.map((tab) => currentTabSelected === tab.tabId && tab.Content)}
     </AdminPanelStyled>
   );
 }
