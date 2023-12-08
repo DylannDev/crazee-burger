@@ -4,6 +4,7 @@ import { PiCarrot } from "react-icons/pi";
 import PrimaryButton from "../../../reusable-ui/PrimaryButton";
 import { theme } from "../../../../theme";
 import { formatPrice } from "../../../../utils/maths";
+import { FaTimesCircle } from "react-icons/fa";
 
 export default function Product({
   title,
@@ -14,6 +15,9 @@ export default function Product({
 }) {
   return (
     <ProductStyled>
+      <button className="delete-button" aria-label="delete-button">
+        <FaTimesCircle />
+      </button>
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -50,6 +54,26 @@ const ProductStyled = styled.div`
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  position: relative;
+
+  .delete-button {
+    display: flex;
+    padding: 5px;
+    cursor: pointer;
+    color: ${theme.colors.red};
+    background: ${theme.colors.white};
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: ${theme.fonts.size.P2};
+    border-radius: ${theme.borderRadius.round};
+    border: none;
+
+    &:active {
+      color: ${theme.colors.white};
+      background: ${theme.colors.red};
+    }
+  }
 
   img {
     max-width: 100%;
