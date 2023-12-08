@@ -136,25 +136,6 @@ const ProductStyled = styled.div`
         .price {
           font-weight: ${theme.fonts.weights.medium};
         }
-
-        .button-menu-page {
-          background: ${theme.colors.quaternary};
-          border: 1px solid ${theme.colors.quaternary};
-          color: ${theme.colors.secondary};
-          padding: 12px;
-
-          &:hover {
-            background: ${theme.colors.tertiary};
-            border: 1px solid ${theme.colors.tertiary};
-            color: ${theme.colors.secondary};
-          }
-
-          &:active {
-            background: ${theme.colors.tertiary};
-            border: 1px solid ${theme.colors.secondary};
-            color: ${theme.colors.secondary};
-          }
-        }
       }
     }
   }

@@ -191,22 +191,6 @@ const AddFormStyled = styled.form`
 
     .submit-btn {
       width: 50%;
-      padding: 12px 18px;
-      background: ${theme.colors.quaternary};
-      border: 1px solid ${theme.colors.quaternary};
-      color: ${theme.colors.secondary};
-
-      &:hover {
-        background: ${theme.colors.tertiary};
-        border: 1px solid ${theme.colors.tertiary};
-        color: ${theme.colors.secondary};
-      }
-
-      &:active {
-        background: ${theme.colors.tertiary};
-        border: 1px solid ${theme.colors.secondary};
-        color: ${theme.colors.secondary};
-      }
     }
 
     .success-message {

@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import Product from "./Product";
+import Product from "../Product";
 import { useContext } from "react";
-import { AdminContext } from "../../../../context/AdminContext";
+import { AdminContext } from "../../../../../context/AdminContext";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
@@ -9,11 +11,10 @@ export default function Menu() {
     useContext(AdminContext);
 
   if (menu.length === 0) {
-    return (
-      <div>
-        <span>Pas de produits</span>
-        <button onClick={resetMenu}>Recharger les produits</button>
-      </div>
+    return isModeAdmin ? (
+      <EmptyMenuAdmin OnReset={resetMenu} />
+    ) : (
+      <EmptyMenuClient />
     );
   }
   return (
