@@ -5,7 +5,7 @@ import { AdminContext } from "../../../../context/AdminContext";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
-  const { menu } = useContext(AdminContext);
+  const { menu, isModeAdmin } = useContext(AdminContext);
   return (
     <MenuStyled>
       {menu.map(
@@ -17,6 +17,7 @@ export default function Menu() {
             vegetarien={vegetarien}
             description={description}
             price={price}
+            showDeleteButton={isModeAdmin}
           />
         )
       )}

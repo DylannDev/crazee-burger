@@ -12,12 +12,15 @@ export default function Product({
   vegetarien,
   description,
   price,
+  showDeleteButton,
 }) {
   return (
     <ProductStyled>
-      <button className="delete-button" aria-label="delete-button">
-        <FaTimesCircle />
-      </button>
+      {showDeleteButton && (
+        <button className="delete-button" aria-label="delete-button">
+          <FaTimesCircle />
+        </button>
+      )}
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -68,6 +71,10 @@ const ProductStyled = styled.div`
     font-size: ${theme.fonts.size.P2};
     border-radius: ${theme.borderRadius.round};
     border: none;
+
+    &:hover {
+      background: ${theme.colors.background_white};
+    }
 
     &:active {
       color: ${theme.colors.white};
