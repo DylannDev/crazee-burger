@@ -5,7 +5,17 @@ import { AdminContext } from "../../../../context/AdminContext";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
-  const { menu, isModeAdmin, handleDeleteProduct } = useContext(AdminContext);
+  const { menu, isModeAdmin, handleDeleteProduct, resetMenu } =
+    useContext(AdminContext);
+
+  if (menu.length === 0) {
+    return (
+      <div>
+        <span>Pas de produits</span>
+        <button onClick={resetMenu}>Recharger les produits</button>
+      </div>
+    );
+  }
   return (
     <MenuStyled>
       {menu.map(

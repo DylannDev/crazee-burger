@@ -5,12 +5,14 @@ import { MenuData } from "../MenuData/MenuData";
 export const AdminContext = createContext();
 
 export const AdminContextProvider = ({ children }) => {
+  // States
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [menu, setMenu] = useState(MenuData);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Comportements
   const handleAddProduct = (newProduct) => {
     // 1 - copie du state
     const menuCopy = [...menu];
@@ -40,6 +42,10 @@ export const AdminContextProvider = ({ children }) => {
     }, 3000);
   };
 
+  const resetMenu = () => {
+    setMenu(MenuData);
+  };
+
   return (
     <AdminContext.Provider
       value={{
@@ -53,6 +59,7 @@ export const AdminContextProvider = ({ children }) => {
         handleAddProduct,
         handleDeleteProduct,
         isSubmitted,
+        resetMenu,
       }}
     >
       {children}
