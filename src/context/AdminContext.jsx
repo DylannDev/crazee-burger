@@ -9,6 +9,7 @@ export const AdminContextProvider = ({ children }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [menu, setMenu] = useState(MenuData);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleAddProduct = (newProduct) => {
     // 1 - copie du state
@@ -19,6 +20,14 @@ export const AdminContextProvider = ({ children }) => {
 
     // 3 - Update du state
     setMenu(newMenu);
+    showSuccessMessage();
+  };
+
+  const showSuccessMessage = () => {
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 3000);
   };
 
   return (
@@ -32,6 +41,7 @@ export const AdminContextProvider = ({ children }) => {
         setCurrentTabSelected,
         menu,
         handleAddProduct,
+        isSubmitted,
       }}
     >
       {children}

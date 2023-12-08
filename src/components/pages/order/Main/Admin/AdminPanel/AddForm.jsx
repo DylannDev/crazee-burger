@@ -16,10 +16,9 @@ const EMPTY_PRODUCT = {
 };
 
 export default function AddForm() {
-  const { handleAddProduct } = useContext(AdminContext);
+  const { handleAddProduct, isSubmitted } = useContext(AdminContext);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,20 +30,11 @@ export default function AddForm() {
 
     handleAddProduct(newProductToAdd);
     setNewProduct(EMPTY_PRODUCT);
-
-    showSuccessMessage();
   };
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
     setNewProduct({ ...newProduct, [name]: value, ["vegetarien"]: checked });
-  };
-
-  const showSuccessMessage = () => {
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 3000);
   };
 
   return (
