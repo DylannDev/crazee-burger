@@ -23,6 +23,16 @@ export const AdminContextProvider = ({ children }) => {
     showSuccessMessage();
   };
 
+  const handleDeleteProduct = (ProductIdToDelete) => {
+    const menuCopy = [...menu];
+
+    const newMenu = menuCopy.filter(
+      (product) => product.id !== ProductIdToDelete
+    );
+
+    setMenu(newMenu);
+  };
+
   const showSuccessMessage = () => {
     setIsSubmitted(true);
     setTimeout(() => {
@@ -41,6 +51,7 @@ export const AdminContextProvider = ({ children }) => {
         setCurrentTabSelected,
         menu,
         handleAddProduct,
+        handleDeleteProduct,
         isSubmitted,
       }}
     >

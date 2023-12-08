@@ -5,7 +5,7 @@ import { AdminContext } from "../../../../context/AdminContext";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
-  const { menu, isModeAdmin } = useContext(AdminContext);
+  const { menu, isModeAdmin, handleDeleteProduct } = useContext(AdminContext);
   return (
     <MenuStyled>
       {menu.map(
@@ -18,6 +18,7 @@ export default function Menu() {
             description={description}
             price={price}
             showDeleteButton={isModeAdmin}
+            onDelete={() => handleDeleteProduct(id)}
           />
         )
       )}

@@ -13,11 +13,16 @@ export default function Product({
   description,
   price,
   showDeleteButton,
+  onDelete,
 }) {
   return (
     <ProductStyled>
       {showDeleteButton && (
-        <button className="delete-button" aria-label="delete-button">
+        <button
+          className="delete-button"
+          aria-label="delete-button"
+          onClick={onDelete}
+        >
           <FaTimesCircle />
         </button>
       )}
@@ -52,7 +57,7 @@ const ProductStyled = styled.div`
   /* width: auto; */
   /* min-width: 240px; */
   /* max-width: 300px; */
-  /* height: 430px; */
+  max-height: 450px;
   background-color: ${theme.colors.white};
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
