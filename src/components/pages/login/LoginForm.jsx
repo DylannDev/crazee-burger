@@ -32,6 +32,7 @@ export default function LoginForm() {
       </div>
       <div className="input-button-container">
         <TextInput
+          className={"input-name"}
           onChange={handleChange}
           value={input}
           Icon={<BsPersonCircle className="icon" />}
@@ -83,7 +84,13 @@ const LoginFormStyled = styled.form`
   .input-button-container {
     display: flex;
     flex-direction: column;
+    gap: 18px;
+    margin-top: 18px;
     width: 100%;
+
+    .input-name {
+      padding: 18px 45px;
+    }
   }
 
   .icon {

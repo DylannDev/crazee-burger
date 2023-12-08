@@ -2,28 +2,43 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function TextInput({ onChange, value, Icon, ...extraProps }) {
+export default function TextInput({
+  className,
+  onChange,
+  value,
+  Icon,
+  type,
+  ...extraProps
+}) {
   return (
     <InputStyled>
-      {Icon && Icon}
-      <input onChange={onChange} value={value} {...extraProps} type="text" />
+      <div className="icon">{Icon && Icon}</div>
+      <input
+        className={className}
+        onChange={onChange}
+        value={value}
+        type={type}
+        {...extraProps}
+      />
     </InputStyled>
   );
 }
 
 const InputStyled = styled.div`
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: ${theme.spacing.sm};
-  background: ${theme.colors.white};
   border-radius: ${theme.borderRadius.round};
-  margin: 18px 0;
   position: relative;
+  /* gap: ${theme.spacing.sm}; */
+  /* background: ${theme.colors.white}; */
+  /* margin: 18px 0; */
 
   .icon {
+    display: flex;
+    align-items: center;
     color: ${theme.colors.greyBlue};
-    width: 15px;
-    left: 15px;
+    font-size: ${theme.fonts.size.P1};
+    left: 10px;
     position: absolute;
   }
 
@@ -32,12 +47,12 @@ const InputStyled = styled.div`
     font-family: "Manrope";
     border: none;
     width: 100%;
-    padding: 18px 45px;
+    /* padding: 18px 45px; */
     border-radius: ${theme.borderRadius.round};
     &::placeholder {
       color: ${theme.colors.greyMedium};
       font-family: "Manrope";
-      font-size: ${theme.fonts.size.P0};
+      font-size: ${theme.fonts.size.S};
       font-weight: ${theme.fonts.weights.regular};
       line-height: 17px;
     }
