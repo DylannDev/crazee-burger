@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { PiCarrot } from "react-icons/pi";
-import PrimaryButton from "../../../reusable-ui/PrimaryButton";
+import Button from "../../../reusable-ui/Button";
 import { theme } from "../../../../theme";
 import { formatPrice } from "../../../../utils/maths";
 import { FaTimesCircle } from "react-icons/fa";
@@ -42,7 +42,7 @@ export default function Product({
           <div className="description">{description}</div>
           <div className="price-button">
             <div className="price">{formatPrice(price)}</div>
-            <PrimaryButton className="button-menu-page" label={"Ajouter"} />
+            <Button className="button-menu-page" label={"Ajouter"} />
           </div>
         </div>
       </div>

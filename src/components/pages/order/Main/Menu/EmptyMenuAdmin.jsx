@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import PrimaryButton from "../../../../reusable-ui/PrimaryButton";
+import Button from "../../../../reusable-ui/Button";
 
 export default function EmptyMenuAdmin({ OnReset }) {
   return (
     <div>
       <span>Pas de produits</span>
-      <PrimaryButton onClick={OnReset} label="Recharger les produits" />
+      <Button onClick={OnReset} label="Recharger les produits" />
     </div>
   );
 }

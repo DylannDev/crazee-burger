@@ -4,7 +4,7 @@ import { AdminContext } from "../../../../../../context/AdminContext";
 import { nanoid } from "nanoid";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import { theme } from "../../../../../../theme";
-import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
+import Button from "../../../../../reusable-ui/Button";
 import { PiCameraFill, PiPizzaFill, PiCheckCircleFill } from "react-icons/pi";
 import { MdEuroSymbol } from "react-icons/md";
 const EMPTY_PRODUCT = {
@@ -48,7 +48,6 @@ export default function AddForm() {
       </div>
       <div className="input-fields">
         <TextInput
-          className="input"
           Icon={<PiCameraFill />}
           name="imageSource"
           value={newProduct.imageSource}
@@ -57,7 +56,6 @@ export default function AddForm() {
           onChange={handleChange}
         />
         <TextInput
-          className="input"
           Icon={<PiPizzaFill />}
           name="title"
           value={newProduct.title}
@@ -66,7 +64,6 @@ export default function AddForm() {
           onChange={handleChange}
         />
         <TextInput
-          className="input"
           Icon={<MdEuroSymbol />}
           name="price"
           value={newProduct.price}
@@ -92,10 +89,7 @@ export default function AddForm() {
         </div>
       </div>
       <div className="submit">
-        <PrimaryButton
-          label="Ajouter le nouveau produit"
-          className="submit-btn"
-        />
+        <Button label="Ajouter le nouveau produit" className="submit-btn" />
         {isSubmitted && (
           <div className="success-message">
             <PiCheckCircleFill className="icon" />
@@ -137,16 +131,6 @@ const AddFormStyled = styled.form`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr) 2fr 1fr;
     gap: 10px;
-
-    .input {
-      height: 100%;
-      background-color: ${theme.colors.background_white};
-      padding: 10px 35px;
-
-      &::placeholder {
-        /* padding-left: 20px; */
-      }
-    }
 
     textarea {
       background-color: ${theme.colors.background_white};
