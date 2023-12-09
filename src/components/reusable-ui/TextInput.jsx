@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
 export default function TextInput({
-  className,
+  variant = "normal",
   onChange,
   value,
   Icon,
@@ -11,27 +11,20 @@ export default function TextInput({
   ...extraProps
 }) {
   return (
-    <InputStyled>
+    <InputStyled variant={variant}>
       <div className="icon">{Icon && Icon}</div>
-      <input
-        className={className}
-        onChange={onChange}
-        value={value}
-        type={type}
-        {...extraProps}
-      />
+      <input onChange={onChange} value={value} type={type} {...extraProps} />
     </InputStyled>
   );
 }
 
 const InputStyled = styled.div`
+  ${({ variant }) => variantStyle[variant]}
+
   display: flex;
   align-items: center;
   border-radius: ${theme.borderRadius.round};
   position: relative;
-  /* gap: ${theme.spacing.sm}; */
-  /* background: ${theme.colors.white}; */
-  /* margin: 18px 0; */
 
   .icon {
     display: flex;
@@ -47,7 +40,6 @@ const InputStyled = styled.div`
     font-family: "Manrope";
     border: none;
     width: 100%;
-    /* padding: 18px 45px; */
     border-radius: ${theme.borderRadius.round};
     &::placeholder {
       color: ${theme.colors.greyMedium};
@@ -61,3 +53,23 @@ const InputStyled = styled.div`
     outline: 2px solid ${theme.colors.quaternary};
   }
 `;
+
+const normalStyle = css`
+  input {
+    height: 100%;
+    background-color: ${theme.colors.background_white};
+    padding: 10px 35px;
+  }
+`;
+
+const loginPageStyle = css`
+  input {
+    background: ${theme.colors.white};
+    padding: 18px 45px;
+  }
+`;
+
+const variantStyle = {
+  normal: normalStyle,
+  loginPage: loginPageStyle,
+};
