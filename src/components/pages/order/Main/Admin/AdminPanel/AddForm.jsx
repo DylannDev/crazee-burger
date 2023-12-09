@@ -3,16 +3,17 @@ import { useContext, useState } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext";
 import { nanoid } from "nanoid";
 import TextInput from "../../../../../reusable-ui/TextInput";
-import { theme } from "../../../../../../theme";
 import Button from "../../../../../reusable-ui/Button";
-import { PiCameraFill, PiPizzaFill, PiCheckCircleFill } from "react-icons/pi";
-import { MdEuroSymbol } from "react-icons/md";
 import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
+import TextareaDescription from "./TextareaDescription";
+import Checkbox from "./Checkbox";
+import { getInputTextsConfig } from "./getInputTextsConfig";
 const EMPTY_PRODUCT = {
+  id: "",
   imageSource: "",
   title: "",
-  price: 0,
+  price: "",
   description: "",
   vegetarien: false,
 };
@@ -39,6 +40,8 @@ export default function AddForm() {
     setNewProduct({ ...newProduct, [name]: value, ["vegetarien"]: checked });
   };
 
+  const inputTexts = getInputTextsConfig(newProduct);
+
   return (
     <AddFormStyled onSubmit={handleSubmit}>
       <ImagePreview
@@ -46,46 +49,14 @@ export default function AddForm() {
         title={newProduct.title}
       />
       <div className="input-fields">
-        <TextInput
-          Icon={<PiCameraFill />}
-          name="imageSource"
-          value={newProduct.imageSource}
-          type="text"
-          placeholder="Lien URL de l'image"
-          onChange={handleChange}
-        />
-        <TextInput
-          Icon={<PiPizzaFill />}
-          name="title"
-          value={newProduct.title}
-          type="text"
-          placeholder="Nom du produit (ex: Pizza Texane)"
-          onChange={handleChange}
-        />
-        <TextInput
-          Icon={<MdEuroSymbol />}
-          name="price"
-          value={newProduct.price}
-          type="number"
-          placeholder="Prix"
-          onChange={handleChange}
-        />
-        <textarea
-          name="description"
+        {inputTexts.map((input) => (
+          <TextInput key={input.id} {...input} onChange={handleChange} />
+        ))}
+        <TextareaDescription
           value={newProduct.description}
-          placeholder="Entrez les ingrédients de la pizza"
           onChange={handleChange}
         />
-        <div className="checkbox">
-          <input
-            name="vegetarien"
-            checked={newProduct.vegetarien}
-            value={newProduct.vegetarien}
-            type="checkbox"
-            onChange={handleChange}
-          />
-          <label htmlFor="vegetarien">Vegetarien</label>
-        </div>
+        <Checkbox vegetarien={newProduct.vegetarien} onChange={handleChange} />
       </div>
       <div className="submit">
         <Button label="Ajouter le nouveau produit" className="submit-btn" />
@@ -109,42 +80,6 @@ const AddFormStyled = styled.form`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr) 2fr 1fr;
     gap: 10px;
-
-    textarea {
-      background-color: ${theme.colors.background_white};
-      border: none;
-      border-radius: ${theme.borderRadius.round};
-      padding-left: 10px;
-      padding-top: 5px;
-      font-family: "Manrope";
-      color: #17161a;
-
-      &:focus {
-        outline: 2px solid ${theme.colors.quaternary};
-      }
-
-      &::placeholder {
-        font-family: "Manrope";
-        color: ${theme.colors.greyMedium};
-        font-size: ${theme.fonts.size.S};
-        font-weight: ${theme.fonts.weights.regular};
-      }
-    }
-
-    .checkbox {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-
-      input {
-        accent-color: ${theme.colors.quaternary};
-      }
-
-      label {
-        font-size: ${theme.fonts.size.S};
-        padding-left: 5px;
-      }
-    }
   }
   .submit {
     display: flex;
