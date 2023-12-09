@@ -8,6 +8,7 @@ import Button from "../../../../../reusable-ui/Button";
 import { PiCameraFill, PiPizzaFill, PiCheckCircleFill } from "react-icons/pi";
 import { MdEuroSymbol } from "react-icons/md";
 import ImagePreview from "./ImagePreview";
+import SubmitMessage from "./SubmitMessage";
 const EMPTY_PRODUCT = {
   imageSource: "",
   title: "",
@@ -88,12 +89,7 @@ export default function AddForm() {
       </div>
       <div className="submit">
         <Button label="Ajouter le nouveau produit" className="submit-btn" />
-        {isSubmitted && (
-          <div className="success-message">
-            <PiCheckCircleFill className="icon" />
-            <span>Ajouté avec succès !</span>
-          </div>
-        )}
+        {isSubmitted && <SubmitMessage />}
       </div>
     </AddFormStyled>
   );
@@ -157,21 +153,6 @@ const AddFormStyled = styled.form`
 
     .submit-btn {
       width: 50%;
-    }
-
-    .success-message {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      font-size: ${theme.fonts.size.S};
-      font-weight: ${theme.fonts.weights.bold};
-      text-transform: uppercase;
-      margin-left: 20px;
-      color: ${theme.colors.secondary};
-
-      .icon {
-        font-size: ${theme.fonts.size.P0};
-      }
     }
   }
 `;
