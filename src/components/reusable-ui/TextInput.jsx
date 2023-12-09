@@ -62,7 +62,7 @@ const normalStyle = css`
   }
 `;
 
-const loginPageStyle = css`
+const largeStyle = css`
   input {
     background: ${theme.colors.white};
     padding: 18px 45px;
@@ -71,5 +71,5 @@ const loginPageStyle = css`
 
 const variantStyle = {
   normal: normalStyle,
-  loginPage: loginPageStyle,
+  large: largeStyle,
 };

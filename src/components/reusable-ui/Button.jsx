@@ -51,7 +51,7 @@ const normalStyle = css`
   }
 `;
 
-const loginPageStyle = css`
+const largeStyle = css`
   background: ${theme.colors.primary};
   border: 1px solid ${theme.colors.primary};
   color: ${theme.colors.secondary};
@@ -72,5 +72,5 @@ const loginPageStyle = css`
 
 const variantStyle = {
   normal: normalStyle,
-  loginPage: loginPageStyle,
+  large: largeStyle,
 };
