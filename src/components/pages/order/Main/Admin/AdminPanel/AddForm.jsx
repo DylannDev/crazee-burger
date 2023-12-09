@@ -7,6 +7,7 @@ import { theme } from "../../../../../../theme";
 import Button from "../../../../../reusable-ui/Button";
 import { PiCameraFill, PiPizzaFill, PiCheckCircleFill } from "react-icons/pi";
 import { MdEuroSymbol } from "react-icons/md";
+import ImagePreview from "./ImagePreview";
 const EMPTY_PRODUCT = {
   imageSource: "",
   title: "",
@@ -39,13 +40,10 @@ export default function AddForm() {
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">
-        {newProduct.imageSource ? (
-          <img src={newProduct.imageSource} alt="image d'une pizza" />
-        ) : (
-          "Aucune Image"
-        )}
-      </div>
+      <ImagePreview
+        imageSource={newProduct.imageSource}
+        title={newProduct.title}
+      />
       <div className="input-fields">
         <TextInput
           Icon={<PiCameraFill />}
@@ -108,22 +106,6 @@ const AddFormStyled = styled.form`
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(3, 1fr) 2fr repeat(2, 1fr);
 
-  .image-preview {
-    border: 2px solid ${theme.colors.quaternary};
-    border-radius: ${theme.borderRadius.round};
-    margin-right: 10px;
-    grid-area: 1 / 1 / 4 / 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-  }
   .input-fields {
     grid-area: 1 / 2 / 6 / 3;
 
