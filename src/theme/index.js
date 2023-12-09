@@ -10,7 +10,7 @@ const colors = {
   quaternary: "#ceecd6",
   green: "green",
   success: "#60bd4f",
-  red: "#e25549",
+  red: "#f72917",
   redSecondary: "#c4151c",
   blue: "#51a7e1",
   greyLight: "#e4e5e9",

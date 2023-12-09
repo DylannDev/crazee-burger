@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { PiCarrot } from "react-icons/pi";
-import PrimaryButton from "../../../reusable-ui/PrimaryButton";
+import Button from "../../../reusable-ui/Button";
 import { theme } from "../../../../theme";
 import { formatPrice } from "../../../../utils/maths";
+import { FaTimesCircle } from "react-icons/fa";
 
 export default function Product({
   title,
@@ -11,9 +12,20 @@ export default function Product({
   vegetarien,
   description,
   price,
+  showDeleteButton,
+  onDelete,
 }) {
   return (
     <ProductStyled>
+      {showDeleteButton && (
+        <button
+          className="delete-button"
+          aria-label="delete-button"
+          onClick={onDelete}
+        >
+          <FaTimesCircle />
+        </button>
+      )}
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -30,7 +42,7 @@ export default function Product({
           <div className="description">{description}</div>
           <div className="price-button">
             <div className="price">{formatPrice(price)}</div>
-            <PrimaryButton className="button-menu-page" label={"Ajouter"} />
+            <Button className="button-menu-page" label={"Ajouter"} />
           </div>
         </div>
       </div>
@@ -45,11 +57,35 @@ const ProductStyled = styled.div`
   /* width: auto; */
   /* min-width: 240px; */
   /* max-width: 300px; */
-  /* height: 430px; */
+  max-height: 450px;
   background-color: ${theme.colors.white};
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  position: relative;
+
+  .delete-button {
+    display: flex;
+    padding: 5px;
+    cursor: pointer;
+    color: ${theme.colors.red};
+    background: ${theme.colors.white};
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: ${theme.fonts.size.P2};
+    border-radius: ${theme.borderRadius.round};
+    border: none;
+
+    &:hover {
+      background: ${theme.colors.background_white};
+    }
+
+    &:active {
+      color: ${theme.colors.white};
+      background: ${theme.colors.red};
+    }
+  }
 
   img {
     max-width: 100%;
@@ -99,25 +135,6 @@ const ProductStyled = styled.div`
 
         .price {
           font-weight: ${theme.fonts.weights.medium};
-        }
-
-        .button-menu-page {
-          background: ${theme.colors.quaternary};
-          border: 1px solid ${theme.colors.quaternary};
-          color: ${theme.colors.secondary};
-          padding: 12px;
-
-          &:hover {
-            background: ${theme.colors.tertiary};
-            border: 1px solid ${theme.colors.tertiary};
-            color: ${theme.colors.secondary};
-          }
-
-          &:active {
-            background: ${theme.colors.tertiary};
-            border: 1px solid ${theme.colors.secondary};
-            color: ${theme.colors.secondary};
-          }
         }
       }
     }

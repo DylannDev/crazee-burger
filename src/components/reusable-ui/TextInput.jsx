@@ -1,29 +1,37 @@
 /* eslint-disable react/prop-types */
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
-export default function TextInput({ onChange, value, Icon, ...extraProps }) {
+export default function TextInput({
+  variant = "normal",
+  onChange,
+  value,
+  Icon,
+  type,
+  ...extraProps
+}) {
   return (
-    <InputStyled>
-      {Icon && Icon}
-      <input onChange={onChange} value={value} {...extraProps} type="text" />
+    <InputStyled variant={variant}>
+      <div className="icon">{Icon && Icon}</div>
+      <input onChange={onChange} value={value} type={type} {...extraProps} />
     </InputStyled>
   );
 }
 
 const InputStyled = styled.div`
-  display: inline-flex;
+  ${({ variant }) => variantStyle[variant]}
+
+  display: flex;
   align-items: center;
-  gap: ${theme.spacing.sm};
-  background: ${theme.colors.white};
   border-radius: ${theme.borderRadius.round};
-  margin: 18px 0;
   position: relative;
 
   .icon {
+    display: flex;
+    align-items: center;
     color: ${theme.colors.greyBlue};
-    width: 15px;
-    left: 15px;
+    font-size: ${theme.fonts.size.P1};
+    left: 10px;
     position: absolute;
   }
 
@@ -32,12 +40,11 @@ const InputStyled = styled.div`
     font-family: "Manrope";
     border: none;
     width: 100%;
-    padding: 18px 45px;
     border-radius: ${theme.borderRadius.round};
     &::placeholder {
       color: ${theme.colors.greyMedium};
       font-family: "Manrope";
-      font-size: ${theme.fonts.size.P0};
+      font-size: ${theme.fonts.size.S};
       font-weight: ${theme.fonts.weights.regular};
       line-height: 17px;
     }
@@ -46,3 +53,23 @@ const InputStyled = styled.div`
     outline: 2px solid ${theme.colors.quaternary};
   }
 `;
+
+const normalStyle = css`
+  input {
+    height: 100%;
+    background-color: ${theme.colors.background_white};
+    padding: 10px 35px;
+  }
+`;
+
+const largeStyle = css`
+  input {
+    background: ${theme.colors.white};
+    padding: 18px 45px;
+  }
+`;
+
+const variantStyle = {
+  normal: normalStyle,
+  large: largeStyle,
+};

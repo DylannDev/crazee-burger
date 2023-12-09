@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
 import TextInput from "../../reusable-ui/TextInput";
-import PrimaryButton from "../../reusable-ui/PrimaryButton";
+import Button from "../../reusable-ui/Button";
 import { theme } from "../../../theme";
 
 export default function LoginForm() {
@@ -36,13 +36,14 @@ export default function LoginForm() {
           value={input}
           Icon={<BsPersonCircle className="icon" />}
           placeholder={"Entrez votre prénom"}
+          variant="large"
           required
         />
 
-        <PrimaryButton
-          className="button-login-page"
+        <Button
           label={"Accéder à mon espace"}
           Icon={<IoChevronForward className="icon" />}
+          variant="large"
         />
       </div>
     </LoginFormStyled>
@@ -83,29 +84,15 @@ const LoginFormStyled = styled.form`
   .input-button-container {
     display: flex;
     flex-direction: column;
+    gap: 18px;
+    margin-top: 18px;
     width: 100%;
+
+    .input-name {
+    }
   }
 
   .icon {
     font-size: ${theme.fonts.size.P1};
-  }
-
-  .button-login-page {
-    background: ${theme.colors.primary};
-    border: 1px solid ${theme.colors.primary};
-    color: ${theme.colors.secondary};
-    padding: 18px 24px;
-
-    &:hover {
-      background: ${theme.colors.quaternary};
-      border: 1px solid ${theme.colors.quaternary};
-      color: ${theme.colors.secondary};
-    }
-
-    &:active {
-      background: ${theme.colors.quaternary};
-      border: 1px solid ${theme.colors.secondary};
-      color: ${theme.colors.secondary};
-    }
   }
 `;
