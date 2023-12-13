@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
 import { MenuData } from "../MenuData/MenuData";
+import { EMPTY_PRODUCT } from "../enums/product";
 
 export const AdminContext = createContext();
 
@@ -9,10 +10,12 @@ export const AdminContextProvider = ({ children }) => {
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
-  const [menu, setMenu] = useState(MenuData);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [menu, setMenu] = useState(MenuData);
+  const [selectedProduct, setSelectedProduct] = useState({});
 
   // Comportements
+
   const handleAddProduct = (newProduct) => {
     // 1 - copie du state
     const menuCopy = [...menu];
@@ -33,6 +36,13 @@ export const AdminContextProvider = ({ children }) => {
     );
 
     setMenu(newMenu);
+  };
+
+  const handleSelectProduct = (idCardClicked) => {
+    const selectedProduct = menu.find(
+      (product) => product.id === idCardClicked
+    );
+    setSelectedProduct(selectedProduct);
   };
 
   const showSuccessMessage = () => {
@@ -60,6 +70,8 @@ export const AdminContextProvider = ({ children }) => {
         handleDeleteProduct,
         isSubmitted,
         resetMenu,
+        selectedProduct,
+        handleSelectProduct,
       }}
     >
       {children}

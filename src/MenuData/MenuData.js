@@ -1,27 +1,6 @@
-// export const fakeMenu1 = [
-//   {
-//     id: 1,
-//     imageSource: "/images/burger1.png",
-//     title: "Burger 1",
-//     price: 5.297,
-//     quantity: 0,
-//     isAvailable: true,
-//     isAdvertised: false,
-//   },
-//   {
-//     id: 2,
-//     imageSource: "/images/burger2.png",
-//     title: "Burger 2",
-//     price: 7.556,
-//     quantity: 0,
-//     isAvailable: true,
-//     isAdvertised: false,
-//   },
-// ];
-
 export const MenuData = [
   {
-    id: 1,
+    id: "1",
     imageSource: "/images/4-fromage.jpg",
     title: "4 Fromages",
     price: 14.898,
@@ -33,7 +12,7 @@ export const MenuData = [
     isAdvertised: false,
   },
   {
-    id: 2,
+    id: "2",
     imageSource: "/images/chevre-miel.jpg",
     title: "Chèvre Miel",
     price: 12.8985,
@@ -44,7 +23,7 @@ export const MenuData = [
     isAdvertised: false,
   },
   {
-    id: 3,
+    id: "3",
     imageSource: "/images/la-parmigiano.jpg",
     title: "Parmigiano",
     price: 11.897,
@@ -56,7 +35,7 @@ export const MenuData = [
     isAdvertised: false,
   },
   {
-    id: 4,
+    id: "4",
     imageSource: "/images/merguez-poulet.jpg",
     title: "Carnivore",
     price: 15.898,
@@ -68,7 +47,7 @@ export const MenuData = [
     isAdvertised: false,
   },
   {
-    id: 5,
+    id: "5",
     imageSource: "/images/montagnarde.jpg",
     title: "Montagnarde",
     price: 14.897,
@@ -80,7 +59,7 @@ export const MenuData = [
     isAdvertised: false,
   },
   {
-    id: 6,
+    id: "6",
     imageSource: "/images/orientale.jpg",
     title: "Orientale",
     price: 13.896,
@@ -92,7 +71,7 @@ export const MenuData = [
     isAdvertised: false,
   },
   {
-    id: 7,
+    id: "7",
     imageSource: "/images/pepperoni.jpeg",
     title: "Pepperoni Lovers",
     price: 13.897,
@@ -103,7 +82,7 @@ export const MenuData = [
     isAdvertised: false,
   },
   {
-    id: 8,
+    id: "8",
     imageSource: "/images/queen.jpg",
     title: "Queen",
     price: 14.8978,
@@ -115,7 +94,7 @@ export const MenuData = [
     isAdvertised: false,
   },
   {
-    id: 9,
+    id: "9",
     imageSource: "/images/raclette.jpg",
     title: "Raclette",
     price: 16.899,
@@ -127,7 +106,7 @@ export const MenuData = [
     isAdvertised: false,
   },
   {
-    id: 10,
+    id: "10",
     imageSource: "/images/supreme.jpg",
     title: "Supreme",
     price: 15.898,
@@ -139,7 +118,7 @@ export const MenuData = [
     isAdvertised: false,
   },
   {
-    id: 11,
+    id: "11",
     imageSource: "/images/texane-barbecue.jpg",
     title: "Texane",
     price: 12.898,
@@ -151,7 +130,7 @@ export const MenuData = [
     isAdvertised: false,
   },
   {
-    id: 12,
+    id: "12",
     imageSource: "/images/vegetarienne.jpg",
     title: "Veggie",
     price: 13.898,

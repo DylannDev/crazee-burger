@@ -14,9 +14,10 @@ export default function Card({
   price,
   showDeleteButton,
   onDelete,
+  onClick,
 }) {
   return (
-    <CardStyled>
+    <CardStyled onClick={onClick}>
       {showDeleteButton && (
         <button
           className="delete-button"

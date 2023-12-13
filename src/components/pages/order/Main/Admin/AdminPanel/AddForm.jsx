@@ -1,29 +1,22 @@
 import styled from "styled-components";
 import { useContext, useState } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext";
-import { nanoid } from "nanoid";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import Button from "../../../../../reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
 import TextareaDescription from "./TextareaDescription";
 import Checkbox from "./Checkbox";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import { getInputTextsConfig } from "./getInputTextsConfig";
-const EMPTY_PRODUCT = {
-  id: "",
-  imageSource: "",
-  title: "",
-  price: "",
-  description: "",
-  vegetarien: false,
-};
+import { nanoid } from "nanoid";
 
 export default function AddForm() {
-  const { handleAddProduct, isSubmitted } = useContext(AdminContext);
+  const { isSubmitted, handleAddProduct } = useContext(AdminContext);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
-  const handleSubmit = (e) => {
+  const handleSubmitAddForm = (e) => {
     e.preventDefault();
 
     const newProductToAdd = {
@@ -35,7 +28,7 @@ export default function AddForm() {
     setNewProduct(EMPTY_PRODUCT);
   };
 
-  const handleChange = (e) => {
+  const handleChangeInputsAddForm = (e) => {
     const { name, value, checked } = e.target;
     setNewProduct({ ...newProduct, [name]: value, ["vegetarien"]: checked });
   };
@@ -43,20 +36,27 @@ export default function AddForm() {
   const inputTexts = getInputTextsConfig(newProduct);
 
   return (
-    <AddFormStyled onSubmit={handleSubmit}>
+    <AddFormStyled onSubmit={handleSubmitAddForm}>
       <ImagePreview
         imageSource={newProduct.imageSource}
         title={newProduct.title}
       />
       <div className="input-fields">
         {inputTexts.map((input) => (
-          <TextInput key={input.id} {...input} onChange={handleChange} />
+          <TextInput
+            key={input.id}
+            {...input}
+            onChange={handleChangeInputsAddForm}
+          />
         ))}
         <TextareaDescription
           value={newProduct.description}
-          onChange={handleChange}
+          onChange={handleChangeInputsAddForm}
         />
-        <Checkbox vegetarien={newProduct.vegetarien} onChange={handleChange} />
+        <Checkbox
+          vegetarien={newProduct.vegetarien}
+          onChange={handleChangeInputsAddForm}
+        />
       </div>
       <div className="submit">
         <Button label="Ajouter le nouveau produit" className="submit-btn" />

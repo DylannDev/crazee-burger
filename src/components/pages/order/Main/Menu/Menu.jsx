@@ -7,8 +7,13 @@ import Card from "../Card";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
-  const { menu, isModeAdmin, handleDeleteProduct, resetMenu } =
-    useContext(AdminContext);
+  const {
+    menu,
+    isModeAdmin,
+    handleDeleteProduct,
+    resetMenu,
+    handleSelectProduct,
+  } = useContext(AdminContext);
 
   if (menu.length === 0) {
     return isModeAdmin ? (
@@ -17,6 +22,7 @@ export default function Menu() {
       <EmptyMenuClient />
     );
   }
+
   return (
     <MenuStyled>
       {menu.map(
@@ -30,6 +36,7 @@ export default function Menu() {
             price={price}
             showDeleteButton={isModeAdmin}
             onDelete={() => handleDeleteProduct(id)}
+            onClick={() => handleSelectProduct(id)}
           />
         )
       )}
