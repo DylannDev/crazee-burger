@@ -6,7 +6,7 @@ import { theme } from "../../../../theme";
 import { formatPrice } from "../../../../utils/maths";
 import { FaTimesCircle } from "react-icons/fa";
 
-export default function Product({
+export default function Card({
   title,
   imageSource,
   vegetarien,
@@ -16,7 +16,7 @@ export default function Product({
   onDelete,
 }) {
   return (
-    <ProductStyled>
+    <CardStyled>
       {showDeleteButton && (
         <button
           className="delete-button"
@@ -46,11 +46,11 @@ export default function Product({
           </div>
         </div>
       </div>
-    </ProductStyled>
+    </CardStyled>
   );
 }
 
-const ProductStyled = styled.div`
+const CardStyled = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: ${theme.borderRadius.round};

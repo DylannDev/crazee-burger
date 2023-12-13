@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import Product from "../Product";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import Card from "../Card";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
@@ -21,7 +21,7 @@ export default function Menu() {
     <MenuStyled>
       {menu.map(
         ({ id, title, imageSource, vegetarien, description, price }) => (
-          <Product
+          <Card
             key={id}
             title={title}
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
