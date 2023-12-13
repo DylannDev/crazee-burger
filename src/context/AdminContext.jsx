@@ -12,7 +12,7 @@ export const AdminContextProvider = ({ children }) => {
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [menu, setMenu] = useState(MenuData);
-  const [selectedProduct, setSelectedProduct] = useState({});
+  const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT);
 
   // Comportements
 
