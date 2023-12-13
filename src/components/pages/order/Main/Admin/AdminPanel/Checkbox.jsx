@@ -11,10 +11,9 @@ export default function Checkbox({ vegetarien, onChange }) {
         value={vegetarien}
         type="checkbox"
         onChange={onChange}
+        id="vegetarien"
       />
-      <label htmlFor="vegetarien" id="vegetarien">
-        Vegetarien
-      </label>
+      <label htmlFor="vegetarien">Vegetarien</label>
     </CheckboxStyled>
   );
 }

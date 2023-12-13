@@ -1,4 +1,3 @@
-import { useContext, useState } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext";
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
@@ -6,21 +5,32 @@ import TextInput from "../../../../../reusable-ui/TextInput";
 import TextareaDescription from "./TextareaDescription";
 import Checkbox from "./Checkbox";
 import { getInputTextsConfig } from "./getInputTextsConfig";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
+import { useContext, useState } from "react";
+// import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 export default function EditForm() {
-  const { selectedProduct } = useContext(AdminContext);
-  const [editSelectedProduct, setEditSelectedProduct] = useState(EMPTY_PRODUCT);
+  const { selectedProduct, setSelectedProduct, handleEditProduct } =
+    useContext(AdminContext);
+
+  const [value, setValue] = useState("");
+
+  const handleChangeValue = (e) => {
+    setValue(e.target.value);
+  };
 
   const inputTexts = getInputTextsConfig(selectedProduct);
 
   const handleChangeInputsEditForm = (e) => {
     const { name, value, checked } = e.target;
-    setEditSelectedProduct({
-      ...editSelectedProduct,
+
+    const productToBeUpdated = {
+      ...selectedProduct,
       [name]: value,
       ["vegetarien"]: checked,
-    });
+    };
+
+    setSelectedProduct(productToBeUpdated); // Update du formulaire
+    handleEditProduct(productToBeUpdated); // Update de la card
   };
 
   return (
@@ -37,10 +47,11 @@ export default function EditForm() {
             onChange={handleChangeInputsEditForm}
           />
         ))}
-        <TextareaDescription
+        {/* <TextareaDescription
           value={selectedProduct.description}
           onChange={handleChangeInputsEditForm}
-        />
+        /> */}
+        <TextareaDescription value={value} onChange={handleChangeValue} />
         <Checkbox
           vegetarien={selectedProduct.vegetarien}
           onChange={handleChangeInputsEditForm}

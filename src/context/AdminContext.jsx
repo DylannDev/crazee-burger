@@ -2,8 +2,9 @@
 import { createContext, useState } from "react";
 import { MenuData } from "../MenuData/MenuData";
 import { EMPTY_PRODUCT } from "../enums/product";
+// import { createCopy } from "../utils/maths";
 
-export const AdminContext = createContext();
+export const AdminContext = createContext({});
 
 export const AdminContextProvider = ({ children }) => {
   // States
@@ -13,12 +14,12 @@ export const AdminContextProvider = ({ children }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [menu, setMenu] = useState(MenuData);
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT);
+  const [editSelectedProduct, setEditSelectedProduct] = useState("");
 
   // Comportements
-
   const handleAddProduct = (newProduct) => {
     // 1 - copie du state
-    const menuCopy = [...menu];
+    const menuCopy = JSON.parse(JSON.stringify(menu));
 
     // 2 - Manipulation de la copie du state
     const newMenu = [newProduct, ...menuCopy];
@@ -29,7 +30,7 @@ export const AdminContextProvider = ({ children }) => {
   };
 
   const handleDeleteProduct = (ProductIdToDelete) => {
-    const menuCopy = [...menu];
+    const menuCopy = JSON.parse(JSON.stringify(menu));
 
     const newMenu = menuCopy.filter(
       (product) => product.id !== ProductIdToDelete
@@ -38,11 +39,27 @@ export const AdminContextProvider = ({ children }) => {
     setMenu(newMenu);
   };
 
+  const handleEditProduct = (productToEdit) => {
+    // console.log(productToEdit);
+    // 1 - copie du state (deep clone)
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+
+    // 2 - Manipulation de la copie du state
+    const indexOfProductToEdit = menu.findIndex(
+      (menuProduct) => menuProduct.id === productToEdit.id
+    );
+    // console.log(indexOfProductToEdit);
+    menuCopy[indexOfProductToEdit] = productToEdit;
+
+    // 3 - Update du state
+    setMenu(menuCopy);
+  };
+
   const handleSelectProduct = (idCardClicked) => {
-    const selectedProduct = menu.find(
+    const findSelectedProduct = menu.find(
       (product) => product.id === idCardClicked
     );
-    setSelectedProduct(selectedProduct);
+    setSelectedProduct(findSelectedProduct);
   };
 
   const showSuccessMessage = () => {
@@ -71,7 +88,11 @@ export const AdminContextProvider = ({ children }) => {
         isSubmitted,
         resetMenu,
         selectedProduct,
+        setSelectedProduct,
         handleSelectProduct,
+        handleEditProduct,
+        editSelectedProduct,
+        setEditSelectedProduct,
       }}
     >
       {children}
