@@ -6,9 +6,9 @@ export const AdminContext = createContext();
 
 export const AdminContextProvider = ({ children }) => {
   // States
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [menu, setMenu] = useState(MenuData);
   const [isSubmitted, setIsSubmitted] = useState(false);
 

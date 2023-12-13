@@ -1,3 +1,5 @@
+import EditFormMessage from "./EditFormMessage";
+
 export default function EditForm() {
-  return <div>EditForm</div>;
+  return <EditFormMessage />;
 }
