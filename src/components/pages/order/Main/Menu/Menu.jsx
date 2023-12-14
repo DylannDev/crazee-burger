@@ -4,6 +4,7 @@ import { AdminContext } from "../../../../../context/AdminContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import Card from "../Card";
+import { checkIfProductIsClicked } from "./helper";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
@@ -12,6 +13,7 @@ export default function Menu() {
     isModeAdmin,
     handleDeleteProduct,
     resetMenu,
+    selectedProduct,
     setSelectedProduct,
   } = useContext(AdminContext);
   //states
@@ -48,6 +50,7 @@ export default function Menu() {
             onDelete={() => handleDeleteProduct(id)}
             onClick={() => handleSelectProduct(id)}
             isHoverabale={isModeAdmin}
+            isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
           />
         )
       )}
