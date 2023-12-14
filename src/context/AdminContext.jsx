@@ -2,7 +2,6 @@
 import { createContext, useState } from "react";
 import { MenuData } from "../MenuData/MenuData";
 import { EMPTY_PRODUCT } from "../enums/product";
-import { createCopy } from "../utils/array";
 
 export const AdminContext = createContext({});
 
@@ -18,7 +17,7 @@ export const AdminContextProvider = ({ children }) => {
   // Comportements
   const handleAddProduct = (newProduct) => {
     // 1 - copie du state
-    const menuCopy = createCopy(menu);
+    const menuCopy = JSON.parse(JSON.stringify(menu));
 
     // 2 - Manipulation de la copie du state
     const newMenu = [newProduct, ...menuCopy];
@@ -29,7 +28,7 @@ export const AdminContextProvider = ({ children }) => {
   };
 
   const handleDeleteProduct = (ProductIdToDelete) => {
-    const menuCopy = createCopy(menu);
+    const menuCopy = JSON.parse(JSON.stringify(menu));
 
     const newMenu = menuCopy.filter(
       (product) => product.id !== ProductIdToDelete
@@ -40,7 +39,7 @@ export const AdminContextProvider = ({ children }) => {
 
   const handleEditProduct = (productToEdit) => {
     // 1 - copie du state (deep clone)
-    const menuCopy = createCopy(menu);
+    const menuCopy = JSON.parse(JSON.stringify(menu));
 
     // 2 - Manipulation de la copie du state
     const indexOfProductToEdit = menuCopy.findIndex(
