@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { PiCarrot } from "react-icons/pi";
 import Button from "../../../reusable-ui/Button";
 import { theme } from "../../../../theme";
@@ -15,9 +15,10 @@ export default function Card({
   showDeleteButton,
   onDelete,
   onClick,
+  isHoverabale,
 }) {
   return (
-    <CardStyled onClick={onClick}>
+    <CardStyled onClick={onClick} isHoverabale={isHoverabale}>
       {showDeleteButton && (
         <button
           className="delete-button"
@@ -52,6 +53,8 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
+  ${({ isHoverabale }) => isHoverabale && hoverableStyle}
+
   display: flex;
   flex-direction: column;
   border-radius: ${theme.borderRadius.round};
@@ -148,5 +151,13 @@ const CardStyled = styled.div`
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
+  }
+`;
+
+const hoverableStyle = css`
+  &:hover {
+    transform: scale(1.03);
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
   }
 `;
