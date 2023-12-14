@@ -15,10 +15,15 @@ export default function Card({
   showDeleteButton,
   onDelete,
   onClick,
-  isHoverabale,
+  isHoverabaleAdmin,
+  isSelected,
 }) {
   return (
-    <CardStyled onClick={onClick} isHoverabale={isHoverabale}>
+    <CardStyled
+      onClick={onClick}
+      isHoverabaleAdmin={isHoverabaleAdmin}
+      isSelected={isSelected}
+    >
       {showDeleteButton && (
         <button
           className="delete-button"
@@ -53,19 +58,15 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-  ${({ isHoverabale }) => isHoverabale && hoverableStyle}
+  ${({ isHoverabaleAdmin }) => isHoverabaleAdmin && hoverableStyle}
+  ${({ isHoverabaleAdmin, isSelected }) =>
+    isSelected && isHoverabaleAdmin ? selectedStyle : normalStyle}
 
   display: flex;
   flex-direction: column;
   border-radius: ${theme.borderRadius.round};
-  /* width: auto; */
-  /* min-width: 240px; */
-  /* max-width: 300px; */
   max-height: 450px;
   background-color: ${theme.colors.white};
-  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
   position: relative;
 
   .delete-button {
@@ -143,6 +144,12 @@ const CardStyled = styled.div`
       }
     }
   }
+`;
+
+const normalStyle = css`
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
 
   &:hover {
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
@@ -157,7 +164,11 @@ const CardStyled = styled.div`
 const hoverableStyle = css`
   &:hover {
     transform: scale(1.03);
-    transition: ease-in-out 0.3s;
     cursor: pointer;
   }
+`;
+
+const selectedStyle = css`
+  transform: scale(1.03);
+  box-shadow: 0px 0px 0px 2px ${theme.colors.secondary};
 `;

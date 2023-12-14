@@ -49,7 +49,7 @@ export default function Menu() {
             showDeleteButton={isModeAdmin}
             onDelete={() => handleDeleteProduct(id)}
             onClick={() => handleSelectProduct(id)}
-            isHoverabale={isModeAdmin}
+            isHoverabaleAdmin={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
           />
         )

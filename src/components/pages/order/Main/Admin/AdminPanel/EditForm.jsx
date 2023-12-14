@@ -15,7 +15,7 @@ export default function EditForm() {
 
   const handleChangeInputsEditForm = (e) => {
     const { name, value, checked } = e.target;
-
+    console.log(selectedProduct);
     const productToBeUpdated = {
       ...selectedProduct,
       [name]: value,
@@ -40,14 +40,15 @@ export default function EditForm() {
             onChange={handleChangeInputsEditForm}
           />
         ))}
-        <TextareaDescription
+        {/* <TextareaDescription
           value={selectedProduct.description}
           onChange={handleChangeInputsEditForm}
         />
+
         <Checkbox
           vegetarien={selectedProduct.vegetarien}
           onChange={handleChangeInputsEditForm}
-        />
+        /> */}
       </div>
       {/* <div className="submit">
         <Button label="Ajouter le nouveau produit" className="submit-btn" />

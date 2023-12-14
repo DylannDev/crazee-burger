@@ -46,14 +46,11 @@ export const AdminContextProvider = ({ children }) => {
     const indexOfProductToEdit = menuCopy.findIndex(
       (menuProduct) => menuProduct.id === productToEdit.id
     );
-    // console.log(indexOfProductToEdit);
-    menuCopy[indexOfProductToEdit] = productToEdit;
 
-    // console.log(menuCopy);
+    menuCopy[indexOfProductToEdit] = productToEdit;
 
     // 3 - Update du state
     setMenu(menuCopy);
-    // console.log(menuCopy);
   };
 
   const showSuccessMessage = () => {
