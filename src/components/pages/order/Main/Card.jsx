@@ -9,7 +9,7 @@ import { FaTimesCircle } from "react-icons/fa";
 export default function Card({
   title,
   imageSource,
-  vegetarien,
+  isVegetarian,
   description,
   price,
   showDeleteButton,
@@ -39,8 +39,8 @@ export default function Card({
       <div className="card-bottom">
         <div className="product-title">
           <span>{title}</span>
-          {vegetarien && (
-            <span className="vegetarien">
+          {isVegetarian && (
+            <span className="isVegetarian">
               <PiCarrot className="icon" />
             </span>
           )}
@@ -111,7 +111,7 @@ const CardStyled = styled.div`
       gap: 10px;
       margin-bottom: 15px;
 
-      .vegetarien {
+      .isVegetarian {
         padding: 5px;
         line-height: 0;
         background-color: ${theme.colors.quaternary};

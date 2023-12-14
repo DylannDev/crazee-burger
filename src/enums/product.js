@@ -4,5 +4,5 @@ export const EMPTY_PRODUCT = Object.freeze({
   title: "",
   price: "",
   description: "",
-  vegetarien: false,
+  isVegetarian: false,
 });

@@ -30,7 +30,7 @@ export default function AddForm() {
 
   const handleChangeInputsAddForm = (e) => {
     const { name, value, checked } = e.target;
-    setNewProduct({ ...newProduct, [name]: value, ["vegetarien"]: checked });
+    setNewProduct({ ...newProduct, [name]: value, ["isVegetarian"]: checked });
   };
 
   const inputTexts = getInputTextsConfig(newProduct);
@@ -54,7 +54,7 @@ export default function AddForm() {
           onChange={handleChangeInputsAddForm}
         />
         <Checkbox
-          vegetarien={newProduct.vegetarien}
+          isVegetarian={newProduct.isVegetarian}
           onChange={handleChangeInputsAddForm}
         />
       </div>

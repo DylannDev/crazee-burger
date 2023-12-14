@@ -40,15 +40,15 @@ export default function EditForm() {
             onChange={handleChangeInputsEditForm}
           />
         ))}
-        {/* <TextareaDescription
+        <TextareaDescription
           value={selectedProduct.description}
           onChange={handleChangeInputsEditForm}
         />
 
         <Checkbox
-          vegetarien={selectedProduct.vegetarien}
+          isVegetarian={selectedProduct.isVegetarian}
           onChange={handleChangeInputsEditForm}
-        /> */}
+        />
       </div>
       {/* <div className="submit">
         <Button label="Ajouter le nouveau produit" className="submit-btn" />

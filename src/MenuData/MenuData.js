@@ -6,7 +6,7 @@ export const MenuData = [
     price: 14.898,
     description:
       "Sauce tomate à l'origan ou crème fraîche légère, mozzarella, fromage de chèvre, emmental et Fourme d'Ambert AOP",
-    vegetarien: true,
+    isVegetarian: true,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
@@ -17,7 +17,7 @@ export const MenuData = [
     title: "Chèvre Miel",
     price: 12.8985,
     description: "Crème fraîche légère, mozzarella, fromage de chèvre, miel",
-    vegetarien: true,
+    isVegetarian: true,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
@@ -29,7 +29,7 @@ export const MenuData = [
     price: 11.897,
     description:
       "Sauce tomate à l'origan, mozzarella, tomates fraîches, parmigiano reggiano AOP",
-    vegetarien: true,
+    isVegetarian: true,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
@@ -41,7 +41,7 @@ export const MenuData = [
     price: 15.898,
     description:
       "Sauce barbecue, mozzarella, emietté au boeuf, Poulet rôti et merguez",
-    vegetarien: false,
+    isVegetarian: false,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
@@ -53,7 +53,7 @@ export const MenuData = [
     price: 14.897,
     description:
       "Crème fraîche légère, mozzarella, jambon cru, fromage à raclette et champignons frais",
-    vegetarien: false,
+    isVegetarian: false,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
@@ -65,7 +65,7 @@ export const MenuData = [
     price: 13.896,
     description:
       "Sauce tomate à l'origan, mozzarella, merguez et champignons frais",
-    vegetarien: false,
+    isVegetarian: false,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
@@ -76,7 +76,7 @@ export const MenuData = [
     title: "Pepperoni Lovers",
     price: 13.897,
     description: "Sauce tomate à l'origan, mozzarella et saucisse pepperoni",
-    vegetarien: false,
+    isVegetarian: false,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
@@ -88,7 +88,7 @@ export const MenuData = [
     price: 14.8978,
     description:
       "Sauce tomate à l'origan, mozzarella, jambon et champignons frais",
-    vegetarien: false,
+    isVegetarian: false,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
@@ -100,7 +100,7 @@ export const MenuData = [
     price: 16.899,
     description:
       "Crème fraîche légère, mozzarella, pommes de terre, lardons et fromage à raclette",
-    vegetarien: false,
+    isVegetarian: false,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
@@ -112,7 +112,7 @@ export const MenuData = [
     price: 15.898,
     description:
       "Sauce tomate à l'origan, mozzarella, emietté au boeuf, saucisse pepperoni, champignons frais, oignons rouges frais et poivrons.",
-    vegetarien: false,
+    isVegetarian: false,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
@@ -124,7 +124,7 @@ export const MenuData = [
     price: 12.898,
     description:
       "Sauce barbecue, mozzarella, jambon, emietté au boeuf, lardons, champignons frais et oignons rouges frais.",
-    vegetarien: false,
+    isVegetarian: false,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,
@@ -136,7 +136,7 @@ export const MenuData = [
     price: 13.898,
     description:
       "Sauce tomate à l'origan, mozzarella, champignons frais, oignons rouges frais, poivrons verts frais, tomates fraîches et Olives noires",
-    vegetarien: true,
+    isVegetarian: true,
     quantity: 0,
     isAvailable: true,
     isAdvertised: false,

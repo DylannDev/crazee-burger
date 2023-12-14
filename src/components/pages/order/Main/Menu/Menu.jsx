@@ -38,12 +38,12 @@ export default function Menu() {
   return (
     <MenuStyled>
       {menu.map(
-        ({ id, title, imageSource, vegetarien, description, price }) => (
+        ({ id, title, imageSource, isVegetarian, description, price }) => (
           <Card
             key={id}
             title={title}
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
-            vegetarien={vegetarien}
+            isVegetarian={isVegetarian}
             description={description}
             price={price}
             showDeleteButton={isModeAdmin}
