@@ -49,7 +49,11 @@ export default function Card({
           <div className="description">{description}</div>
           <div className="price-button">
             <div className="price">{formatPrice(price)}</div>
-            <Button className="button-menu-page" label={"Ajouter"} />
+            <Button
+              className="button-menu-page"
+              label={"Ajouter"}
+              onClick={(e) => e.stopPropagation()}
+            />
           </div>
         </div>
       </div>

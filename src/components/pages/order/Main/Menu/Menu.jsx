@@ -26,6 +26,11 @@ export default function Menu() {
     setSelectedProduct(productClickedOn);
   };
 
+  const handleCardDelete = (event, idProductToDelete) => {
+    event.stopPropagation();
+    handleDeleteProduct(idProductToDelete);
+  };
+
   // affichage
   if (menu.length === 0) {
     return isModeAdmin ? (
@@ -47,7 +52,7 @@ export default function Menu() {
             description={description}
             price={price}
             showDeleteButton={isModeAdmin}
-            onDelete={() => handleDeleteProduct(id)}
+            onDelete={(event) => handleCardDelete(event, id)}
             onClick={() => handleSelectProduct(id)}
             isHoverabaleAdmin={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
