@@ -56,13 +56,6 @@ export const AdminContextProvider = ({ children }) => {
     // console.log(menuCopy);
   };
 
-  const handleSelectProduct = (idCardClicked) => {
-    const findSelectedProduct = menu.find(
-      (product) => product.id === idCardClicked
-    );
-    setSelectedProduct(findSelectedProduct);
-  };
-
   const showSuccessMessage = () => {
     setIsSubmitted(true);
     setTimeout(() => {
@@ -90,7 +83,6 @@ export const AdminContextProvider = ({ children }) => {
         resetMenu,
         selectedProduct,
         setSelectedProduct,
-        handleSelectProduct,
         handleEditProduct,
       }}
     >

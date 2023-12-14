@@ -5,18 +5,11 @@ import TextInput from "../../../../../reusable-ui/TextInput";
 import TextareaDescription from "./TextareaDescription";
 import Checkbox from "./Checkbox";
 import { getInputTextsConfig } from "./getInputTextsConfig";
-import { useContext, useState } from "react";
-// import { EMPTY_PRODUCT } from "../../../../../../enums/product";
+import { useContext } from "react";
 
 export default function EditForm() {
   const { selectedProduct, setSelectedProduct, handleEditProduct } =
     useContext(AdminContext);
-
-  const [value, setValue] = useState("");
-
-  const handleChangeValue = (e) => {
-    setValue(e.target.value);
-  };
 
   const inputTexts = getInputTextsConfig(selectedProduct);
 
@@ -47,11 +40,10 @@ export default function EditForm() {
             onChange={handleChangeInputsEditForm}
           />
         ))}
-        {/* <TextareaDescription
+        <TextareaDescription
           value={selectedProduct.description}
           onChange={handleChangeInputsEditForm}
-        /> */}
-        <TextareaDescription value={value} onChange={handleChangeValue} />
+        />
         <Checkbox
           vegetarien={selectedProduct.vegetarien}
           onChange={handleChangeInputsEditForm}

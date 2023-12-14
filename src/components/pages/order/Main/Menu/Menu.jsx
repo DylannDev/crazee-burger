@@ -12,9 +12,19 @@ export default function Menu() {
     isModeAdmin,
     handleDeleteProduct,
     resetMenu,
-    handleSelectProduct,
+    setSelectedProduct,
   } = useContext(AdminContext);
+  //states
 
+  // comportements
+  const handleSelectProduct = (idCardClicked) => {
+    const productClickedOn = menu.find(
+      (product) => product.id === idCardClicked
+    );
+    setSelectedProduct(productClickedOn);
+  };
+
+  // affichage
   if (menu.length === 0) {
     return isModeAdmin ? (
       <EmptyMenuAdmin OnReset={resetMenu} />
