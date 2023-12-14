@@ -20,6 +20,7 @@ export default function Menu() {
 
   // comportements
   const handleSelectProduct = (idCardClicked) => {
+    if (!isModeAdmin) return;
     const productClickedOn = menu.find(
       (product) => product.id === idCardClicked
     );
