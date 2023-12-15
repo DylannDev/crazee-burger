@@ -17,19 +17,21 @@ export default function Menu() {
     setSelectedProduct,
     setIsCollapsed,
     setCurrentTabSelected,
+    titleEditRef,
   } = useContext(AdminContext);
   //states
 
   // comportements
-  const handleSelectProduct = (idCardClicked) => {
+  const handleClickOnProduct = async (idCardClicked) => {
     if (!isModeAdmin) return;
 
-    setIsCollapsed(true);
-    setCurrentTabSelected("edit");
+    setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
     const productClickedOn = menu.find(
       (product) => product.id === idCardClicked
     );
     setSelectedProduct(productClickedOn);
+    titleEditRef.current.focus();
   };
 
   const handleCardDelete = (event, idProductToDelete) => {
@@ -59,7 +61,7 @@ export default function Menu() {
             price={price}
             showDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
-            onClick={() => handleSelectProduct(id)}
+            onClick={() => handleClickOnProduct(id)}
             isHoverabaleAdmin={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
           />

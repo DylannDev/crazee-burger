@@ -8,18 +8,21 @@ import { getInputTextsConfig } from "./getInputTextsConfig";
 import { useContext } from "react";
 
 export default function EditForm() {
-  const { selectedProduct, setSelectedProduct, handleEditProduct } =
-    useContext(AdminContext);
-
+  const {
+    selectedProduct,
+    setSelectedProduct,
+    handleEditProduct,
+    titleEditRef,
+  } = useContext(AdminContext);
   const inputTexts = getInputTextsConfig(selectedProduct);
 
   const handleChangeInputsEditForm = (e) => {
     const { name, value, checked } = e.target;
-    console.log(selectedProduct);
+    // console.log(selectedProduct);
     const productToBeUpdated = {
       ...selectedProduct,
       [name]: value,
-      ["vegetarien"]: checked,
+      ["isVegetarian"]: checked,
     };
 
     setSelectedProduct(productToBeUpdated); // Update du formulaire
@@ -38,6 +41,7 @@ export default function EditForm() {
             key={input.id}
             {...input}
             onChange={handleChangeInputsEditForm}
+            ref={input.name === "title" ? titleEditRef : null}
           />
         ))}
         <TextareaDescription

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
 import { MenuData } from "../MenuData/MenuData";
 import { EMPTY_PRODUCT } from "../enums/product";
 import { createCopy } from "../utils/array";
@@ -8,12 +8,13 @@ export const AdminContext = createContext({});
 
 export const AdminContextProvider = ({ children }) => {
   // States
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [menu, setMenu] = useState(MenuData);
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT);
+  const titleEditRef = useRef();
 
   // Comportements
   const handleAddProduct = (newProduct) => {
@@ -81,6 +82,7 @@ export const AdminContextProvider = ({ children }) => {
         selectedProduct,
         setSelectedProduct,
         handleEditProduct,
+        titleEditRef,
       }}
     >
       {children}
