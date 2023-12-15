@@ -1,15 +1,52 @@
 import styled from "styled-components";
-import Product from "../Product";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import Card from "../Card";
+import { checkIfProductIsClicked } from "./helper";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
-  const { menu, isModeAdmin, handleDeleteProduct, resetMenu } =
-    useContext(AdminContext);
+  const {
+    menu,
+    isModeAdmin,
+    handleDeleteProduct,
+    resetMenu,
+    selectedProduct,
+    setSelectedProduct,
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditRef,
+  } = useContext(AdminContext);
+  //states
 
+  // comportements
+  const handleClickOnProduct = async (idCardClicked) => {
+    if (!isModeAdmin) return;
+
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+    const productClickedOn = menu.find(
+      (product) => product.id === idCardClicked
+    );
+    await setSelectedProduct(productClickedOn);
+    titleEditRef.current.focus();
+  };
+
+  const handleCardDelete = (event, idProductToDelete) => {
+    event.stopPropagation();
+
+    handleDeleteProduct(idProductToDelete);
+
+    idProductToDelete === selectedProduct.id &&
+      setSelectedProduct(EMPTY_PRODUCT);
+
+    titleEditRef.current.focus();
+  };
+
+  // affichage
   if (menu.length === 0) {
     return isModeAdmin ? (
       <EmptyMenuAdmin OnReset={resetMenu} />
@@ -17,19 +54,23 @@ export default function Menu() {
       <EmptyMenuClient />
     );
   }
+
   return (
     <MenuStyled>
       {menu.map(
-        ({ id, title, imageSource, vegetarien, description, price }) => (
-          <Product
+        ({ id, title, imageSource, isVegetarian, description, price }) => (
+          <Card
             key={id}
             title={title}
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
-            vegetarien={vegetarien}
+            isVegetarian={isVegetarian}
             description={description}
             price={price}
             showDeleteButton={isModeAdmin}
-            onDelete={() => handleDeleteProduct(id)}
+            onDelete={(event) => handleCardDelete(event, id)}
+            onClick={() => handleClickOnProduct(id)}
+            isHoverabaleAdmin={isModeAdmin}
+            isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
           />
         )
       )}

@@ -1,22 +1,29 @@
 /* eslint-disable react/prop-types */
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { PiCarrot } from "react-icons/pi";
 import Button from "../../../reusable-ui/Button";
 import { theme } from "../../../../theme";
 import { formatPrice } from "../../../../utils/maths";
 import { FaTimesCircle } from "react-icons/fa";
 
-export default function Product({
+export default function Card({
   title,
   imageSource,
-  vegetarien,
+  isVegetarian,
   description,
   price,
   showDeleteButton,
   onDelete,
+  onClick,
+  isHoverabaleAdmin,
+  isSelected,
 }) {
   return (
-    <ProductStyled>
+    <CardStyled
+      onClick={onClick}
+      isHoverabaleAdmin={isHoverabaleAdmin}
+      isSelected={isSelected}
+    >
       {showDeleteButton && (
         <button
           className="delete-button"
@@ -32,8 +39,8 @@ export default function Product({
       <div className="card-bottom">
         <div className="product-title">
           <span>{title}</span>
-          {vegetarien && (
-            <span className="vegetarien">
+          {isVegetarian && (
+            <span className="isVegetarian">
               <PiCarrot className="icon" />
             </span>
           )}
@@ -42,26 +49,28 @@ export default function Product({
           <div className="description">{description}</div>
           <div className="price-button">
             <div className="price">{formatPrice(price)}</div>
-            <Button className="button-menu-page" label={"Ajouter"} />
+            <Button
+              className="button-menu-page"
+              label={"Ajouter"}
+              onClick={(e) => e.stopPropagation()}
+            />
           </div>
         </div>
       </div>
-    </ProductStyled>
+    </CardStyled>
   );
 }
 
-const ProductStyled = styled.div`
+const CardStyled = styled.div`
+  ${({ isHoverabaleAdmin }) => isHoverabaleAdmin && hoverableStyle}
+  ${({ isHoverabaleAdmin, isSelected }) =>
+    isSelected && isHoverabaleAdmin ? selectedStyle : normalStyle}
+
   display: flex;
   flex-direction: column;
   border-radius: ${theme.borderRadius.round};
-  /* width: auto; */
-  /* min-width: 240px; */
-  /* max-width: 300px; */
   max-height: 450px;
   background-color: ${theme.colors.white};
-  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
   position: relative;
 
   .delete-button {
@@ -106,7 +115,7 @@ const ProductStyled = styled.div`
       gap: 10px;
       margin-bottom: 15px;
 
-      .vegetarien {
+      .isVegetarian {
         padding: 5px;
         line-height: 0;
         background-color: ${theme.colors.quaternary};
@@ -139,6 +148,12 @@ const ProductStyled = styled.div`
       }
     }
   }
+`;
+
+const normalStyle = css`
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
 
   &:hover {
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
@@ -148,4 +163,16 @@ const ProductStyled = styled.div`
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
   }
+`;
+
+const hoverableStyle = css`
+  &:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+  }
+`;
+
+const selectedStyle = css`
+  transform: scale(1.03);
+  box-shadow: 0px 0px 0px 2px ${theme.colors.secondary};
 `;

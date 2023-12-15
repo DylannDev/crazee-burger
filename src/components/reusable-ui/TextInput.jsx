@@ -1,22 +1,27 @@
 /* eslint-disable react/prop-types */
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
+import React from "react";
 
-export default function TextInput({
-  variant = "normal",
-  onChange,
-  value,
-  Icon,
-  type,
-  ...extraProps
-}) {
-  return (
-    <InputStyled variant={variant}>
-      <div className="icon">{Icon && Icon}</div>
-      <input onChange={onChange} value={value} type={type} {...extraProps} />
-    </InputStyled>
-  );
-}
+const TextInput = React.forwardRef(
+  ({ variant = "normal", onChange, value, Icon, type, ...extraProps }, ref) => {
+    return (
+      <InputStyled variant={variant}>
+        <div className="icon">{Icon && Icon}</div>
+        <input
+          ref={ref}
+          onChange={onChange}
+          value={value}
+          type={type}
+          {...extraProps}
+        />
+      </InputStyled>
+    );
+  }
+);
+
+TextInput.displayName = "TextInput";
+export default TextInput;
 
 const InputStyled = styled.div`
   ${({ variant }) => variantStyle[variant]}

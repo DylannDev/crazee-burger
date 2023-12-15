@@ -11,7 +11,8 @@ import { AdminContext } from "../../../../context/AdminContext";
 import { useContext } from "react";
 
 export default function NavbarRightSide() {
-  const { isModeAdmin, setIsModeAdmin } = useContext(AdminContext);
+  const { isModeAdmin, setIsModeAdmin, setIsCollapsed } =
+    useContext(AdminContext);
 
   const showNotification = () => {
     if (!isModeAdmin) {
@@ -28,6 +29,7 @@ export default function NavbarRightSide() {
       });
     }
     setIsModeAdmin(!isModeAdmin);
+    setIsCollapsed(false);
   };
 
   return (

@@ -2,7 +2,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
 import { tabsConfig } from "../tabsConfig";
-import { nanoid } from "nanoid";
 
 export default function AdminPanel({ currentTabSelected }) {
   return (
@@ -10,7 +9,7 @@ export default function AdminPanel({ currentTabSelected }) {
       {tabsConfig.map(
         (tab) =>
           currentTabSelected === tab.tabId && (
-            <div key={nanoid(8)} className="container">
+            <div key={tab.tabId} className="container">
               {tab.Content}
             </div>
           )

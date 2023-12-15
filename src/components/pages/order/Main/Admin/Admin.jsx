@@ -20,7 +20,7 @@ export default function Admin() {
         currentTabSelected={currentTabSelected}
         setCurrentTabSelected={setCurrentTabSelected}
       />
-      {isCollapsed && <AdminPanel currentTabSelected={currentTabSelected} />}
+      {!isCollapsed && <AdminPanel currentTabSelected={currentTabSelected} />}
     </AdminStyled>
   );
 }
