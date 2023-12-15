@@ -6,6 +6,8 @@ import TextareaDescription from "./TextareaDescription";
 import Checkbox from "./Checkbox";
 import { getInputTextsConfig } from "./getInputTextsConfig";
 import { useContext } from "react";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
+import EditFormMessage from "./EditFormMessage";
 
 export default function EditForm() {
   const {
@@ -29,7 +31,9 @@ export default function EditForm() {
     handleEditProduct(productToBeUpdated); // Update de la card
   };
 
-  return (
+  return selectedProduct === EMPTY_PRODUCT ? (
+    <EditFormMessage />
+  ) : (
     <EditFormStyled>
       <ImagePreview
         imageSource={selectedProduct.imageSource}
@@ -54,10 +58,6 @@ export default function EditForm() {
           onChange={handleChangeInputsEditForm}
         />
       </div>
-      {/* <div className="submit">
-        <Button label="Ajouter le nouveau produit" className="submit-btn" />
-        {isSubmitted && <SubmitMessage />}
-      </div> */}
     </EditFormStyled>
   );
 }
