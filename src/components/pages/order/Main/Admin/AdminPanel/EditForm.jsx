@@ -58,6 +58,10 @@ export default function EditForm() {
           onChange={handleChangeInputsEditForm}
         />
       </div>
+
+      <div className="message">
+        <EditFormMessage />
+      </div>
     </EditFormStyled>
   );
 }
@@ -78,13 +82,9 @@ const EditFormStyled = styled.form`
     grid-template-rows: repeat(3, 1fr) 2fr 1fr;
     gap: 10px;
   }
-  .submit {
+  .message {
     display: flex;
     align-items: center;
     grid-area: 6 / -2 / -2 / -1;
-
-    .submit-btn {
-      width: 50%;
-    }
   }
 `;

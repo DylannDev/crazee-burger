@@ -17,7 +17,6 @@ const EditFormMessageStyled = styled.p`
   font-size: ${theme.fonts.size.S};
   font-weight: ${theme.fonts.weights.bold};
   text-transform: uppercase;
-  margin-left: 20px;
   color: ${theme.colors.secondary};
 
   .icon {
