@@ -1,3 +1,3 @@
 export const createCopy = (array) => {
-  JSON.parse(JSON.stringify(array));
+  return JSON.parse(JSON.stringify(array));
 };
