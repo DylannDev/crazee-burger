@@ -20,13 +20,13 @@ export default function AdminTabs({
     <AdminTabsStyled>
       <Tab
         key={nanoid(8)}
-        Icon={isCollapsed ? <IoChevronDown /> : <IoChevronUp />}
+        Icon={isCollapsed ? <IoChevronUp /> : <IoChevronDown />}
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className={isCollapsed ? "is-active" : ""}
+        className={isCollapsed ? "" : "is-active"}
       />
       {tabsConfig.map(
         (tab) =>
-          isCollapsed && (
+          !isCollapsed && (
             <Tab
               key={nanoid(8)}
               label={tab.label}

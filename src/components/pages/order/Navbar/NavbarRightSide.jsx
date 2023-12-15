@@ -29,7 +29,7 @@ export default function NavbarRightSide() {
       });
     }
     setIsModeAdmin(!isModeAdmin);
-    setIsCollapsed(true);
+    setIsCollapsed(false);
   };
 
   return (
