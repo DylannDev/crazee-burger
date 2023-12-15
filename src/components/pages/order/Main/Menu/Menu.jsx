@@ -15,12 +15,17 @@ export default function Menu() {
     resetMenu,
     selectedProduct,
     setSelectedProduct,
+    setIsCollapsed,
+    setCurrentTabSelected,
   } = useContext(AdminContext);
   //states
 
   // comportements
   const handleSelectProduct = (idCardClicked) => {
     if (!isModeAdmin) return;
+
+    setIsCollapsed(true);
+    setCurrentTabSelected("edit");
     const productClickedOn = menu.find(
       (product) => product.id === idCardClicked
     );
