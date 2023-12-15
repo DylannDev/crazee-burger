@@ -5,6 +5,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import Card from "../Card";
 import { checkIfProductIsClicked } from "./helper";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
@@ -25,18 +26,24 @@ export default function Menu() {
   const handleClickOnProduct = async (idCardClicked) => {
     if (!isModeAdmin) return;
 
-    setIsCollapsed(false);
+    await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
     const productClickedOn = menu.find(
       (product) => product.id === idCardClicked
     );
-    setSelectedProduct(productClickedOn);
+    await setSelectedProduct(productClickedOn);
     titleEditRef.current.focus();
   };
 
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation();
+
     handleDeleteProduct(idProductToDelete);
+
+    idProductToDelete === selectedProduct.id &&
+      setSelectedProduct(EMPTY_PRODUCT);
+
+    titleEditRef.current.focus();
   };
 
   // affichage
