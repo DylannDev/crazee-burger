@@ -11,6 +11,7 @@ export default function ImagePreview({ imageSource, title }) {
 }
 
 const ImagePreviewStyled = styled.div`
+  height: 134px;
   border: 2px solid ${theme.colors.quaternary};
   border-radius: ${theme.borderRadius.round};
   margin-right: 10px;
