@@ -1,22 +1,16 @@
-import styled from "styled-components";
 import { useContext, useState } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext";
-import TextInput from "../../../../../reusable-ui/TextInput";
-import Button from "../../../../../reusable-ui/Button";
-import ImagePreview from "./ImagePreview";
-import SubmitMessage from "./SubmitMessage";
-import TextareaDescription from "./TextareaDescription";
-import Checkbox from "./Checkbox";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
-import { getInputTextsConfig } from "./getInputTextsConfig";
 import { nanoid } from "nanoid";
+import Form from "./Form";
+import SubmitButton from "./SubmitButton";
 
 export default function AddForm() {
   const { isSubmitted, handleAddProduct } = useContext(AdminContext);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
-  const handleSubmitAddForm = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const newProductToAdd = {
@@ -28,66 +22,14 @@ export default function AddForm() {
     setNewProduct(EMPTY_PRODUCT);
   };
 
-  const handleChangeInputsAddForm = (e) => {
+  const handleChange = (e) => {
     const { name, value, checked } = e.target;
     setNewProduct({ ...newProduct, [name]: value, ["isVegetarian"]: checked });
   };
 
-  const inputTexts = getInputTextsConfig(newProduct);
-
   return (
-    <AddFormStyled onSubmit={handleSubmitAddForm}>
-      <ImagePreview
-        imageSource={newProduct.imageSource}
-        title={newProduct.title}
-      />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <TextInput
-            key={input.id}
-            {...input}
-            onChange={handleChangeInputsAddForm}
-          />
-        ))}
-        <TextareaDescription
-          value={newProduct.description}
-          onChange={handleChangeInputsAddForm}
-        />
-        <Checkbox
-          isVegetarian={newProduct.isVegetarian}
-          onChange={handleChangeInputsAddForm}
-        />
-      </div>
-      <div className="submit">
-        <Button label="Ajouter le nouveau produit" className="submit-btn" />
-        {isSubmitted && <SubmitMessage />}
-      </div>
-    </AddFormStyled>
+    <Form product={newProduct} onSubmit={handleSubmit} onChange={handleChange}>
+      <SubmitButton isSubmitted={isSubmitted} />
+    </Form>
   );
 }
-const AddFormStyled = styled.form`
-  width: 70%;
-  height: 100%;
-
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(3, 1fr) 2fr repeat(2, 1fr);
-
-  .input-fields {
-    grid-area: 1 / 2 / 6 / 3;
-
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr) 2fr 1fr;
-    gap: 10px;
-  }
-  .submit {
-    display: flex;
-    align-items: center;
-    grid-area: 6 / -2 / -2 / -1;
-
-    .submit-btn {
-      width: 50%;
-    }
-  }
-`;

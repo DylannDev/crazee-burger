@@ -1,13 +1,8 @@
 import { AdminContext } from "../../../../../../context/AdminContext";
-import styled from "styled-components";
-import ImagePreview from "./ImagePreview";
-import TextInput from "../../../../../reusable-ui/TextInput";
-import TextareaDescription from "./TextareaDescription";
-import Checkbox from "./Checkbox";
-import { getInputTextsConfig } from "./getInputTextsConfig";
 import { useContext } from "react";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import EditFormMessage from "./EditFormMessage";
+import Form from "./Form";
 
 export default function EditForm() {
   const {
@@ -16,9 +11,8 @@ export default function EditForm() {
     handleEditProduct,
     titleEditRef,
   } = useContext(AdminContext);
-  const inputTexts = getInputTextsConfig(selectedProduct);
 
-  const handleChangeInputsEditForm = (e) => {
+  const handleChange = (e) => {
     const { name, value, checked } = e.target;
     // console.log(selectedProduct);
     const productToBeUpdated = {
@@ -34,57 +28,8 @@ export default function EditForm() {
   return selectedProduct === EMPTY_PRODUCT ? (
     <EditFormMessage />
   ) : (
-    <EditFormStyled>
-      <ImagePreview
-        imageSource={selectedProduct.imageSource}
-        title={selectedProduct.title}
-      />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <TextInput
-            key={input.id}
-            {...input}
-            onChange={handleChangeInputsEditForm}
-            ref={input.name === "title" ? titleEditRef : null}
-          />
-        ))}
-        <TextareaDescription
-          value={selectedProduct.description}
-          onChange={handleChangeInputsEditForm}
-        />
-
-        <Checkbox
-          isVegetarian={selectedProduct.isVegetarian}
-          onChange={handleChangeInputsEditForm}
-        />
-      </div>
-
-      <div className="message">
-        <EditFormMessage />
-      </div>
-    </EditFormStyled>
+    <Form product={selectedProduct} onChange={handleChange} ref={titleEditRef}>
+      <EditFormMessage />
+    </Form>
   );
 }
-
-const EditFormStyled = styled.form`
-  width: 70%;
-  height: 100%;
-
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(3, 1fr) 2fr repeat(2, 1fr);
-
-  .input-fields {
-    grid-area: 1 / 2 / 6 / 3;
-
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr) 2fr 1fr;
-    gap: 10px;
-  }
-  .message {
-    display: flex;
-    align-items: center;
-    grid-area: 6 / -2 / -2 / -1;
-  }
-`;
