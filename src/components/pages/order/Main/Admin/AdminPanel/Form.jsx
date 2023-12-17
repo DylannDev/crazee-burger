@@ -55,6 +55,12 @@ const FormStyled = styled.form`
     gap: 10px;
   }
   .submit {
+    width: 100%;
+    display: flex;
     grid-area: 6 / -2 / -2 / -1;
+
+    .submit-btn {
+      width: 50%;
+    }
   }
 `;
