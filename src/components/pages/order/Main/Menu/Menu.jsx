@@ -6,21 +6,19 @@ import EmptyMenuClient from "./EmptyMenuClient";
 import Card from "./Card";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
+import { useHandleMenu } from "../../../../../hooks/useHandleMenu";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
   const {
-    menu,
     isModeAdmin,
-    handleDeleteProduct,
-    resetMenu,
     selectedProduct,
     setSelectedProduct,
     setIsCollapsed,
     setCurrentTabSelected,
     titleEditRef,
   } = useContext(AdminContext);
-  //states
+  const { menu, handleDeleteProduct, resetMenu } = useHandleMenu();
 
   // comportements
   const handleClickOnProduct = async (idCardClicked) => {
@@ -86,5 +84,4 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-content: center;
   overflow-y: scroll;
-  /* width: 1350px; */
 `;

@@ -5,11 +5,11 @@ import { nanoid } from "nanoid";
 import Form from "./Form";
 import SubmitButton from "./SubmitButton";
 import { useSuccessMessage } from "../../../../../../hooks/useSuccessMessage";
+import { useHandleMenu } from "../../../../../../hooks/useHandleMenu";
 
 export default function AddForm() {
-  const { handleAddProduct, newProduct, setNewProduct } =
-    useContext(AdminContext);
-
+  const { newProduct, setNewProduct } = useContext(AdminContext);
+  const { handleAddProduct } = useHandleMenu();
   const { isSubmitted, showSuccessMessage } = useSuccessMessage();
 
   const handleSubmit = (e) => {
