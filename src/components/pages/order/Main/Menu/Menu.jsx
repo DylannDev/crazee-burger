@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
-import Card from "../Card";
+import Card from "./Card";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
