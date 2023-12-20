@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Basket from "./Basket";
+import Basket from "./Basket/Basket";
 import MainRightSide from "./MainRightSide";
 
 export default function Main() {
