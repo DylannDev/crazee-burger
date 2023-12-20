@@ -3,14 +3,13 @@ import { theme } from "../../../../../theme";
 import Header from "./Header";
 import Footer from "./Footer";
 import { formatPrice } from "../../../../../utils/maths";
+import BasketBody from "./BasketBody";
 
 export default function Basket() {
   return (
     <BasketStyled>
       <Header amountToPay={formatPrice(0)} />
-      <div className="body">
-        <span>Votre panier est vide.</span>
-      </div>
+      <BasketBody />
       <Footer />
     </BasketStyled>
   );
@@ -20,14 +19,4 @@ const BasketStyled = styled.div`
   display: flex;
   flex-direction: column;
   color: ${theme.colors.secondary};
-
-  .body {
-    flex: 1;
-    background-color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P0};
-    font-weight: ${theme.fonts.weights.bold};
-    text-transform: uppercase;
-    display: grid;
-    place-content: center;
-  }
 `;
