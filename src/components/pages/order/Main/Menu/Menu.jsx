@@ -6,7 +6,6 @@ import EmptyMenuClient from "./EmptyMenuClient";
 import Card from "./Card";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
-import { useHandleMenu } from "../../../../../hooks/useHandleMenu";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
@@ -21,10 +20,6 @@ export default function Menu() {
     handleDeleteProduct,
     resetMenu,
   } = useContext(AdminContext);
-<<<<<<< HEAD
-=======
-  const { menu, handleDeleteProduct, resetMenu } = useHandleMenu();
->>>>>>> 10885c746346ed78968a3852f325cfed70438ffa
 
   // comportements
   const handleClickOnProduct = async (idCardClicked) => {

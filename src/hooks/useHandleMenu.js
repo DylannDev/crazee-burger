@@ -4,10 +4,6 @@ import { createCopy } from "../utils/array";
 
 export const useHandleMenu = () => {
   const [menu, setMenu] = useState(MenuData);
-<<<<<<< HEAD
-=======
-  console.log("menu ", menu);
->>>>>>> 10885c746346ed78968a3852f325cfed70438ffa
 
   // Comportements
   const handleAddProduct = (newProduct) => {

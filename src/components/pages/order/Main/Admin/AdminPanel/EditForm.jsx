@@ -3,22 +3,14 @@ import { useContext } from "react";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import EditFormMessage from "./EditFormMessage";
 import Form from "./Form";
-import { useHandleMenu } from "../../../../../../hooks/useHandleMenu";
 
 export default function EditForm() {
-<<<<<<< HEAD
   const {
     selectedProduct,
     setSelectedProduct,
     titleEditRef,
     handleEditProduct,
   } = useContext(AdminContext);
-=======
-  const { selectedProduct, setSelectedProduct, titleEditRef } =
-    useContext(AdminContext);
-
-  const { handleEditProduct } = useHandleMenu();
->>>>>>> 10885c746346ed78968a3852f325cfed70438ffa
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
