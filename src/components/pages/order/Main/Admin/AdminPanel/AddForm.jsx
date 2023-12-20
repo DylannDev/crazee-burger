@@ -7,7 +7,7 @@ import SubmitButton from "./SubmitButton";
 import { useSuccessMessage } from "../../../../../../hooks/useSuccessMessage";
 
 export default function AddForm() {
-  const { handleAddProduct, newProduct, setNewProduct } =
+  const { newProduct, setNewProduct, handleAddProduct } =
     useContext(AdminContext);
 
   const { isSubmitted, showSuccessMessage } = useSuccessMessage();
