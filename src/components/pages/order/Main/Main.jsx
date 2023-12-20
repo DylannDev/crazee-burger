@@ -1,19 +1,12 @@
 import styled from "styled-components";
-// import Basket from "./Basket";
-import Menu from "./Menu/Menu";
-import Admin from "./Admin/Admin";
-import { useContext } from "react";
-import { AdminContext } from "../../../../context/AdminContext";
+import Basket from "./Basket";
+import MainRightSide from "./MainRightSide";
 
 export default function Main() {
-  const { isModeAdmin } = useContext(AdminContext);
   return (
     <MainStyled>
-      {/* <Basket /> */}
-      <div className="menu-and-admin">
-        <Menu />
-        {isModeAdmin && <Admin />}
-      </div>
+      <Basket />
+      <MainRightSide />
     </MainStyled>
   );
 }
@@ -23,12 +16,6 @@ const MainStyled = styled.main`
   background: url("/images/background-marbre.jpg");
   background-size: contain;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 25% 1fr;
   overflow-y: hidden;
-
-  .menu-and-admin {
-    position: relative;
-    overflow-y: hidden;
-    display: grid;
-  }
 `;
