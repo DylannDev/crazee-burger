@@ -11,9 +11,9 @@ export const AdminContextProvider = ({ children }) => {
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [menu, setMenu] = useState(MenuData);
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
 
   // Comportements
@@ -26,7 +26,6 @@ export const AdminContextProvider = ({ children }) => {
 
     // 3 - Update du state
     setMenu(newMenu);
-    showSuccessMessage();
   };
 
   const handleDeleteProduct = (ProductIdToDelete) => {
@@ -54,13 +53,6 @@ export const AdminContextProvider = ({ children }) => {
     setMenu(menuCopy);
   };
 
-  const showSuccessMessage = () => {
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 3000);
-  };
-
   const resetMenu = () => {
     setMenu(MenuData);
   };
@@ -77,12 +69,13 @@ export const AdminContextProvider = ({ children }) => {
         menu,
         handleAddProduct,
         handleDeleteProduct,
-        isSubmitted,
         resetMenu,
         selectedProduct,
         setSelectedProduct,
         handleEditProduct,
         titleEditRef,
+        newProduct,
+        setNewProduct,
       }}
     >
       {children}
