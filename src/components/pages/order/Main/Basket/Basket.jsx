@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import Header from "./Header";
 import Footer from "./Footer";
+import { formatPrice } from "../../../../../utils/maths";
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <Header />
+      <Header amountToPay={formatPrice(0)} />
       <div className="body">
         <span>Votre panier est vide.</span>
       </div>

@@ -1,11 +1,12 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
-export default function Header() {
+export default function Header({ amountToPay }) {
   return (
     <HeaderStyled>
       <span>Total</span>
-      <span>0,00€</span>
+      <span>{amountToPay}</span>
     </HeaderStyled>
   );
 }
