@@ -3,24 +3,23 @@ import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
-import Card from "../Card";
+import Card from "./Card";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
   const {
-    menu,
     isModeAdmin,
-    handleDeleteProduct,
-    resetMenu,
     selectedProduct,
     setSelectedProduct,
     setIsCollapsed,
     setCurrentTabSelected,
     titleEditRef,
+    menu,
+    handleDeleteProduct,
+    resetMenu,
   } = useContext(AdminContext);
-  //states
 
   // comportements
   const handleClickOnProduct = async (idCardClicked) => {
@@ -86,5 +85,4 @@ const MenuStyled = styled.div`
   padding: 50px 50px 150px;
   justify-content: center;
   overflow-y: scroll;
-  /* width: 1350px; */
 `;

@@ -1,14 +1,16 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AdminContext } from "../../../../../../context/AdminContext";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import { nanoid } from "nanoid";
 import Form from "./Form";
 import SubmitButton from "./SubmitButton";
+import { useSuccessMessage } from "../../../../../../hooks/useSuccessMessage";
 
 export default function AddForm() {
-  const { isSubmitted, handleAddProduct } = useContext(AdminContext);
+  const { newProduct, setNewProduct, handleAddProduct } =
+    useContext(AdminContext);
 
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const { isSubmitted, showSuccessMessage } = useSuccessMessage();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +22,8 @@ export default function AddForm() {
 
     handleAddProduct(newProductToAdd);
     setNewProduct(EMPTY_PRODUCT);
+
+    showSuccessMessage();
   };
 
   const handleChange = (e) => {

@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import styled, { css } from "styled-components";
 import { PiCarrot } from "react-icons/pi";
-import Button from "../../../reusable-ui/Button";
-import { theme } from "../../../../theme";
-import { formatPrice } from "../../../../utils/maths";
+import Button from "../../../../reusable-ui/Button";
+import { theme } from "../../../../../theme";
+import { formatPrice } from "../../../../../utils/maths";
 import { FaTimesCircle } from "react-icons/fa";
 
 export default function Card({

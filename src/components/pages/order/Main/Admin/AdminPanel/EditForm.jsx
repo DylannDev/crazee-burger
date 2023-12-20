@@ -8,8 +8,8 @@ export default function EditForm() {
   const {
     selectedProduct,
     setSelectedProduct,
-    handleEditProduct,
     titleEditRef,
+    handleEditProduct,
   } = useContext(AdminContext);
 
   const handleChange = (e) => {
