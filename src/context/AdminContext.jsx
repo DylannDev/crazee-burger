@@ -2,6 +2,7 @@
 import { createContext, useRef, useState } from "react";
 import { EMPTY_PRODUCT } from "../enums/product";
 import { useHandleMenu } from "../hooks/useHandleMenu";
+import { useHandleCart } from "../hooks/useHandleCart";
 
 export const AdminContext = createContext({});
 
@@ -21,6 +22,7 @@ export const AdminContextProvider = ({ children }) => {
     handleEditProduct,
     resetMenu,
   } = useHandleMenu();
+  const { cart } = useHandleCart();
 
   return (
     <AdminContext.Provider
@@ -42,6 +44,7 @@ export const AdminContextProvider = ({ children }) => {
         handleDeleteProduct,
         handleEditProduct,
         resetMenu,
+        cart,
       }}
     >
       {children}
