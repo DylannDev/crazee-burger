@@ -2,15 +2,18 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import CartCard from "./CartCard";
-// import EmptyCart from "./EmptyCart";
+import EmptyCart from "./EmptyCart";
 
-export default function CartProducts({ cart }) {
+export default function CartProducts({ cart, isCartEmpty }) {
   return (
     <CartProductsStyled>
-      {/* {isCartEmpty && <EmptyCart />} */}
-      {cart.map((cartProduct) => (
-        <CartCard key={cartProduct.id} {...cartProduct} />
-      ))}
+      {isCartEmpty ? (
+        <EmptyCart />
+      ) : (
+        cart.map((cartProduct) => (
+          <CartCard key={cartProduct.id} {...cartProduct} />
+        ))
+      )}
     </CartProductsStyled>
   );
 }

@@ -27,5 +27,5 @@ const CartStyled = styled.div`
   color: ${theme.colors.secondary};
   background-color: ${theme.colors.quaternary};
   position: relative;
-  overflow-y: hidden;
+  overflow: hidden;
 `;
