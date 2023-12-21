@@ -19,4 +19,5 @@ const BasketStyled = styled.div`
   display: flex;
   flex-direction: column;
   color: ${theme.colors.secondary};
+  background-color: ${theme.colors.quaternary};
 `;

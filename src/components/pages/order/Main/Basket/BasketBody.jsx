@@ -17,4 +17,7 @@ const BasketBodyStyled = styled.div`
   text-transform: uppercase;
   display: grid;
   place-content: center;
+  border-right: 3px solid ${theme.colors.quaternary};
+  border-top-right-radius: ${theme.borderRadius.round};
+  border-bottom-right-radius: ${theme.borderRadius.round};
 `;
