@@ -10,10 +10,12 @@ import { AdminContext } from "../../../../../context/AdminContext";
 export default function Cart() {
   const { cart } = useContext(AdminContext);
 
+  const isCartEmpty = cart.length === 0;
+
   return (
     <CartStyled>
       <Total amountToPay={formatPrice(0)} />
-      <CartProducts cart={cart} />
+      <CartProducts cart={cart} isCartEmpty={isCartEmpty} />
       <Footer />
     </CartStyled>
   );
@@ -24,4 +26,6 @@ const CartStyled = styled.div`
   flex-direction: column;
   color: ${theme.colors.secondary};
   background-color: ${theme.colors.quaternary};
+  position: relative;
+  overflow-y: hidden;
 `;

@@ -11,4 +11,8 @@ const FooterStyled = styled.div`
   display: grid;
   place-content: center;
   font-size: ${theme.fonts.size.S};
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `;
