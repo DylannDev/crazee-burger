@@ -1,4 +1,6 @@
-export const MenuData = [
+const EMPTY = [];
+
+const FULL = [
   {
     id: "1",
     imageSource: "/images/4-fromage.jpg",
@@ -142,3 +144,8 @@ export const MenuData = [
     isAdvertised: false,
   },
 ];
+
+export const MenuData = {
+  EMPTY,
+  FULL,
+};
