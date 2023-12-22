@@ -20,6 +20,7 @@ export default function Menu() {
     handleDeleteProduct,
     resetMenu,
     handleAddToCart,
+    handleDeleteProductFromCart,
   } = useContext(AdminContext);
 
   // comportements
@@ -39,6 +40,7 @@ export default function Menu() {
     event.stopPropagation();
 
     handleDeleteProduct(idProductToDelete);
+    handleDeleteProductFromCart(idProductToDelete);
 
     idProductToDelete === selectedProduct.id &&
       setSelectedProduct(EMPTY_PRODUCT);
