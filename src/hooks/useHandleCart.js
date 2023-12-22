@@ -11,20 +11,22 @@ export const useHandleCart = () => {
 
     // 1er cas : le produit est dans le cart
     if (!isProductAlreadyInCart) {
-      const newCartProduct = {
-        ...productToAdd,
-        quantity: 1,
-      };
-
-      const cartUpdated = [newCartProduct, ...cartCopy];
-
-      setCart(cartUpdated);
+      addNewProductToCart(productToAdd, cartCopy);
       return;
     }
 
     // 2ème cas : le produit n'est pas dans le cart
 
     incrementProductAlreadyInCart(cart, productToAdd.id);
+  };
+
+  const addNewProductToCart = (productToAdd, cartCopy) => {
+    const newCartProduct = {
+      ...productToAdd,
+      quantity: 1,
+    };
+    const cartUpdated = [newCartProduct, ...cartCopy];
+    setCart(cartUpdated);
   };
 
   const incrementProductAlreadyInCart = (array, id) => {
