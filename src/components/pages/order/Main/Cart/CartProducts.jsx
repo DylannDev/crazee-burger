@@ -8,7 +8,12 @@ import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 
 export default function CartProducts({ cart, isCartEmpty }) {
-  const { handleDeleteProductFromCart } = useContext(AdminContext);
+  const {
+    handleDeleteProductFromCart,
+    incrementProductAlreadyInCart,
+    decrementProductAlreadyInCart,
+  } = useContext(AdminContext);
+
   return (
     <CartProductsStyled>
       {isCartEmpty ? (
@@ -24,6 +29,12 @@ export default function CartProducts({ cart, isCartEmpty }) {
                 : IMAGE_BY_DEFAULT
             }
             onDelete={() => handleDeleteProductFromCart(cartProduct.id)}
+            incrementProduct={() =>
+              incrementProductAlreadyInCart(cart, cartProduct.id)
+            }
+            decrementProduct={() =>
+              decrementProductAlreadyInCart(cart, cartProduct.id)
+            }
           />
         ))
       )}

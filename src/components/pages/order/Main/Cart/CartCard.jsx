@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { formatPrice } from "../../../../../utils/maths";
+import { RiArrowUpSFill, RiArrowDownSFill } from "react-icons/ri";
 
 export default function CartCard({
   imageSource,
@@ -10,6 +11,8 @@ export default function CartCard({
   price,
   quantity,
   onDelete,
+  incrementProduct,
+  decrementProduct,
 }) {
   return (
     <CartCardStyled>
@@ -20,7 +23,13 @@ export default function CartCard({
           <span>{formatPrice(price)}</span>
         </div>
         <div className="quantity">
-          <span className="quantity-label">x {quantity}</span>
+          <div className="quantity-buttons">
+            <div className="buttons-increment-decrement">
+              <RiArrowUpSFill onClick={incrementProduct} className="up" />
+              <RiArrowDownSFill onClick={decrementProduct} className="down" />
+            </div>
+            <span className="quantity-label">x {quantity}</span>
+          </div>
           <RiDeleteBin2Line className="icon" onClick={onDelete} />
         </div>
       </div>
@@ -75,9 +84,36 @@ const CartCardStyled = styled.div`
       flex-direction: column;
       align-items: flex-end;
       gap: 5px;
+      width: 33%;
 
-      .quantity-label {
-        color: ${theme.colors.greyBlue};
+      .quantity-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .buttons-increment-decrement {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          font-size: ${theme.fonts.size.XS};
+
+          .up {
+            cursor: pointer;
+            background-color: ${theme.colors.quaternary};
+            border-radius: ${theme.borderRadius.subtle};
+          }
+
+          .down {
+            cursor: pointer;
+            background-color: ${theme.colors.quaternary};
+            border-radius: ${theme.borderRadius.subtle};
+          }
+        }
+
+        .quantity-label {
+          color: ${theme.colors.greyBlue};
+        }
       }
 
       .icon {
