@@ -33,5 +33,19 @@ export const useHandleCart = () => {
     }
   };
 
-  return { cart, handleAddToCart };
+  const handleDeleteProductFromCart = (productIdToDelete) => {
+    const cartCopy = createCopy(cart);
+
+    const updatedCart = cartCopy.filter(
+      (product) => product.id !== productIdToDelete
+    );
+
+    setCart(updatedCart);
+  };
+
+  const resetCart = () => {
+    setCart(MenuData.EMPTY);
+  };
+
+  return { cart, handleAddToCart, handleDeleteProductFromCart, resetCart };
 };

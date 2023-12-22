@@ -17,11 +17,11 @@ export const useHandleMenu = () => {
     setMenu(newMenu);
   };
 
-  const handleDeleteProduct = (ProductIdToDelete) => {
+  const handleDeleteProduct = (productIdToDelete) => {
     const menuCopy = createCopy(menu);
 
     const newMenu = menuCopy.filter(
-      (product) => product.id !== ProductIdToDelete
+      (product) => product.id !== productIdToDelete
     );
 
     setMenu(newMenu);
