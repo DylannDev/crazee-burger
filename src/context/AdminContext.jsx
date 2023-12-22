@@ -8,8 +8,8 @@ export const AdminContext = createContext({});
 
 export const AdminContextProvider = ({ children }) => {
   // States
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
@@ -22,7 +22,7 @@ export const AdminContextProvider = ({ children }) => {
     handleEditProduct,
     resetMenu,
   } = useHandleMenu();
-  const { cart, handleAddToBasket } = useHandleCart();
+  const { cart, handleAddToCart } = useHandleCart();
 
   return (
     <AdminContext.Provider
@@ -45,7 +45,7 @@ export const AdminContextProvider = ({ children }) => {
         handleEditProduct,
         resetMenu,
         cart,
-        handleAddToBasket,
+        handleAddToCart,
       }}
     >
       {children}

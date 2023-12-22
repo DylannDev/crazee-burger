@@ -5,9 +5,8 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import Card from "./Card";
 import { checkIfProductIsClicked } from "./helper";
-import { EMPTY_PRODUCT } from "../../../../../enums/product";
+import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
 import { findInArray } from "../../../../../utils/array";
-const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
   const {
@@ -20,7 +19,7 @@ export default function Menu() {
     menu,
     handleDeleteProduct,
     resetMenu,
-    handleAddToBasket,
+    handleAddToCart,
   } = useContext(AdminContext);
 
   // comportements
@@ -51,9 +50,7 @@ export default function Menu() {
     event.stopPropagation();
     const productToAdd = findInArray(menu, idProductToAdd);
 
-    console.log(productToAdd);
-
-    handleAddToBasket(productToAdd);
+    handleAddToCart(productToAdd);
   };
 
   // affichage

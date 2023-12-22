@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import CartCard from "./CartCard";
 import EmptyCart from "./EmptyCart";
+import { IMAGE_BY_DEFAULT } from "../../../../../enums/product";
 
 export default function CartProducts({ cart, isCartEmpty }) {
   return (
@@ -11,7 +12,15 @@ export default function CartProducts({ cart, isCartEmpty }) {
         <EmptyCart />
       ) : (
         cart.map((cartProduct) => (
-          <CartCard key={cartProduct.id} {...cartProduct} />
+          <CartCard
+            key={cartProduct.id}
+            {...cartProduct}
+            imageSource={
+              cartProduct.imageSource
+                ? cartProduct.imageSource
+                : IMAGE_BY_DEFAULT
+            }
+          />
         ))
       )}
     </CartProductsStyled>
