@@ -22,7 +22,8 @@ export const AdminContextProvider = ({ children }) => {
     handleEditProduct,
     resetMenu,
   } = useHandleMenu();
-  const { cart, handleAddToCart } = useHandleCart();
+  const { cart, handleAddToCart, handleDeleteProductFromCart, resetCart } =
+    useHandleCart();
 
   return (
     <AdminContext.Provider
@@ -46,6 +47,8 @@ export const AdminContextProvider = ({ children }) => {
         resetMenu,
         cart,
         handleAddToCart,
+        handleDeleteProductFromCart,
+        resetCart,
       }}
     >
       {children}

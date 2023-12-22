@@ -4,7 +4,13 @@ import { theme } from "../../../../../theme";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { formatPrice } from "../../../../../utils/maths";
 
-export default function CartCard({ imageSource, title, price, quantity }) {
+export default function CartCard({
+  imageSource,
+  title,
+  price,
+  quantity,
+  onDelete,
+}) {
   return (
     <CartCardStyled>
       <img src={imageSource} alt={title} />
@@ -15,7 +21,7 @@ export default function CartCard({ imageSource, title, price, quantity }) {
         </div>
         <div className="quantity">
           <span className="quantity-label">x {quantity}</span>
-          <RiDeleteBin2Line className="icon" />
+          <RiDeleteBin2Line className="icon" onClick={onDelete} />
         </div>
       </div>
     </CartCardStyled>

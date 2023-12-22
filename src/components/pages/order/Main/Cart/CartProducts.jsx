@@ -4,8 +4,11 @@ import { theme } from "../../../../../theme";
 import CartCard from "./CartCard";
 import EmptyCart from "./EmptyCart";
 import { IMAGE_BY_DEFAULT } from "../../../../../enums/product";
+import { useContext } from "react";
+import { AdminContext } from "../../../../../context/AdminContext";
 
 export default function CartProducts({ cart, isCartEmpty }) {
+  const { handleDeleteProductFromCart } = useContext(AdminContext);
   return (
     <CartProductsStyled>
       {isCartEmpty ? (
@@ -20,6 +23,7 @@ export default function CartProducts({ cart, isCartEmpty }) {
                 ? cartProduct.imageSource
                 : IMAGE_BY_DEFAULT
             }
+            onDelete={() => handleDeleteProductFromCart(cartProduct.id)}
           />
         ))
       )}
@@ -30,10 +34,9 @@ export default function CartProducts({ cart, isCartEmpty }) {
 const CartProductsStyled = styled.div`
   flex: 1;
   background-color: ${theme.colors.white};
-  border-right: 3px solid ${theme.colors.quaternary};
   border-top-right-radius: ${theme.borderRadius.round};
   border-bottom-right-radius: ${theme.borderRadius.round};
-  padding: 12px 12px 80px 12px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 12px;
