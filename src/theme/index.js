@@ -56,7 +56,7 @@ const fonts = {
 };
 const gridUnit = 8;
 const borderRadius = {
-  subtle: 1,
+  subtle: "3px",
   round: "5px",
   extraRound: "15px",
   circle: "50%",
