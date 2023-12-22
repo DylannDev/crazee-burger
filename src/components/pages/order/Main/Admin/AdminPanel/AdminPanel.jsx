@@ -20,7 +20,7 @@ export default function AdminPanel({ currentTabSelected }) {
 
 const AdminPanelStyled = styled.div`
   border-top: 3px solid ${theme.colors.quaternary};
-  background: ${theme.colors.white};
+  background-color: ${theme.colors.white};
   box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.1);

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { MenuData } from "../MenuData/MenuData";
-import { createCopy } from "../utils/array";
+import { createCopy, deleteProduct } from "../utils/array";
 
 export const useHandleMenu = () => {
-  const [menu, setMenu] = useState(MenuData);
+  const [menu, setMenu] = useState(MenuData.FULL);
 
   // Comportements
   const handleAddProduct = (newProduct) => {
@@ -17,13 +17,8 @@ export const useHandleMenu = () => {
     setMenu(newMenu);
   };
 
-  const handleDeleteProduct = (ProductIdToDelete) => {
-    const menuCopy = createCopy(menu);
-
-    const newMenu = menuCopy.filter(
-      (product) => product.id !== ProductIdToDelete
-    );
-
+  const handleDeleteProduct = (productIdToDelete) => {
+    const newMenu = deleteProduct(menu, productIdToDelete);
     setMenu(newMenu);
   };
 
@@ -43,7 +38,7 @@ export const useHandleMenu = () => {
   };
 
   const resetMenu = () => {
-    setMenu(MenuData);
+    setMenu(MenuData.FULL);
   };
 
   return {

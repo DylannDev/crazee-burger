@@ -2,13 +2,14 @@
 import { createContext, useRef, useState } from "react";
 import { EMPTY_PRODUCT } from "../enums/product";
 import { useHandleMenu } from "../hooks/useHandleMenu";
+import { useHandleCart } from "../hooks/useHandleCart";
 
 export const AdminContext = createContext({});
 
 export const AdminContextProvider = ({ children }) => {
   // States
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
@@ -21,6 +22,14 @@ export const AdminContextProvider = ({ children }) => {
     handleEditProduct,
     resetMenu,
   } = useHandleMenu();
+  const {
+    cart,
+    handleAddToCart,
+    handleDeleteProductFromCart,
+    resetCart,
+    incrementProductAlreadyInCart,
+    decrementProductAlreadyInCart,
+  } = useHandleCart();
 
   return (
     <AdminContext.Provider
@@ -42,6 +51,12 @@ export const AdminContextProvider = ({ children }) => {
         handleDeleteProduct,
         handleEditProduct,
         resetMenu,
+        cart,
+        handleAddToCart,
+        handleDeleteProductFromCart,
+        resetCart,
+        incrementProductAlreadyInCart,
+        decrementProductAlreadyInCart,
       }}
     >
       {children}

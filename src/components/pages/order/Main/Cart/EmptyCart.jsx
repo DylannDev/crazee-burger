@@ -1,20 +1,19 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
-export default function BasketBody() {
+export default function EmptyCart() {
   return (
-    <BasketBodyStyled>
+    <EmptyCartStyled>
       <span>Votre panier est vide.</span>
-    </BasketBodyStyled>
+    </EmptyCartStyled>
   );
 }
 
-const BasketBodyStyled = styled.div`
-  flex: 1;
-  background-color: ${theme.colors.white};
+const EmptyCartStyled = styled.div`
   font-size: ${theme.fonts.size.P0};
   font-weight: ${theme.fonts.weights.bold};
   text-transform: uppercase;
   display: grid;
   place-content: center;
+  height: 100%;
 `;

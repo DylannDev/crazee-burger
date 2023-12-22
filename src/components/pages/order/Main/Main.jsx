@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import Basket from "./Basket/Basket";
+import Cart from "./Cart/Cart";
 import MainRightSide from "./MainRightSide";
 
 export default function Main() {
   return (
     <MainStyled>
-      <Basket />
+      <Cart />
       <MainRightSide />
     </MainStyled>
   );

@@ -2,16 +2,16 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
-export default function Header({ amountToPay }) {
+export default function Total({ amountToPay }) {
   return (
-    <HeaderStyled>
+    <TotalStyled>
       <span>Total</span>
       <span>{amountToPay}</span>
-    </HeaderStyled>
+    </TotalStyled>
   );
 }
 
-const HeaderStyled = styled.div`
+const TotalStyled = styled.div`
   height: 70px;
   background-color: ${theme.colors.quaternary};
   padding: 12px 16px;
