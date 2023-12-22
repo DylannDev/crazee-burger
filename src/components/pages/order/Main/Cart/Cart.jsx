@@ -16,7 +16,7 @@ export default function Cart() {
     <CartStyled>
       <Total amountToPay={formatPrice(0)} />
       <CartProducts cart={cart} isCartEmpty={isCartEmpty} />
-      <Footer />
+      <Footer isCartEmpty={isCartEmpty} />
     </CartStyled>
   );
 }
@@ -26,6 +26,7 @@ const CartStyled = styled.div`
   flex-direction: column;
   color: ${theme.colors.secondary};
   background-color: ${theme.colors.quaternary};
+  border-right: 3px solid ${theme.colors.quaternary};
   position: relative;
   overflow: hidden;
 `;
