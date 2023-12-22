@@ -84,7 +84,7 @@ const CartCardStyled = styled.div`
       flex-direction: column;
       align-items: flex-end;
       gap: 5px;
-      width: 33%;
+      width: 45px;
 
       .quantity-buttons {
         display: flex;
