@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MenuData } from "../MenuData/MenuData";
-import { createCopy } from "../utils/array";
+import { createCopy, deleteProduct } from "../utils/array";
 
 export const useHandleMenu = () => {
   const [menu, setMenu] = useState(MenuData.FULL);
@@ -18,12 +18,7 @@ export const useHandleMenu = () => {
   };
 
   const handleDeleteProduct = (productIdToDelete) => {
-    const menuCopy = createCopy(menu);
-
-    const newMenu = menuCopy.filter(
-      (product) => product.id !== productIdToDelete
-    );
-
+    const newMenu = deleteProduct(menu, productIdToDelete);
     setMenu(newMenu);
   };
 

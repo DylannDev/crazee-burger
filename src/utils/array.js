@@ -9,3 +9,7 @@ export const findInArray = (array, id) => {
 export const getIndex = (array, id) => {
   return array.findIndex((arrayItem) => arrayItem.id === id);
 };
+
+export const deleteProduct = (array, id) => {
+  return array.filter((arrayItem) => arrayItem.id !== id);
+};

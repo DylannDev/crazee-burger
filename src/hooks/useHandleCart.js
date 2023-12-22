@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { MenuData } from "../MenuData/MenuData";
-import { createCopy, findInArray, getIndex } from "../utils/array";
+import {
+  createCopy,
+  deleteProduct,
+  findInArray,
+  getIndex,
+} from "../utils/array";
 
 export const useHandleCart = () => {
   const [cart, setCart] = useState(MenuData.EMPTY);
@@ -47,12 +52,7 @@ export const useHandleCart = () => {
   };
 
   const handleDeleteProductFromCart = (productIdToDelete) => {
-    const cartCopy = createCopy(cart);
-
-    const updatedCart = cartCopy.filter(
-      (product) => product.id !== productIdToDelete
-    );
-
+    const updatedCart = deleteProduct(cart, productIdToDelete);
     setCart(updatedCart);
   };
 
