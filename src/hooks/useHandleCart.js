@@ -2,7 +2,11 @@ import { useState } from "react";
 import { MenuData } from "../MenuData/MenuData";
 
 export const useHandleCart = () => {
-  const [cart, setCart] = useState(MenuData);
+  const [cart, setCart] = useState(MenuData.EMPTY);
 
-  return { cart, setCart };
+  const handleAddToBasket = (productToAdd) => {
+    //
+  };
+
+  return { cart, handleAddToBasket };
 };

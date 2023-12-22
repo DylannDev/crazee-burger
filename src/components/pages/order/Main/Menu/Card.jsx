@@ -17,6 +17,7 @@ export default function Card({
   onClick,
   isHoverabaleAdmin,
   isSelected,
+  onAdd,
 }) {
   return (
     <CardStyled
@@ -52,7 +53,7 @@ export default function Card({
             <Button
               className="button-menu-page"
               label={"Ajouter"}
-              onClick={(e) => e.stopPropagation()}
+              onClick={onAdd}
             />
           </div>
         </div>

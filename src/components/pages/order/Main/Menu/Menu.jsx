@@ -6,6 +6,7 @@ import EmptyMenuClient from "./EmptyMenuClient";
 import Card from "./Card";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT } from "../../../../../enums/product";
+import { findInArray } from "../../../../../utils/array";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.svg";
 
 export default function Menu() {
@@ -19,6 +20,7 @@ export default function Menu() {
     menu,
     handleDeleteProduct,
     resetMenu,
+    handleAddToBasket,
   } = useContext(AdminContext);
 
   // comportements
@@ -27,9 +29,9 @@ export default function Menu() {
 
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
-    const productClickedOn = menu.find(
-      (product) => product.id === idCardClicked
-    );
+
+    const productClickedOn = findInArray(menu, idCardClicked);
+
     await setSelectedProduct(productClickedOn);
     titleEditRef.current.focus();
   };
@@ -43,6 +45,15 @@ export default function Menu() {
       setSelectedProduct(EMPTY_PRODUCT);
 
     titleEditRef.current.focus();
+  };
+
+  const handleAddButton = (event, idProductToAdd) => {
+    event.stopPropagation();
+    const productToAdd = findInArray(menu, idProductToAdd);
+
+    console.log(productToAdd);
+
+    handleAddToBasket(productToAdd);
   };
 
   // affichage
@@ -70,6 +81,7 @@ export default function Menu() {
             onClick={() => handleClickOnProduct(id)}
             isHoverabaleAdmin={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
+            onAdd={(event) => handleAddButton(event, id)}
           />
         )
       )}

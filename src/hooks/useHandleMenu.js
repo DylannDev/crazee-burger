@@ -3,7 +3,7 @@ import { MenuData } from "../MenuData/MenuData";
 import { createCopy } from "../utils/array";
 
 export const useHandleMenu = () => {
-  const [menu, setMenu] = useState(MenuData);
+  const [menu, setMenu] = useState(MenuData.FULL);
 
   // Comportements
   const handleAddProduct = (newProduct) => {
@@ -43,7 +43,7 @@ export const useHandleMenu = () => {
   };
 
   const resetMenu = () => {
-    setMenu(MenuData);
+    setMenu(MenuData.FULL);
   };
 
   return {
