@@ -12,9 +12,14 @@ export default function Cart() {
 
   const isCartEmpty = cart.length === 0;
 
+  const totalToPay = cart.reduce((total, cartProduct) => {
+    const totalForOneProduct = cartProduct.price * cartProduct.quantity;
+    return total + totalForOneProduct;
+  }, 0);
+
   return (
     <CartStyled>
-      <Total amountToPay={formatPrice(0)} />
+      <Total amountToPay={formatPrice(totalToPay)} />
       <CartProducts cart={cart} isCartEmpty={isCartEmpty} />
       <Footer isCartEmpty={isCartEmpty} />
     </CartStyled>
