@@ -6,7 +6,7 @@ import EmptyMenuClient from "./EmptyMenuClient";
 import Card from "./Card";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
-import { findInArray } from "../../../../../utils/array";
+import { findObjectById } from "../../../../../utils/array";
 
 export default function Menu() {
   const {
@@ -30,7 +30,7 @@ export default function Menu() {
     await setIsCollapsed(false);
     await setCurrentTabSelected("edit");
 
-    const productClickedOn = findInArray(menu, idCardClicked);
+    const productClickedOn = findObjectById(menu, idCardClicked);
 
     await setSelectedProduct(productClickedOn);
     titleEditRef.current.focus();
@@ -50,7 +50,7 @@ export default function Menu() {
 
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation();
-    const productToAdd = findInArray(menu, idProductToAdd);
+    const productToAdd = findObjectById(menu, idProductToAdd);
 
     handleAddToCart(productToAdd);
   };

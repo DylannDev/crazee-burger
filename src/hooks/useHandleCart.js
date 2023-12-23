@@ -3,7 +3,7 @@ import { MenuData } from "../MenuData/MenuData";
 import {
   createCopy,
   deleteProduct,
-  findInArray,
+  findObjectById,
   getIndex,
 } from "../utils/array";
 
@@ -12,7 +12,7 @@ export const useHandleCart = () => {
 
   const handleAddToCart = (productToAdd) => {
     const cartCopy = createCopy(cart);
-    const isProductAlreadyInCart = findInArray(cartCopy, productToAdd.id);
+    const isProductAlreadyInCart = findObjectById(cartCopy, productToAdd.id);
 
     // 1er cas : le produit est dans le cart
     if (!isProductAlreadyInCart) {
