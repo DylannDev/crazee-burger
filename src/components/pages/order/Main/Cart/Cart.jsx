@@ -3,26 +3,18 @@ import { theme } from "../../../../../theme";
 import Total from "./Total";
 import CartProducts from "./CartProducts";
 import Footer from "./Footer";
-import { formatPrice } from "../../../../../utils/maths";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 import EmptyCart from "./EmptyCart";
-import { findObjectById } from "../../../../../utils/array";
 
 export default function Cart() {
-  const { cart, menu } = useContext(AdminContext);
+  const { cart } = useContext(AdminContext);
 
   const isCartEmpty = cart.length === 0;
 
-  const totalToPay = cart.reduce((total, cartProduct) => {
-    const menuProduct = findObjectById(menu, cartProduct.id);
-    const totalForOneProduct = menuProduct.price * cartProduct.quantity;
-    return total + totalForOneProduct;
-  }, 0);
-
   return (
     <CartStyled>
-      <Total amountToPay={formatPrice(totalToPay)} />
+      <Total />
       {isCartEmpty ? <EmptyCart /> : <CartProducts />}
       <Footer isCartEmpty={isCartEmpty} />
     </CartStyled>

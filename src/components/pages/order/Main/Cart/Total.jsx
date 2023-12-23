@@ -1,12 +1,18 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import { calculateTotalToPay, formatPrice } from "../../../../../utils/maths";
+import { AdminContext } from "../../../../../context/AdminContext";
+import { useContext } from "react";
 
-export default function Total({ amountToPay }) {
+export default function Total() {
+  const { cart, menu } = useContext(AdminContext);
+  const totalToPay = calculateTotalToPay(cart, menu);
+
   return (
     <TotalStyled>
       <span>Total</span>
-      <span>{amountToPay}</span>
+      <span>{formatPrice(totalToPay)}</span>
     </TotalStyled>
   );
 }
