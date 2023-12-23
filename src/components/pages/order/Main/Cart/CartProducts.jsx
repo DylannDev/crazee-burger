@@ -2,33 +2,52 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import CartCard from "./CartCard";
-import EmptyCart from "./EmptyCart";
 import { IMAGE_BY_DEFAULT } from "../../../../../enums/product";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
+import { findObjectById } from "../../../../../utils/array";
+import { checkIfProductIsClicked } from "../Menu/helper";
 
-export default function CartProducts({ cart, isCartEmpty }) {
+export default function CartProducts() {
   const {
+    cart,
+    isModeAdmin,
+    menu,
     handleDeleteProductFromCart,
     incrementProductAlreadyInCart,
     decrementProductAlreadyInCart,
+    handleSelectedProduct,
+    selectedProduct,
   } = useContext(AdminContext);
+
+  const handleOnDelete = (event, id) => {
+    event.stopPropagation();
+    handleDeleteProductFromCart(id);
+  };
 
   return (
     <CartProductsStyled>
-      {isCartEmpty ? (
-        <EmptyCart />
-      ) : (
-        cart.map((cartProduct) => (
+      {cart.map((cartProduct) => {
+        const menuProduct = findObjectById(menu, cartProduct.id);
+        return (
           <CartCard
             key={cartProduct.id}
-            {...cartProduct}
+            {...menuProduct}
+            quantity={cartProduct.quantity}
             imageSource={
-              cartProduct.imageSource
-                ? cartProduct.imageSource
+              menuProduct.imageSource
+                ? menuProduct.imageSource
                 : IMAGE_BY_DEFAULT
             }
-            onDelete={() => handleDeleteProductFromCart(cartProduct.id)}
+            onDelete={(event) => handleOnDelete(event, cartProduct.id)}
+            isClickable={isModeAdmin}
+            isSelected={checkIfProductIsClicked(
+              cartProduct.id,
+              selectedProduct.id
+            )}
+            onClick={
+              isModeAdmin ? () => handleSelectedProduct(cartProduct.id) : null
+            }
             incrementProduct={() =>
               incrementProductAlreadyInCart(cart, cartProduct.id)
             }
@@ -36,8 +55,8 @@ export default function CartProducts({ cart, isCartEmpty }) {
               decrementProductAlreadyInCart(cart, cartProduct.id)
             }
           />
-        ))
-      )}
+        );
+      })}
     </CartProductsStyled>
   );
 }
