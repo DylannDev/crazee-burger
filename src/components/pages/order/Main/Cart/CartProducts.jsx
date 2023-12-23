@@ -5,9 +5,13 @@ import CartCard from "./CartCard";
 import { IMAGE_BY_DEFAULT } from "../../../../../enums/product";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
+import { findObjectById } from "../../../../../utils/array";
 
-export default function CartProducts({ cart, isModeAdmin }) {
+export default function CartProducts() {
   const {
+    cart,
+    isModeAdmin,
+    menu,
     handleDeleteProductFromCart,
     incrementProductAlreadyInCart,
     decrementProductAlreadyInCart,
@@ -15,23 +19,29 @@ export default function CartProducts({ cart, isModeAdmin }) {
 
   return (
     <CartProductsStyled>
-      {cart.map((cartProduct) => (
-        <CartCard
-          key={cartProduct.id}
-          {...cartProduct}
-          imageSource={
-            cartProduct.imageSource ? cartProduct.imageSource : IMAGE_BY_DEFAULT
-          }
-          onDelete={() => handleDeleteProductFromCart(cartProduct.id)}
-          isClickable={isModeAdmin}
-          incrementProduct={() =>
-            incrementProductAlreadyInCart(cart, cartProduct.id)
-          }
-          decrementProduct={() =>
-            decrementProductAlreadyInCart(cart, cartProduct.id)
-          }
-        />
-      ))}
+      {cart.map((cartProduct) => {
+        const menuProduct = findObjectById(menu, cartProduct.id);
+        return (
+          <CartCard
+            key={cartProduct.id}
+            {...menuProduct}
+            quantity={cartProduct.quantity}
+            imageSource={
+              menuProduct.imageSource
+                ? menuProduct.imageSource
+                : IMAGE_BY_DEFAULT
+            }
+            onDelete={() => handleDeleteProductFromCart(cartProduct.id)}
+            isClickable={isModeAdmin}
+            incrementProduct={() =>
+              incrementProductAlreadyInCart(cart, cartProduct.id)
+            }
+            decrementProduct={() =>
+              decrementProductAlreadyInCart(cart, cartProduct.id)
+            }
+          />
+        );
+      })}
     </CartProductsStyled>
   );
 }

@@ -7,25 +7,23 @@ import { formatPrice } from "../../../../../utils/maths";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 import EmptyCart from "./EmptyCart";
+import { findObjectById } from "../../../../../utils/array";
 
 export default function Cart() {
-  const { cart, isModeAdmin } = useContext(AdminContext);
+  const { cart, menu } = useContext(AdminContext);
 
   const isCartEmpty = cart.length === 0;
 
   const totalToPay = cart.reduce((total, cartProduct) => {
-    const totalForOneProduct = cartProduct.price * cartProduct.quantity;
+    const menuProduct = findObjectById(menu, cartProduct.id);
+    const totalForOneProduct = menuProduct.price * cartProduct.quantity;
     return total + totalForOneProduct;
   }, 0);
 
   return (
     <CartStyled>
       <Total amountToPay={formatPrice(totalToPay)} />
-      {isCartEmpty ? (
-        <EmptyCart />
-      ) : (
-        <CartProducts cart={cart} isModeAdmin={isModeAdmin} />
-      )}
+      {isCartEmpty ? <EmptyCart /> : <CartProducts />}
       <Footer isCartEmpty={isCartEmpty} />
     </CartStyled>
   );
