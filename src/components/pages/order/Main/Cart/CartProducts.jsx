@@ -6,6 +6,7 @@ import { IMAGE_BY_DEFAULT } from "../../../../../enums/product";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 import { findObjectById } from "../../../../../utils/array";
+import { checkIfProductIsClicked } from "../Menu/helper";
 
 export default function CartProducts() {
   const {
@@ -15,7 +16,14 @@ export default function CartProducts() {
     handleDeleteProductFromCart,
     incrementProductAlreadyInCart,
     decrementProductAlreadyInCart,
+    handleSelectedProduct,
+    selectedProduct,
   } = useContext(AdminContext);
+
+  const handleOnDelete = (event, id) => {
+    event.stopPropagation();
+    handleDeleteProductFromCart(id);
+  };
 
   return (
     <CartProductsStyled>
@@ -31,8 +39,15 @@ export default function CartProducts() {
                 ? menuProduct.imageSource
                 : IMAGE_BY_DEFAULT
             }
-            onDelete={() => handleDeleteProductFromCart(cartProduct.id)}
+            onDelete={(event) => handleOnDelete(event, cartProduct.id)}
             isClickable={isModeAdmin}
+            isSelected={checkIfProductIsClicked(
+              cartProduct.id,
+              selectedProduct.id
+            )}
+            onClick={
+              isModeAdmin ? () => handleSelectedProduct(cartProduct.id) : null
+            }
             incrementProduct={() =>
               incrementProductAlreadyInCart(cart, cartProduct.id)
             }

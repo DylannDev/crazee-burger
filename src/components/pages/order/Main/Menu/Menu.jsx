@@ -6,15 +6,13 @@ import EmptyMenuClient from "./EmptyMenuClient";
 import Card from "./Card";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
-import { findObjectById } from "../../../../../utils/array";
 
 export default function Menu() {
   const {
     isModeAdmin,
     selectedProduct,
     setSelectedProduct,
-    setIsCollapsed,
-    setCurrentTabSelected,
+    handleSelectedProduct,
     titleEditRef,
     menu,
     handleDeleteProduct,
@@ -24,18 +22,6 @@ export default function Menu() {
   } = useContext(AdminContext);
 
   // comportements
-  const handleClickOnProduct = async (idCardClicked) => {
-    if (!isModeAdmin) return;
-
-    await setIsCollapsed(false);
-    await setCurrentTabSelected("edit");
-
-    const productClickedOn = findObjectById(menu, idCardClicked);
-
-    await setSelectedProduct(productClickedOn);
-    titleEditRef.current.focus();
-  };
-
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation();
 
@@ -75,7 +61,7 @@ export default function Menu() {
             price={price}
             showDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
-            onClick={() => handleClickOnProduct(id)}
+            onClick={isModeAdmin ? () => handleSelectedProduct(id) : null}
             isHoverabaleAdmin={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, selectedProduct.id)}
             onAdd={(event) => handleAddButton(event, id)}

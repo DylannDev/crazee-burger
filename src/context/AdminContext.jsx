@@ -3,6 +3,7 @@ import { createContext, useRef, useState } from "react";
 import { EMPTY_PRODUCT } from "../enums/product";
 import { useHandleMenu } from "../hooks/useHandleMenu";
 import { useHandleCart } from "../hooks/useHandleCart";
+import { findObjectById } from "../utils/array";
 
 export const AdminContext = createContext({});
 
@@ -31,6 +32,16 @@ export const AdminContextProvider = ({ children }) => {
     decrementProductAlreadyInCart,
   } = useHandleCart();
 
+  const handleSelectedProduct = async (idCardClicked) => {
+    await setIsCollapsed(false);
+    await setCurrentTabSelected("edit");
+
+    const productClickedOn = findObjectById(menu, idCardClicked);
+
+    await setSelectedProduct(productClickedOn);
+    titleEditRef.current.focus();
+  };
+
   return (
     <AdminContext.Provider
       value={{
@@ -42,6 +53,7 @@ export const AdminContextProvider = ({ children }) => {
         setCurrentTabSelected,
         selectedProduct,
         setSelectedProduct,
+        handleSelectedProduct,
         titleEditRef,
         newProduct,
         setNewProduct,

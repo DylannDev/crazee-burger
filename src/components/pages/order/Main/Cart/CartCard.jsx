@@ -12,11 +12,17 @@ export default function CartCard({
   quantity,
   onDelete,
   isClickable,
+  onClick,
+  isSelected,
   incrementProduct,
   decrementProduct,
 }) {
   return (
-    <CartCardStyled isClickable={isClickable}>
+    <CartCardStyled
+      isClickable={isClickable}
+      onClick={onClick}
+      isSelected={isSelected}
+    >
       <img src={imageSource} alt={title} />
       <div className="infos">
         <div className="product-infos">
@@ -40,20 +46,13 @@ export default function CartCard({
 
 const CartCardStyled = styled.div`
   ${({ isClickable }) => isClickable && clickableStyle};
+  ${({ isClickable, isSelected }) =>
+    isSelected && isClickable ? selectedStyle : normalStyle}
 
   background-color: ${theme.colors.white};
   border-radius: ${theme.borderRadius.round};
   font-size: ${theme.fonts.size.P0};
   display: flex;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
-
-  &:hover {
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
-  }
 
   img {
     border-top-left-radius: ${theme.borderRadius.round};
@@ -130,10 +129,26 @@ const CartCardStyled = styled.div`
   }
 `;
 
+const normalStyle = css`
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  &:hover {
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+  }
+`;
+
 const clickableStyle = css`
   cursor: pointer;
 
   &:hover {
     transform: scale(1.01);
   }
+`;
+
+const selectedStyle = css`
+  transform: scale(1.01);
+  box-shadow: 0px 0px 0px 2px ${theme.colors.secondary};
 `;
