@@ -10,28 +10,23 @@ import {
 export const useHandleCart = () => {
   const [cart, setCart] = useState(MenuData.EMPTY);
 
-  const handleAddToCart = (productToAdd) => {
+  const handleAddToCart = (idProductToAdd) => {
     const cartCopy = createCopy(cart);
-    const isProductAlreadyInCart = findObjectById(cartCopy, productToAdd.id);
+    const productAlreadyInCart = findObjectById(cart, idProductToAdd);
 
-    // 1er cas : le produit est dans le cart
-    if (!isProductAlreadyInCart) {
-      addNewProductToCart(productToAdd, cartCopy);
+    if (productAlreadyInCart) {
+      incrementProductAlreadyInCart(cart, idProductToAdd);
       return;
     }
 
-    // 2ème cas : le produit n'est pas dans le cart
-
-    incrementProductAlreadyInCart(cart, productToAdd.id);
+    createNewCartProduct(idProductToAdd, cartCopy);
   };
 
-  const addNewProductToCart = (productToAdd, cartCopy) => {
-    const newCartProduct = {
-      ...productToAdd,
-      quantity: 1,
-    };
-    const cartUpdated = [newCartProduct, ...cartCopy];
-    setCart(cartUpdated);
+  const createNewCartProduct = (idProductToAdd, cartCopy) => {
+    const newCartProduct = { id: idProductToAdd, quantity: 1 };
+    const updatedCart = [newCartProduct, ...cartCopy];
+
+    setCart(updatedCart);
   };
 
   const incrementProductAlreadyInCart = (array, id) => {
