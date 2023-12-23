@@ -6,9 +6,10 @@ import Footer from "./Footer";
 import { formatPrice } from "../../../../../utils/maths";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
+import EmptyCart from "./EmptyCart";
 
 export default function Cart() {
-  const { cart } = useContext(AdminContext);
+  const { cart, isModeAdmin } = useContext(AdminContext);
 
   const isCartEmpty = cart.length === 0;
 
@@ -20,7 +21,11 @@ export default function Cart() {
   return (
     <CartStyled>
       <Total amountToPay={formatPrice(totalToPay)} />
-      <CartProducts cart={cart} isCartEmpty={isCartEmpty} />
+      {isCartEmpty ? (
+        <EmptyCart />
+      ) : (
+        <CartProducts cart={cart} isModeAdmin={isModeAdmin} />
+      )}
       <Footer isCartEmpty={isCartEmpty} />
     </CartStyled>
   );

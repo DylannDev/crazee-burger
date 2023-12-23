@@ -10,6 +10,9 @@ export default function EmptyCart() {
 }
 
 const EmptyCartStyled = styled.div`
+  background-color: ${theme.colors.white};
+  border-top-right-radius: ${theme.borderRadius.round};
+  border-bottom-right-radius: ${theme.borderRadius.round};
   font-size: ${theme.fonts.size.P0};
   font-weight: ${theme.fonts.weights.bold};
   text-transform: uppercase;

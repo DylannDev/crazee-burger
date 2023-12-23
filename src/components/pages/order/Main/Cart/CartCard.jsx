@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../../../../theme";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { formatPrice } from "../../../../../utils/maths";
@@ -11,11 +11,12 @@ export default function CartCard({
   price,
   quantity,
   onDelete,
+  isClickable,
   incrementProduct,
   decrementProduct,
 }) {
   return (
-    <CartCardStyled>
+    <CartCardStyled isClickable={isClickable}>
       <img src={imageSource} alt={title} />
       <div className="infos">
         <div className="product-infos">
@@ -38,6 +39,8 @@ export default function CartCard({
 }
 
 const CartCardStyled = styled.div`
+  ${({ isClickable }) => isClickable && clickableStyle};
+
   background-color: ${theme.colors.white};
   border-radius: ${theme.borderRadius.round};
   font-size: ${theme.fonts.size.P0};
@@ -47,12 +50,9 @@ const CartCardStyled = styled.div`
   -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.4);
-    -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.4);
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
   }
 
   img {
@@ -127,5 +127,13 @@ const CartCardStyled = styled.div`
         color: ${theme.colors.redSecondary};
       }
     }
+  }
+`;
+
+const clickableStyle = css`
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.01);
   }
 `;

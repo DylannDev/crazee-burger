@@ -2,12 +2,11 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import CartCard from "./CartCard";
-import EmptyCart from "./EmptyCart";
 import { IMAGE_BY_DEFAULT } from "../../../../../enums/product";
 import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 
-export default function CartProducts({ cart, isCartEmpty }) {
+export default function CartProducts({ cart, isModeAdmin }) {
   const {
     handleDeleteProductFromCart,
     incrementProductAlreadyInCart,
@@ -16,28 +15,23 @@ export default function CartProducts({ cart, isCartEmpty }) {
 
   return (
     <CartProductsStyled>
-      {isCartEmpty ? (
-        <EmptyCart />
-      ) : (
-        cart.map((cartProduct) => (
-          <CartCard
-            key={cartProduct.id}
-            {...cartProduct}
-            imageSource={
-              cartProduct.imageSource
-                ? cartProduct.imageSource
-                : IMAGE_BY_DEFAULT
-            }
-            onDelete={() => handleDeleteProductFromCart(cartProduct.id)}
-            incrementProduct={() =>
-              incrementProductAlreadyInCart(cart, cartProduct.id)
-            }
-            decrementProduct={() =>
-              decrementProductAlreadyInCart(cart, cartProduct.id)
-            }
-          />
-        ))
-      )}
+      {cart.map((cartProduct) => (
+        <CartCard
+          key={cartProduct.id}
+          {...cartProduct}
+          imageSource={
+            cartProduct.imageSource ? cartProduct.imageSource : IMAGE_BY_DEFAULT
+          }
+          onDelete={() => handleDeleteProductFromCart(cartProduct.id)}
+          isClickable={isModeAdmin}
+          incrementProduct={() =>
+            incrementProductAlreadyInCart(cart, cartProduct.id)
+          }
+          decrementProduct={() =>
+            decrementProductAlreadyInCart(cart, cartProduct.id)
+          }
+        />
+      ))}
     </CartProductsStyled>
   );
 }
