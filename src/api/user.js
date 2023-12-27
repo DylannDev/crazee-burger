@@ -18,8 +18,19 @@ export const createUser = (userId) => {
 
   const data = {
     username: userId,
-    menu: MenuData.FULL,
+    menu: MenuData.SMALL,
   };
 
   setDoc(docRef, data);
+};
+
+export const authenticateUser = async (userId) => {
+  // 1 - récupérer un user existant
+  const existingUser = await getUser(userId);
+
+  //    2 - créer un user
+  if (!existingUser) {
+    createUser(userId);
+  }
+  return existingUser;
 };

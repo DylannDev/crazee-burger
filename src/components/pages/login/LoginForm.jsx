@@ -6,21 +6,25 @@ import { IoChevronForward } from "react-icons/io5";
 import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
 import { theme } from "../../../theme";
+import { authenticateUser } from "../../../api/user";
 
 export default function LoginForm() {
   // states
-  const [input, setInput] = useState("");
+  const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
   // comportements
   const handleSubmit = (e) => {
     e.preventDefault();
-    setInput("");
-    navigate(`/order/${input}`);
+
+    authenticateUser(username);
+
+    setUsername("");
+    navigate(`/order/${username}`);
   };
 
   const handleChange = (e) => {
-    setInput(e.target.value);
+    setUsername(e.target.value);
   };
 
   return (
@@ -33,7 +37,7 @@ export default function LoginForm() {
       <div className="input-button-container">
         <TextInput
           onChange={handleChange}
-          value={input}
+          value={username}
           Icon={<BsPersonCircle className="icon" />}
           placeholder={"Entrez votre prénom"}
           variant="large"

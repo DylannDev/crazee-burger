@@ -1,5 +1,43 @@
 const EMPTY = [];
 
+const SMALL = [
+  {
+    id: "1",
+    imageSource: "/images/4-fromage.jpg",
+    title: "4 Fromages",
+    price: 14.898,
+    description:
+      "Sauce tomate à l'origan ou crème fraîche légère, mozzarella, fromage de chèvre, emmental et Fourme d'Ambert AOP",
+    isVegetarian: true,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "2",
+    imageSource: "/images/chevre-miel.jpg",
+    title: "Chèvre Miel",
+    price: 12.8985,
+    description: "Crème fraîche légère, mozzarella, fromage de chèvre, miel",
+    isVegetarian: true,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+  {
+    id: "3",
+    imageSource: "/images/la-parmigiano.jpg",
+    title: "Parmigiano",
+    price: 11.897,
+    description:
+      "Sauce tomate à l'origan, mozzarella, tomates fraîches, parmigiano reggiano AOP",
+    isVegetarian: true,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  },
+];
+
 const FULL = [
   {
     id: "1",
@@ -147,5 +185,6 @@ const FULL = [
 
 export const MenuData = {
   EMPTY,
+  SMALL,
   FULL,
 };
