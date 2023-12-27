@@ -7,6 +7,7 @@ import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
 import { theme } from "../../../theme";
 import { authenticateUser } from "../../../api/user";
+import Welcome from "./Welcome";
 
 export default function LoginForm() {
   // states
@@ -29,11 +30,7 @@ export default function LoginForm() {
 
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <div className="text-container">
-        <h1>Bienvenue chez nous !</h1>
-        <hr />
-        <h2>Connectez-vous</h2>
-      </div>
+      <Welcome />
       <div className="input-button-container">
         <TextInput
           onChange={handleChange}
@@ -66,24 +63,6 @@ const LoginFormStyled = styled.form`
   padding: 40px ${theme.spacing.lg};
   margin: 0 auto;
   text-align: center;
-
-  .text-container {
-    width: 100%;
-
-    hr {
-      border: 1.5px solid ${theme.colors.primary};
-      margin-bottom: ${theme.gridUnit * 5}px;
-    }
-
-    h1 {
-      font-size: ${theme.fonts.size.P5};
-    }
-
-    h2 {
-      font-size: ${theme.fonts.size.P4};
-      margin: 0;
-    }
-  }
 
   .input-button-container {
     display: flex;
