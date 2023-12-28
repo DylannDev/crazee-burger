@@ -19,9 +19,10 @@ export const useHandleMenu = () => {
     syncBothMenus(username, newMenu);
   };
 
-  const handleDeleteProduct = (productIdToDelete) => {
+  const handleDeleteProduct = (productIdToDelete, username) => {
     const newMenu = deleteProduct(menu, productIdToDelete);
     setMenu(newMenu);
+    syncBothMenus(username, newMenu);
   };
 
   const handleEditProduct = (productToEdit) => {

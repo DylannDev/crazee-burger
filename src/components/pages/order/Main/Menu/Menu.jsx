@@ -9,6 +9,7 @@ import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
 
 export default function Menu() {
   const {
+    username,
     isModeAdmin,
     selectedProduct,
     setSelectedProduct,
@@ -25,7 +26,7 @@ export default function Menu() {
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation();
 
-    handleDeleteProduct(idProductToDelete);
+    handleDeleteProduct(idProductToDelete, username);
     handleDeleteProductFromCart(idProductToDelete);
 
     idProductToDelete === selectedProduct.id &&
