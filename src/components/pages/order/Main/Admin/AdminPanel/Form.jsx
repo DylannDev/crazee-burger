@@ -8,7 +8,7 @@ import { getInputTextsConfig } from "./getInputTextsConfig";
 import React from "react";
 
 const Form = React.forwardRef(
-  ({ product, onSubmit, onChange, children }, ref) => {
+  ({ product, onSubmit, onChange, children, onFocus, onBlur }, ref) => {
     const inputTexts = getInputTextsConfig(product);
 
     return (
@@ -20,14 +20,22 @@ const Form = React.forwardRef(
               key={input.id}
               {...input}
               onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
               ref={ref && input.name === "title" ? ref : null}
             />
           ))}
           <TextareaDescription
             value={product.description}
             onChange={onChange}
+            onFocus={onFocus}
+            onBlur={onBlur}
           />
-          <Checkbox isVegetarian={product.isVegetarian} onChange={onChange} />
+          <Checkbox
+            isVegetarian={product.isVegetarian}
+            onChange={onChange}
+            onBlur={onBlur}
+          />
         </div>
         <div className="submit">{children}</div>
       </FormStyled>
