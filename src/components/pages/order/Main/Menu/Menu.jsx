@@ -6,7 +6,7 @@ import EmptyMenuClient from "./EmptyMenuClient";
 import Card from "./Card";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
-import Loading from "./Loading";
+import Loader from "./Loader";
 
 export default function Menu() {
   const {
@@ -43,7 +43,7 @@ export default function Menu() {
 
   // affichage
   if (menu === undefined) {
-    return <Loading />;
+    return <Loader />;
   }
 
   if (menu.length === 0) {

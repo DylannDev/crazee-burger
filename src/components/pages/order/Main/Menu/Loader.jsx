@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
-export default function Loading() {
+export default function Loader() {
   return (
-    <LoadingStyled>
+    <LoaderStyled>
       <span>Chargement du menu...</span>
-    </LoadingStyled>
+    </LoaderStyled>
   );
 }
 
-const LoadingStyled = styled.div`
+const LoaderStyled = styled.div`
   display: grid;
   place-content: center;
 
