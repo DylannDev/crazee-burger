@@ -4,7 +4,7 @@ import { createCopy, deleteProduct } from "../utils/array";
 import { syncBothMenus } from "../api/menu";
 
 export const useHandleMenu = () => {
-  const [menu, setMenu] = useState(MenuData.FULL);
+  const [menu, setMenu] = useState();
 
   // Comportements
   const handleAddProduct = (newProduct, username) => {
@@ -40,8 +40,9 @@ export const useHandleMenu = () => {
     setMenu(menuCopy);
   };
 
-  const resetMenu = () => {
+  const resetMenu = (username) => {
     setMenu(MenuData.FULL);
+    syncBothMenus(username, MenuData.FULL);
   };
 
   return {
