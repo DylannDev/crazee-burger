@@ -1,10 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { createContext, useRef, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import { EMPTY_PRODUCT } from "../enums/product";
 import { useHandleMenu } from "../hooks/useHandleMenu";
 import { useHandleCart } from "../hooks/useHandleCart";
 import { findObjectById } from "../utils/array";
 import { useParams } from "react-router-dom";
+import { getMenu } from "../api/menu";
 
 export const AdminContext = createContext({});
 
@@ -33,6 +35,15 @@ export const AdminContextProvider = ({ children }) => {
     incrementProductAlreadyInCart,
     decrementProductAlreadyInCart,
   } = useHandleCart();
+
+  const initializeMenu = async () => {
+    const menuReceived = await getMenu(username);
+    setMenu(menuReceived);
+  };
+
+  useEffect(() => {
+    initializeMenu();
+  }, []);
 
   const handleSelectedProduct = async (idCardClicked) => {
     await setIsCollapsed(false);
