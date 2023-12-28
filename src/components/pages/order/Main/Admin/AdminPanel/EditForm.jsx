@@ -6,6 +6,7 @@ import Form from "./Form";
 
 export default function EditForm() {
   const {
+    username,
     selectedProduct,
     setSelectedProduct,
     titleEditRef,
@@ -22,7 +23,7 @@ export default function EditForm() {
     };
 
     setSelectedProduct(productToBeUpdated); // Update du formulaire
-    handleEditProduct(productToBeUpdated); // Update de la card
+    handleEditProduct(productToBeUpdated, username); // Update de la card
   };
 
   return selectedProduct === EMPTY_PRODUCT ? (
