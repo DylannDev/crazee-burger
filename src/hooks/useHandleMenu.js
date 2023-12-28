@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { MenuData } from "../MenuData/MenuData";
 import { createCopy, deleteProduct } from "../utils/array";
+import { syncBothMenus } from "../api/menu";
 
 export const useHandleMenu = () => {
   const [menu, setMenu] = useState(MenuData.FULL);
 
   // Comportements
-  const handleAddProduct = (newProduct) => {
+  const handleAddProduct = (newProduct, username) => {
     // 1 - copie du state
     const menuCopy = createCopy(menu);
 
@@ -15,6 +16,7 @@ export const useHandleMenu = () => {
 
     // 3 - Update du state
     setMenu(newMenu);
+    syncBothMenus(username, newMenu);
   };
 
   const handleDeleteProduct = (productIdToDelete) => {
