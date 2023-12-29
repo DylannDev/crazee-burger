@@ -12,12 +12,14 @@ export default function Cart() {
 
   const isCartEmpty = cart.length === 0;
 
-  if (menu === undefined) return <span>Chargement en cours...</span>;
-
   return (
     <CartStyled>
       <Total />
-      {isCartEmpty ? <EmptyCart /> : <CartProducts />}
+      {isCartEmpty ? (
+        <EmptyCart isLoading={menu === undefined} />
+      ) : (
+        <CartProducts />
+      )}
       <Footer isCartEmpty={isCartEmpty} />
     </CartStyled>
   );
