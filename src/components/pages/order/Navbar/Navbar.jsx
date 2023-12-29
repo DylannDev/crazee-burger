@@ -3,7 +3,7 @@ import Logo from "../../../reusable-ui/Logo";
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import NavbarRightSide from "./NavbarRightSide";
-import { refreshPage } from "../../../../utils/windows";
+import { refreshPage } from "../../../../utils/window";
 
 export default function Navbar() {
   return (
