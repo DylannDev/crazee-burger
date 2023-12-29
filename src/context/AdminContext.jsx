@@ -43,18 +43,20 @@ export const AdminContextProvider = ({ children }) => {
     setMenu(menuReceived);
   };
 
-  const initializeCart = async () => {
-    const cartReceived = await getLocalStorage(username);
-    console.log("cartReceived", cartReceived);
-    setCart(cartReceived);
+  const initializeCart = () => {
+    const cartReceived = getLocalStorage(username);
+    if (cartReceived) {
+      setCart(cartReceived);
+    }
+  };
+
+  const initializeUserSession = async () => {
+    await initializeMenu();
+    initializeCart();
   };
 
   useEffect(() => {
-    initializeMenu();
-  }, []);
-
-  useEffect(() => {
-    initializeCart();
+    initializeUserSession();
   }, []);
 
   const handleSelectedProduct = async (idCardClicked) => {
