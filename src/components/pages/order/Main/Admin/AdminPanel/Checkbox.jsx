@@ -3,7 +3,6 @@ import { theme } from "../../../../../../theme";
 
 /* eslint-disable react/prop-types */
 export default function Checkbox({ isVegetarian, onChange, onBlur }) {
-  console.log(isVegetarian);
   return (
     <CheckboxStyled>
       <input

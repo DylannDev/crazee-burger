@@ -20,7 +20,6 @@ export default function EditForm() {
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
-    console.log(name, "value", value, "checked", checked);
 
     const productToBeUpdated = {
       ...selectedProduct,
