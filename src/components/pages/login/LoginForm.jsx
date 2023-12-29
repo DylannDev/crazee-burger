@@ -15,10 +15,10 @@ export default function LoginForm() {
   const navigate = useNavigate();
 
   // comportements
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    authenticateUser(username);
+    await authenticateUser(username);
 
     setUsername("");
     navigate(`/order/${username}`);

@@ -18,7 +18,7 @@ export const createUser = (userId) => {
 
   const data = {
     username: userId,
-    menu: MenuData.SMALL,
+    menu: MenuData.FULL,
   };
 
   setDoc(docRef, data);
