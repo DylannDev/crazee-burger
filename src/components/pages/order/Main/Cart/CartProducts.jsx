@@ -10,6 +10,7 @@ import { checkIfProductIsClicked } from "../Menu/helper";
 
 export default function CartProducts() {
   const {
+    username,
     cart,
     isModeAdmin,
     menu,
@@ -20,9 +21,9 @@ export default function CartProducts() {
     selectedProduct,
   } = useContext(AdminContext);
 
-  const handleOnDelete = (event, id) => {
+  const handleOnDelete = (event, id, username) => {
     event.stopPropagation();
-    handleDeleteProductFromCart(id);
+    handleDeleteProductFromCart(id, username);
   };
 
   return (
@@ -39,7 +40,9 @@ export default function CartProducts() {
                 ? menuProduct.imageSource
                 : IMAGE_BY_DEFAULT
             }
-            onDelete={(event) => handleOnDelete(event, cartProduct.id)}
+            onDelete={(event) =>
+              handleOnDelete(event, cartProduct.id, username)
+            }
             isClickable={isModeAdmin}
             isSelected={checkIfProductIsClicked(
               cartProduct.id,
@@ -49,10 +52,10 @@ export default function CartProducts() {
               isModeAdmin ? () => handleSelectedProduct(cartProduct.id) : null
             }
             incrementProduct={() =>
-              incrementProductAlreadyInCart(cart, cartProduct.id)
+              incrementProductAlreadyInCart(cart, cartProduct.id, username)
             }
             decrementProduct={() =>
-              decrementProductAlreadyInCart(cart, cartProduct.id)
+              decrementProductAlreadyInCart(cart, cartProduct.id, username)
             }
           />
         );

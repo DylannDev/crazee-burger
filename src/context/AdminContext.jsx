@@ -1,9 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { createContext, useRef, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import { EMPTY_PRODUCT } from "../enums/product";
 import { useHandleMenu } from "../hooks/useHandleMenu";
 import { useHandleCart } from "../hooks/useHandleCart";
 import { findObjectById } from "../utils/array";
+import { useParams } from "react-router-dom";
+import { initializeUserSession } from "../components/pages/order/Main/helpers/initializeUserSession";
 
 export const AdminContext = createContext({});
 
@@ -15,6 +18,7 @@ export const AdminContextProvider = ({ children }) => {
   const [selectedProduct, setSelectedProduct] = useState(EMPTY_PRODUCT);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
+  const { username } = useParams();
   const {
     menu,
     setMenu,
@@ -25,12 +29,17 @@ export const AdminContextProvider = ({ children }) => {
   } = useHandleMenu();
   const {
     cart,
+    setCart,
     handleAddToCart,
     handleDeleteProductFromCart,
     resetCart,
     incrementProductAlreadyInCart,
     decrementProductAlreadyInCart,
   } = useHandleCart();
+
+  useEffect(() => {
+    initializeUserSession(username, setMenu, setCart);
+  }, []);
 
   const handleSelectedProduct = async (idCardClicked) => {
     await setIsCollapsed(false);
@@ -45,6 +54,7 @@ export const AdminContextProvider = ({ children }) => {
   return (
     <AdminContext.Provider
       value={{
+        username,
         isModeAdmin,
         setIsModeAdmin,
         isCollapsed,

@@ -6,13 +6,13 @@ import { useContext } from "react";
 import { AdminContext } from "../../../../../context/AdminContext";
 
 export default function Footer({ isCartEmpty }) {
-  const { resetCart } = useContext(AdminContext);
+  const { username, resetCart } = useContext(AdminContext);
   return (
     <FooterStyled>
       {!isCartEmpty && (
         <Button
           label="Vider mon panier"
-          onClick={resetCart}
+          onClick={() => resetCart(username)}
           className="button-color"
         />
       )}

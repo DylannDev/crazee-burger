@@ -6,9 +6,11 @@ import EmptyMenuClient from "./EmptyMenuClient";
 import Card from "./Card";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT, IMAGE_BY_DEFAULT } from "../../../../../enums/product";
+import Loader from "./Loader";
 
 export default function Menu() {
   const {
+    username,
     isModeAdmin,
     selectedProduct,
     setSelectedProduct,
@@ -25,7 +27,7 @@ export default function Menu() {
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation();
 
-    handleDeleteProduct(idProductToDelete);
+    handleDeleteProduct(idProductToDelete, username);
     handleDeleteProductFromCart(idProductToDelete);
 
     idProductToDelete === selectedProduct.id &&
@@ -36,13 +38,17 @@ export default function Menu() {
 
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation();
-    handleAddToCart(idProductToAdd);
+    handleAddToCart(idProductToAdd, username);
   };
 
   // affichage
+  if (menu === undefined) {
+    return <Loader />;
+  }
+
   if (menu.length === 0) {
     return isModeAdmin ? (
-      <EmptyMenuAdmin OnReset={resetMenu} />
+      <EmptyMenuAdmin OnReset={() => resetMenu(username)} />
     ) : (
       <EmptyMenuClient />
     );

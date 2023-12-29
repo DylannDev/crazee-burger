@@ -6,57 +6,63 @@ import {
   findObjectById,
   getIndex,
 } from "../utils/array";
+import { setLocalStorage } from "../utils/window";
 
 export const useHandleCart = () => {
-  const [cart, setCart] = useState(MenuData.EMPTY);
+  const [cart, setCart] = useState([]);
 
-  const handleAddToCart = (idProductToAdd) => {
+  const handleAddToCart = (idProductToAdd, username) => {
     const cartCopy = createCopy(cart);
     const productAlreadyInCart = findObjectById(cart, idProductToAdd);
 
     if (productAlreadyInCart) {
-      incrementProductAlreadyInCart(cart, idProductToAdd);
+      incrementProductAlreadyInCart(cart, idProductToAdd, username);
       return;
     }
 
-    createNewCartProduct(idProductToAdd, cartCopy);
+    createNewCartProduct(idProductToAdd, cartCopy, username);
   };
 
-  const createNewCartProduct = (idProductToAdd, cartCopy) => {
+  const createNewCartProduct = (idProductToAdd, cartCopy, username) => {
     const newCartProduct = { id: idProductToAdd, quantity: 1 };
     const updatedCart = [newCartProduct, ...cartCopy];
-
     setCart(updatedCart);
+    setLocalStorage(username, updatedCart);
   };
 
-  const incrementProductAlreadyInCart = (array, id) => {
+  const incrementProductAlreadyInCart = (array, id, username) => {
     const arrayCopy = createCopy(array);
-    const indexProductInCard = getIndex(arrayCopy, id);
-    arrayCopy[indexProductInCard].quantity += 1;
+    const indexProductInCart = getIndex(arrayCopy, id);
+    arrayCopy[indexProductInCart].quantity += 1;
     setCart(arrayCopy);
+    setLocalStorage(username, arrayCopy);
   };
 
-  const decrementProductAlreadyInCart = (array, id) => {
+  const decrementProductAlreadyInCart = (array, id, username) => {
     const arrayCopy = createCopy(array);
     const indexOfProductInCartToDecrement = getIndex(arrayCopy, id);
     if (arrayCopy[indexOfProductInCartToDecrement].quantity === 1) {
-      return handleDeleteProductFromCart(id);
+      return handleDeleteProductFromCart(id, username);
     }
     arrayCopy[indexOfProductInCartToDecrement].quantity -= 1;
     setCart(arrayCopy);
+    setLocalStorage(username, arrayCopy);
   };
 
-  const handleDeleteProductFromCart = (productIdToDelete) => {
+  const handleDeleteProductFromCart = (productIdToDelete, username) => {
     const updatedCart = deleteProduct(cart, productIdToDelete);
     setCart(updatedCart);
+    setLocalStorage(username, updatedCart);
   };
 
-  const resetCart = () => {
+  const resetCart = (username) => {
     setCart(MenuData.EMPTY);
+    setLocalStorage(username, MenuData.EMPTY);
   };
 
   return {
     cart,
+    setCart,
     handleAddToCart,
     handleDeleteProductFromCart,
     resetCart,

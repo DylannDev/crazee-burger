@@ -8,14 +8,18 @@ import { AdminContext } from "../../../../../context/AdminContext";
 import EmptyCart from "./EmptyCart";
 
 export default function Cart() {
-  const { cart } = useContext(AdminContext);
+  const { cart, menu } = useContext(AdminContext);
 
   const isCartEmpty = cart.length === 0;
 
   return (
     <CartStyled>
       <Total />
-      {isCartEmpty ? <EmptyCart /> : <CartProducts />}
+      {isCartEmpty ? (
+        <EmptyCart isLoading={menu === undefined} />
+      ) : (
+        <CartProducts />
+      )}
       <Footer isCartEmpty={isCartEmpty} />
     </CartStyled>
   );

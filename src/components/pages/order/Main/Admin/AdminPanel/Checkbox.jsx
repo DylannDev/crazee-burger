@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { theme } from "../../../../../../theme";
 
 /* eslint-disable react/prop-types */
-export default function Checkbox({ isVegetarian, onChange }) {
+export default function Checkbox({ isVegetarian, onChange, onBlur }) {
   return (
     <CheckboxStyled>
       <input
         name="isVegetarian"
         checked={isVegetarian}
-        value={isVegetarian}
         type="checkbox"
+        onBlur={onBlur}
         onChange={onChange}
         id="isVegetarian"
       />

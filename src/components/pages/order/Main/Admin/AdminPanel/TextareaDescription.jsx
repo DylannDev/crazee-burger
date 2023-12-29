@@ -2,13 +2,21 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
 
-export default function TextareaDescription({ value, onChange }) {
+export default function TextareaDescription({
+  value,
+  onChange,
+  onFocus,
+  onBlur,
+}) {
   return (
     <TextareaDescriptionStyled
       name="description"
       value={value}
+      checked={false}
       placeholder="Entrez les ingrédients de la pizza"
       onChange={onChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
     />
   );
 }

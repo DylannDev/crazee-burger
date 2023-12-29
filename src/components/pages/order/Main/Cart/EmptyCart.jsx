@@ -1,10 +1,15 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 
-export default function EmptyCart() {
+export default function EmptyCart({ isLoading }) {
   return (
     <EmptyCartStyled>
-      <span>Votre panier est vide.</span>
+      {isLoading ? (
+        <span>Chargement en cours...</span>
+      ) : (
+        <span>Votre panier est vide.</span>
+      )}
     </EmptyCartStyled>
   );
 }
