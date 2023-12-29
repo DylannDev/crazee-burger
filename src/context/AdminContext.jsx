@@ -7,6 +7,7 @@ import { useHandleCart } from "../hooks/useHandleCart";
 import { findObjectById } from "../utils/array";
 import { useParams } from "react-router-dom";
 import { getMenu } from "../api/menu";
+import { getLocalStorage } from "../utils/window";
 
 export const AdminContext = createContext({});
 
@@ -29,6 +30,7 @@ export const AdminContextProvider = ({ children }) => {
   } = useHandleMenu();
   const {
     cart,
+    setCart,
     handleAddToCart,
     handleDeleteProductFromCart,
     resetCart,
@@ -41,8 +43,18 @@ export const AdminContextProvider = ({ children }) => {
     setMenu(menuReceived);
   };
 
+  const initializeCart = async () => {
+    const cartReceived = await getLocalStorage(username);
+    console.log("cartReceived", cartReceived);
+    setCart(cartReceived);
+  };
+
   useEffect(() => {
     initializeMenu();
+  }, []);
+
+  useEffect(() => {
+    initializeCart();
   }, []);
 
   const handleSelectedProduct = async (idCardClicked) => {

@@ -8,9 +8,11 @@ import { AdminContext } from "../../../../../context/AdminContext";
 import EmptyCart from "./EmptyCart";
 
 export default function Cart() {
-  const { cart } = useContext(AdminContext);
+  const { cart, menu } = useContext(AdminContext);
 
   const isCartEmpty = cart.length === 0;
+
+  if (menu === undefined) return <span>Chargement en cours...</span>;
 
   return (
     <CartStyled>

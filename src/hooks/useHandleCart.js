@@ -9,7 +9,7 @@ import {
 import { setLocalStorage } from "../utils/window";
 
 export const useHandleCart = () => {
-  const [cart, setCart] = useState(MenuData.EMPTY);
+  const [cart, setCart] = useState([]);
 
   const handleAddToCart = (idProductToAdd, username) => {
     const cartCopy = createCopy(cart);
@@ -62,6 +62,7 @@ export const useHandleCart = () => {
 
   return {
     cart,
+    setCart,
     handleAddToCart,
     handleDeleteProductFromCart,
     resetCart,
