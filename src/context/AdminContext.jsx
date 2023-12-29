@@ -6,8 +6,7 @@ import { useHandleMenu } from "../hooks/useHandleMenu";
 import { useHandleCart } from "../hooks/useHandleCart";
 import { findObjectById } from "../utils/array";
 import { useParams } from "react-router-dom";
-import { getMenu } from "../api/menu";
-import { getLocalStorage } from "../utils/window";
+import { initializeUserSession } from "../components/pages/order/Main/helpers/initializeUserSession";
 
 export const AdminContext = createContext({});
 
@@ -38,25 +37,8 @@ export const AdminContextProvider = ({ children }) => {
     decrementProductAlreadyInCart,
   } = useHandleCart();
 
-  const initializeMenu = async () => {
-    const menuReceived = await getMenu(username);
-    setMenu(menuReceived);
-  };
-
-  const initializeCart = () => {
-    const cartReceived = getLocalStorage(username);
-    if (cartReceived) {
-      setCart(cartReceived);
-    }
-  };
-
-  const initializeUserSession = async () => {
-    await initializeMenu();
-    initializeCart();
-  };
-
   useEffect(() => {
-    initializeUserSession();
+    initializeUserSession(username, setMenu, setCart);
   }, []);
 
   const handleSelectedProduct = async (idCardClicked) => {
